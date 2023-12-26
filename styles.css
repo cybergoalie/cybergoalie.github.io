@@ -1,199 +1,290 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
-    background-color: #333; /* Dark mode background color */
-    color: #fff; /* Dark mode text color */
+* {
+  box-sizing: border-box;
+}
 
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: "Arial", sans-serif;
+  background-color: #333; /* Dark mode background color */
+  color: #fff; /* Dark mode text color */
 }
 
 body.light-mode {
-    background-color: #fff; /* Light mode background color */
-    color: #000; /* Light mode text color */
+  background-color: #fff; /* Light mode background color */
+  color: #000; /* Light mode text color */
 }
 
 header {
-    background-color: #333;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #333;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo img {
-    max-width: 200px;
-    border-radius: 3px;
+  max-width: 200px;
+  border-radius: 3px;
 }
 
 nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  opacity: .8;
 }
 
 nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
 nav li {
-    margin-right: 50px;
+  margin-right: 50px;
 }
 
 nav a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
 }
 
 nav a:hover {
-    color: #d2ace5; /* Set your preferred hover color */
+  color: #d2ace5; /* Set your preferred hover color */
 }
 
 nav button {
-    border-radius: 30px;
-    padding: 5.8px 10px; /* Add padding for better visual appearance */
+  border-radius: 30px;
+  padding: 5.8px 10px; /* Add padding for better visual appearance */
 }
 
 nav button i {
-    font-size: 18px; /* Adjust the font size as needed */
-    /* color: yellow; 
+  font-size: 18px; /* Adjust the font size as needed */
+  /* color: yellow; 
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)); */
 }
 
 .menu-toggle {
-  
-    display: none; /* Hide by default on larger screens */
+  display: none; /* Hide by default on larger screens */
 }
 
 .welcome-banner {
-   
-    width: 100vw;
-    height: 50vh;
-    overflow: hidden;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
+  width: auto;
+  height: 50vh;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .video-container {
-  
-    width: 100%;
-    height: 60vh; /* Adjust this value to your preference */
-    z-index: -1;
+  width: 100%;
+  height: 60vh; /* Adjust this value to your preference */
+  z-index: -1;
 }
 
 .video-container video {
-    max-width: 100vw;
-    position: relative;
+  max-width: 100vw;
+  position: relative;
 }
 
 .content {
-    position: absolute;
-    z-index: 1;
-    text-align: center;
-    padding: 20px;
-    color: #fff;
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  padding: 20px;
+  color: #fff;
 }
 
 /* Add these styles to your existing CSS */
 
 .fa-heart-pulse {
-    color: inherit; /* Inherit the text color of the parent */
-    transition: color 0.3s ease; /* Add a smooth transition for color change */
-    cursor: pointer; /* Set cursor to pointer on hover */
+  color: inherit; /* Inherit the text color of the parent */
+  transition: color 0.3s ease; /* Add a smooth transition for color change */
+  cursor: pointer; /* Set cursor to pointer on hover */
 }
 
 .fa-heart-pulse:hover {
-    color: purple; /* Change the color on hover */
+  color: purple; /* Change the color on hover */
 }
 /* Tooltip styles */
 .fa-heart-pulse {
-    position: relative; /* Set positioning context for the ::after pseudo-element */
+  position: relative; /* Set positioning context for the ::after pseudo-element */
 }
 
 .fa-heart-pulse::after {
-    content: "Donate!";
-    position: absolute;
-    bottom: calc(100% + 3px); /* Position above the element with a 3px offset */
-    left: 50%; /* Centered horizontally */
-    transform: translateX(-50%); /* Adjust for centering */
-    padding: 8px;
-    background-color: purple;
-    color: white;
-    border-radius: 4px;
-    font-size: 14px;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease;
-    pointer-events: none; /* Allows clicks to pass through the tooltip */
+  content: "Donate!";
+  position: absolute;
+  bottom: calc(100% + 3px); /* Position above the element with a 3px offset */
+  left: 50%; /* Centered horizontally */
+  transform: translateX(-50%); /* Adjust for centering */
+  padding: 8px;
+  background-color: purple;
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* Allows clicks to pass through the tooltip */
 }
 
 .fa-heart-pulse:hover::after {
-    opacity: 1; /* Show the tooltip on hover */
+  opacity: 1; /* Show the tooltip on hover */
 }
 
-
 #backgroundVideo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .play-button {
-    position: absolute;
-    top: 23%;
-    right: 3%;
-    cursor: pointer;
-    font-size: 36px;
-    color: #fff;
-    z-index: 2; /* Ensure the play button is above the video */
+  position: absolute;
+  top: 23%;
+  right: 3%;
+  cursor: pointer;
+  font-size: 36px;
+  color: #fff;
+  z-index: 2; /* Ensure the play button is above the video */
 }
 
 .play-button:hover {
-    color: purple; /* Change the color on hover if desired */
+  color: purple; /* Change the color on hover if desired */
 }
 
-/* Add a media query for smaller screens */
-/* ... your existing styles ... */
+.meet-me {
+  /* max-height: 69vh; */
+  overflow: hidden; /* Add overflow: hidden to hide any content exceeding the container height */
+}
+
+h2 {
+  margin-left: 15px;
+  max-width: 81%; 
+}
+
+.verified-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.single-image {
+  padding: 3px;
+  max-width: 30vw;
+  margin: 35px 15px 0px 15px;
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.single-image img {
+  border-radius: 5px;
+  padding: 3px;
+  width: 100%;
+}
+
+.single-image .caption {
+  font-size: 11px;
+  margin-top: 5px;
+  
+}
+
+.certs-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column ;
+}
+
+.certificate-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  height: 14vh;
+  margin: 10px;
+}
+
+.certificate-container {
+  width: 47vw;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12%;
+}
+
+.certificate-container img {
+  width: auto;
+  max-width: 24vw;
+  height: auto; /* Set height to auto for proper scaling */
+  margin: 10px;
+  position: absolute;
+  /* transition: transform 0.5s ease; */
+  display: none;
+  z-index: 1; /* Ensure the images are above the arrow buttons */
+  border: 1.3px solid black;
+  border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+.arrow {
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 2;
+}
+
+.certs-caption-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+ 
+}
+
+.certs-caption {
+   font-size: 11px;
+   width: 55%;
+   margin-top: 3.8%;
+   margin-right: 10%;
+   text-align: right;
+}
 
 @media screen and (max-width: 768px) {
-    nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 93px; /* Adjust the distance from the top as needed */
-        left: 0;
-        width: 100%;
-        background-color: #333;
-    }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 93px; /* Adjust the distance from the top as needed */
+    left: 0;
+    width: 100%;
+    background-color: #333;
+  }
 
-    nav ul.active {
-        display: flex;
-    }
+  nav ul.active {
+    display: flex;
+  }
 
-    nav li {
-        margin: 0;
-        text-align: center;
-        padding: 10px;
-    }
+  nav li {
+    margin: 0;
+    text-align: center;
+    padding: 10px;
+  }
 
-    .menu-toggle {
-        display: block;
-        cursor: pointer;
-        color: #fff;
-        font-size: 24px;
-        margin-right: 20px;
-    }
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+    margin-right: 20px;
+  }
 
-    .menu-toggle.active {
-        transform: rotate(180deg);
-    }
+  .menu-toggle.active {
+    transform: rotate(180deg);
+  }
 }
-
-
-
