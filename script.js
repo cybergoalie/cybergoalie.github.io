@@ -151,18 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Variable to store the last opened modal id
     let lastModalId;
 
-    // Companion Function to close the modal
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            console.log(`Attempting to close modal with ID: ${modalId}`);
-            modal.style.display = 'none';
-            console.log(`Closed modal with ID: ${modalId}`);
-            overlay.style.display = 'none';
-        } else {
-            console.log(`Modal with ID ${modalId} not found`);
-        }
-    }
+   
 
     // Function to open the diploma modal
     function openDiplomaModal(event) {
@@ -200,3 +189,15 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Certificates modal opened. Display:', modal.style.display);
     }
 });
+ // Companion Function to close the modal
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            console.log(`Attempting to close modal with ID: ${modalId}`);
+            modal.style.display = 'none';
+            console.log(`Closed modal with ID: ${modalId}`);
+            overlay.style.display = 'none';
+        } else {
+            console.log(`Modal with ID ${modalId} not found`);
+        }
+    }
