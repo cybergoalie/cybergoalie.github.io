@@ -34,7 +34,7 @@ nav {
   justify-content: center;
   align-items: center;
   z-index: 2;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 nav ul {
@@ -165,7 +165,7 @@ nav button i {
 
 h2 {
   margin-left: 15px;
-  max-width: 81%; 
+  max-width: 100%;
 }
 
 .verified-container {
@@ -189,19 +189,25 @@ h2 {
   border-radius: 5px;
   padding: 3px;
   width: 100%;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9); /* Adjust the values for your desired shadow */
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.single-image:hover img {
+  box-shadow: 0 0px 16px rgba(0, 0, 0, 0.9); /* Adjust the values for the hover shadow */
 }
 
 .single-image .caption {
   font-size: 11px;
   margin-top: 5px;
-  
 }
 
 .certs-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-flow: column ;
+  flex-flow: column;
 }
 
 .certificate-section {
@@ -227,33 +233,85 @@ h2 {
   height: auto; /* Set height to auto for proper scaling */
   margin: 10px;
   position: absolute;
+  cursor: pointer;
   /* transition: transform 0.5s ease; */
   display: none;
   z-index: 1; /* Ensure the images are above the arrow buttons */
   border: 1.3px solid black;
   border-radius: 5px; /* Optional: Add rounded corners */
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9); /* Adjust the values for your desired shadow */
 }
 
 .arrow {
   cursor: pointer;
-  font-size: 24px;
+  font-size: 38px;
   z-index: 2;
+  font-weight: bold;
+}
+
+.arrow:hover {
+  transform: scale(1.2);
+  transition: transform 0.5s ease;
 }
 
 .certs-caption-wrapper {
   display: flex;
   justify-content: flex-end;
   width: 100%;
- 
+  margin-top: 5px;
 }
 
 .certs-caption {
-   font-size: 11px;
-   width: 55%;
-   margin-top: 3.8%;
-   margin-right: 10%;
-   text-align: right;
+  font-size: 11px;
+  width: 58%;
+  margin-right: 15%;
+  text-align: right;
 }
+/* Modal styles */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 10%;
+  top: 10%;
+  width: 81%;
+  height: 81%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 100%;
+  height: 100%;
+ 
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 101;
+}
+
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  z-index: 99; /* Set z-index below the modal */
+}
+
 
 @media screen and (max-width: 768px) {
   nav ul {
@@ -286,5 +344,19 @@ h2 {
 
   .menu-toggle.active {
     transform: rotate(180deg);
+  }
+
+  h2 {
+   width: 81%;
+  }
+
+  .arrow {
+    cursor: pointer;
+    font-size: 24px;
+  }
+
+  .certs-caption {
+    width: 47%;
+    margin-right: 11%;
   }
 }
