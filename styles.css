@@ -242,6 +242,11 @@ h2 {
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9); /* Adjust the values for your desired shadow */
 }
 
+.certificate-container img.hidden {
+  display: none;
+}
+
+
 .arrow {
   cursor: pointer;
   font-size: 38px;
@@ -310,6 +315,44 @@ h2 {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
   z-index: 99; /* Set z-index below the modal */
+}
+
+.certificate-slider {
+  display: flex;
+  overflow: hidden;
+  max-width: 90%;
+  height: 90%;
+  
+  
+}
+
+.modal-content {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.certificate-item {
+width: 100%;
+object-fit: contain;
+}
+
+.modal .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  z-index: 102;
+}
+
+.modal .arrow.left {
+  left: 10px;
+}
+
+.modal .arrow.right {
+  right: 10px;
 }
 
 

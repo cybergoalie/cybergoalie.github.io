@@ -123,39 +123,75 @@
               <img
                 src="img/cert/administer-linux-fr.png"
                 alt="Certificate 1"
+                class="certificate-item"
+                onclick="openCertificatesModal(this)"
                 tabindex="0"
               />
-              <img src="img/cert/administer-network-arch-fr.png"
-              alt="Certificate 2 tabindex="0"" /> <img
-              src="img/cert/adopt-mvc-architecture-fr.png" alt="Certificate 3
-              tabindex="0"" />
+
+              <img
+                src="img/cert/administer-network-arch-fr.png"
+                alt="Certificate 2"
+                class="certificate-item"
+                onclick="openCertificatesModal(this)"
+                tabindex="0"
+              />
+
+              <img
+                src="img/cert/adopt-mvc-architecture-fr.png"
+                alt="Certificate 3"
+                class="certificate-item"
+                onclick="openCertificatesModal(this)"
+                tabindex="0"
+              />
+
               <img
                 src="img/cert/adopt-rest-apis-fr.png"
                 alt="Certificate 4"
+                class="certificate-item"
+                onclick="openCertificatesModal(this)"
                 tabindex="0"
               />
-              <img src="img/cert/agile-project-management.png" alt="Certificate
-              5 tabindex="0"" /> <img
-              src="img/cert/analyze-data-design-decisions-fr.png"
-              alt="Certificate 6 tabindex="0"" />
+
+              <img
+                src="img/cert/agile-project-management.png"
+                alt="Certificate 5"
+                class="certificate-item"
+                onclick="openCertificatesModal(this)"
+                tabindex="0"
+              />
+              <img
+                src="img/cert/analyze-data-design-decisions-fr.png"
+                alt="Certificate 6"
+                class="certificate-item"     
+                onclick="openCertificatesModal(this)"
+                tabindex="0"
+              />
               <img
                 src="img/cert/analyze-is-risks-fr.png"
                 alt="Certificate 7"
+                class="certificate-item"     
+                onclick="openCertificatesModal(this)"
                 tabindex="0"
               />
               <img
                 src="img/cert/analyze-marketing-data-fr.png"
                 alt="Certificate 8"
+                class="certificate-item"     
+                onclick="openCertificatesModal(this)"
                 tabindex="0"
               />
               <img
                 src="img/cert/analyze-text-data-fr.png"
                 alt="Certificate 9"
+                class="certificate-item"     
+                onclick="openCertificatesModal(this)"
                 tabindex="0"
               />
               <img
                 src="img/cert/apply-psych-fr.png"
                 alt="Certificate 10"
+                class="certificate-item"     
+                onclick="openCertificatesModal(this)"
                 tabindex="0"
               />
 
@@ -168,8 +204,8 @@
         </div>
         <div class="certs-caption-wrapper">
           <div class="certs-caption">
-            Open Classrooms certificates acquired <br> during Web Developer training,
-            01/22 to 12/23
+            Open Classrooms certificates acquired <br />
+            during Web Developer training, 01/22 to 12/23
           </div>
         </div>
       </section>
@@ -181,18 +217,27 @@
 
       <div id="overlay"></div>
 
-
       <!-- Diploma Modal -->
       <div id="diplomaModal" class="modal">
-        <span class="close" onclick="closeModal('diplomaModal')"><i class="fa-solid fa-xmark"></i></span>
+        <span class="close" onclick="closeModal('diplomaModal')"
+          ><i class="fa-solid fa-xmark"></i
+        ></span>
         <img class="modal-content" id="diplomaImage" />
       </div>
 
       <div id="certificatesModal" class="modal">
-        <span class="close" onclick="closeModal('certificatesModal')"
-          ><i class="fa-solid fa-xmark"></i></span
-        >
-        <div class="certificate-slider"></div>
+        <span class="close" onclick="closeModal('certificatesModal')">
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+        <div class="arrow left" onclick="navigateCertificates('left')">
+          <i class="fa-solid fa-caret-left"></i>
+        </div>
+        <div class="certificate-slider">
+          <!-- Initial certificate content will be replaced dynamically -->
+        </div>
+        <div class="arrow right" onclick="navigateCertificates('right')">
+          <i class="fa-solid fa-caret-right"></i>
+        </div>
       </div>
 
       <!-- SERVICES Section Begins (L (is for light) BLOCK) -->

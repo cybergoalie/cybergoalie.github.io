@@ -128,6 +128,23 @@ document.addEventListener('DOMContentLoaded', function () {
         closeModal(lastModalId);
     });
 
+    // Function to open the diploma modal
+    function openDiplomaModal(event) {
+        const overlay = document.getElementById('overlay');
+        const modal = document.getElementById('diplomaModal');
+        const modalImage = document.getElementById('diplomaImage');
+
+        // Access the clicked image's source from the event
+        const clickedImageSrc = event.target.src;
+        modalImage.src = clickedImageSrc; // Set the source dynamically
+        modal.style.display = 'block';
+        overlay.style.display = 'block';
+        console.log('Diploma modal opened. Display:', modal.style.display);
+    }
+
+    // Variable to store the last opened modal id
+    let lastModalId;
+
     // Click event to open the diploma modal
     const diplomaImage = document.querySelector('.single-image img');
     if (diplomaImage) {
@@ -138,66 +155,121 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+});
+
+let currentCertificateIndex; // Declare a variable to store the current certificate index
+
+function openCertificatesModal(clickedCertificate) {
+    const modal = document.getElementById('certificatesModal');
+    const overlay = document.getElementById('overlay');
+    const certificateSlider = modal.querySelector('.certificate-slider');
+    const certificates = document.querySelectorAll('.certificate-container img');
+
+    // Initialize modalImage with the clicked certificate
+    const modalImage = document.createElement('img');
+    modalImage.classList.add('modal-content');
+    certificateSlider.innerHTML = ''; // Clear existing content
+    certificateSlider.appendChild(modalImage);
+
+    // Find the index of the clicked certificate
+    currentCertificateIndex = Array.from(certificates).findIndex(cert => cert === clickedCertificate);
+
+    // Set the initially displayed certificate based on the clicked certificate
+    modalImage.src = clickedCertificate.src;
+
+    // Toggle visibility of certificates
+    certificates.forEach((certificate, index) => {
+        if (index !== currentCertificateIndex) {
+            certificate.classList.add('hidden');
+        } else {
+            certificate.classList.remove('hidden');
+        }
+    });
+
+    modal.style.display = 'block';
+    overlay.style.display = 'block';
+    console.log('Certificates modal opened. Display:', modal.style.display);
+}
+
+
+
     // Click event to open the certificate modal
     const certificateContainer = document.querySelector('.certificate-container');
     if (certificateContainer) {
-        certificateContainer.addEventListener('click', function () {
-            openCertificatesModal();
-            // Set the lastModalId variable for the overlay click event
-            lastModalId = 'certificatesModal';
+        certificateContainer.addEventListener('click', function (event) {
+            // Ensure that the clicked element is an image
+            const clickedImage = event.target.closest('.certificate-item');
+            if (clickedImage) {
+                openCertificatesModal(clickedImage); // Pass the clicked certificate to the function
+                // Set the lastModalId variable for the overlay click event
+                lastModalId = 'certificatesModal';
+            }
         });
     }
 
-    // Variable to store the last opened modal id
-    let lastModalId;
-
-   
-
-    // Function to open the diploma modal
-    function openDiplomaModal(event) {
-        const overlay = document.getElementById('overlay');
-        const modal = document.getElementById('diplomaModal');
-        const modalImage = document.getElementById('diplomaImage');
-    
-        // Access the clicked image's source from the event
-        const clickedImageSrc = event.target.src;
-        modalImage.src = clickedImageSrc; // Set the source dynamically
-        modal.style.display = 'block';
-        overlay.style.display = 'block';
-        console.log('Diploma modal opened. Display:', modal.style.display);
-    }
-    
-
-    // Function to open the certificates modal
-    function openCertificatesModal() {
+    function navigateCertificates(direction) {
         const modal = document.getElementById('certificatesModal');
-        const overlay = document.getElementById('overlay');
-        const certificateSlider = document.querySelector('.certificate-slider');
-        const certificates = document.querySelectorAll('.certificate-container img');
+        const certificateSlider = modal.querySelector('.certificate-slider');
+        const certificates = Array.from(document.querySelectorAll('.certificate-container img'));
+        const modalImage = certificateSlider.querySelector('.modal-content');
 
-        // Clear existing content
-        certificateSlider.innerHTML = '';
+        if (!modalImage) {
+            console.error('modalImage is undefined');
+            return;
+        }
 
-        // Clone and append each certificate image to the modal
-        certificates.forEach((certificate) => {
-            const clonedCertificate = certificate.cloneNode(true);
-            certificateSlider.appendChild(clonedCertificate);
-        });
+        console.log('Certificates:', certificates);
+        console.log('Certificates length:', certificates.length);
 
-        modal.style.display = 'block';
-        overlay.style.display = 'block';
-        console.log('Certificates modal opened. Display:', modal.style.display);
-    }
-});
- // Companion Function to close the modal
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            console.log(`Attempting to close modal with ID: ${modalId}`);
-            modal.style.display = 'none';
-            console.log(`Closed modal with ID: ${modalId}`);
-            overlay.style.display = 'none';
+        if (certificates.length === 0) {
+            console.error('Certificates array is empty');
+            return;
+        }
+
+        let currentIndex = currentCertificateIndex;
+
+        if (direction === 'left') {
+            currentIndex = (currentIndex + 1 + certificates.length) % certificates.length;
+        } else if (direction === 'right') {
+            currentIndex = (currentIndex - 1 + certificates.length) % certificates.length;
+        }
+
+        const nextCertificate = certificates[currentIndex];
+
+        if (nextCertificate) {
+            modalImage.src = nextCertificate.src;
+            currentCertificateIndex = currentIndex;
         } else {
-            console.log(`Modal with ID ${modalId} not found`);
+            console.error('Next certificate not found');
         }
     }
+
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    const overlay = document.getElementById('overlay');
+
+    if (modal) {
+        console.log(`Attempting to close modal with ID: ${modalId}`);
+        modal.style.display = 'none';
+        console.log(`Closed modal with ID: ${modalId}`);
+    } else {
+        console.log(`Modal with ID ${modalId} not found`);
+    }
+
+    // Hide overlay
+    overlay.style.display = 'none';
+}
+
+// function moveLatestCertificatesToTop() {
+//     const certificatesContainer = document.querySelector('.certificate-container');
+//     const certificates = Array.from(certificatesContainer.querySelectorAll('img'));
+
+//     // Move the latest featured certificates to the top
+//     for (let i = currentCertificateIndex; i < currentCertificateIndex + 3; i++) {
+//         const certificate = certificates[i % certificates.length];
+//         certificate.style.display = 'block';
+//         certificatesContainer.appendChild(certificate);
+//     }
+// }
+
