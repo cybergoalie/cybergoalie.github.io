@@ -252,6 +252,7 @@ h2 {
   font-size: 38px;
   z-index: 2;
   font-weight: bold;
+  color: PINK;
 }
 
 .arrow:hover {
@@ -298,7 +299,7 @@ h2 {
   position: absolute;
   top: 15px;
   right: 35px;
-  color: black;
+  color: RED;
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
@@ -342,7 +343,7 @@ object-fit: contain;
   top: 50%;
   transform: translateY(-50%);
   font-size: 24px;
-  color: white;
+  color: hotpink;
   cursor: pointer;
   z-index: 102;
 }
