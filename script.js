@@ -249,36 +249,39 @@ function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     const overlay = document.getElementById('overlay');
 
-    // Log the identified certificate that the modal was closed on
-    const currentCertificate = document.querySelector('.certificate-container img:not(.hidden)');
-    
-    if (!currentCertificate) {
-        console.error('No certificate found. Aborting closeModal.');
-        return;
-    }
+    if (modalId === 'diplomaModal') {
+       
+    } else {
 
-    const currentIndex = Array.from(document.querySelectorAll('.certificate-container img')).indexOf(currentCertificate);
-    console.log('Closed on certificate:', currentCertificate);
-    console.log('Index of closed certificate:', currentIndex);
+        // Log the identified certificate that the modal was closed on
+        const currentCertificate = document.querySelector('.certificate-container img:not(.hidden)');
+        console.log('Closed on certificate:', currentCertificate);
 
-    // Set the currentCertificate as the starting point in the loop of certificates
-    const certificates = document.querySelectorAll('.certificate-container img');
-
-    // Rearrange the certificates in the array by pushing the starting point to the front
-    for (let i = 0; i < currentIndex; i++) {
-        const temp = certificates[0].src;
-        for (let j = 0; j < certificates.length - 1; j++) {
-            certificates[j].src = certificates[j + 1].src;
+        if (!currentCertificate) {
+            console.error('No certificate found. Aborting closeModal.');
+            return;
         }
-        certificates[certificates.length - 1].src = temp;
-    }
 
+        const currentIndex = Array.from(document.querySelectorAll('.certificate-container img')).indexOf(currentCertificate);
+        console.log('Index of closed certificate:', currentIndex);
+
+        // Set the currentCertificate as the starting point in the loop of certificates
+        const certificates = document.querySelectorAll('.certificate-container img');
+
+        // Rearrange the certificates in the array by pushing the starting point to the front
+        for (let i = 0; i < currentIndex; i++) {
+            const temp = certificates[0].src;
+            for (let j = 0; j < certificates.length - 1; j++) {
+                certificates[j].src = certificates[j + 1].src;
+            }
+            certificates[certificates.length - 1].src = temp;
+        }
+        console.log('Number of certificates:', certificates.length);
+    }
     modal.style.display = 'none';
     overlay.style.display = 'none';
     console.log(`Modal with ID ${modalId} closed. Display: ${modal.style.display}`);
-    
-    // Log the number of certificates in the array after rearranging
-    console.log('Number of certificates:', certificates.length);
+
 }
 
 
