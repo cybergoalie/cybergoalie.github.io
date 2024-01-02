@@ -23,42 +23,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 certificateContainer.appendChild(img);
             });
-
-            const certificates = document.querySelectorAll(".certificate-container img");
-            const totalCertificates = certificates.length;
-
+        
+            // const certificates = document.querySelectorAll(".certificate-container img");
+            const totalCertificates = certificatesData.length;
             const displayLimit = 3;
             let currentIndex = 0;
-
-            // UPDATE CERTIFICATES
-
+          
             function updateCertificates() {
-                const screenWidth = window.innerWidth;
-                const maxTranslateXPercentage = -150;
-                const minTranslateXPercentage = 5;
-
-                certificates.forEach((certificate, index) => {
-                    const adjustedIndex = (index - currentIndex + totalCertificates) % totalCertificates;
-
-                    if (adjustedIndex >= 0 && adjustedIndex < displayLimit) {
-                        certificate.style.display = "block";
-                        certificate.style.zIndex = totalCertificates - adjustedIndex;
-
-                        // Adjust the transform property to create the step-like appearance
-                        const translateY = adjustedIndex * 23 + -5; // Increase this value to move the certificates farther down !!!CHECK
-
-                        const minTranslateX = (minTranslateXPercentage / 100) * screenWidth;
-                        const maxTranslateX = (maxTranslateXPercentage / 100) * screenWidth;
-                        const translateX =
-                            minTranslateX + ((maxTranslateX - minTranslateX) / screenWidth) * adjustedIndex * 25 + 11;
-
-                        certificate.style.transform = `translate(${translateX}px, ${translateY}px)`;
-                    } else {
-                        certificate.style.display = "none";
-                    }
-                });
+                certificateContainer.innerHTML = ''; // Clear the container
+                for (let i = 0; i < displayLimit; i++) {
+                  const adjustedIndex = (currentIndex + i) % totalCertificates;
+                  const certificate = certificatesData[adjustedIndex];
+            
+                  const certificateElement = document.createElement('div');
+                  certificateElement.className = 'certificate-item';
+                 
+                  const img = document.createElement('img');
+                  img.src = certificate.src;
+                  img.alt = certificate.alt;
+                  img.tabIndex = '0';
+                  img.addEventListener('click', function () {
+                    openCertificatesModal(img);
+                  });
+            
+                  certificateElement.appendChild(img);
+                  certificateContainer.appendChild(certificateElement); }
             }
 
+        
             // LISTEN FOR CLICK EVENT TO GO FORWARDS THROUGH THE LOOP OF CERTIFICATES (THEN UPDATE CERTIFICATES)
 
             document.querySelector(".right").addEventListener("click", function () {
@@ -92,6 +84,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     event.preventDefault();
                 }
             });
+
+            // MODAL LOGIC BEGINS HERE
 
             // LISTEN FOR DISPATCH OF THE MODALCLOSED EVENT (THEN UPDATE CERTIFICATES)
 
@@ -207,11 +201,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => {
             console.error('Error loading certificates:', error);
         });
-
-    // MODAL LOGIC BEGINS HERE
-
-
-
 
 
 }); // DOMContentLoaded Section Ends

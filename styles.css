@@ -179,7 +179,7 @@ h2 {
 .single-image {
   padding: 3px;
   max-width: 30vw;
-  margin: 35px 15px 0px 5vw;
+  margin: 1vw 15px 0px 5vw;
   height: 100%;
   display: flex;
   flex-flow: column wrap;
@@ -217,31 +217,24 @@ h2 {
   justify-content: center;
   align-items: center;
   margin: 10px 3vw 10px 1vw;
-  height: 14vh;
+  height: auto;
 }
 
 .certificate-container {
-  width: 47vw;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 12%;
+   display: flex;
+  overflow: hidden;
+  flex-flow: row-reverse;
 }
 
 .certificate-container img {
-  width: auto;
-  max-width: 24vw;
-  height: auto; /* Set height to auto for proper scaling */
-  margin: 10px;
-  position: absolute;
+  width: 96%; /* Each certificate takes up 33.33% of the visible container */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+height: auto;
+  transition: transform 0.5s ease-in-out;
   cursor: pointer;
-  /* transition: transform 0.5s ease; */
-  display: none;
-  z-index: 1; /* Ensure the images are above the arrow buttons */
-  border: 1.3px solid black;
-  border-radius: 5px; /* Optional: Add rounded corners */
-  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9); /* Adjust the values for your desired shadow */
 }
+
+
 
 .certificate-container img.hidden {
   display: none;
@@ -425,6 +418,7 @@ height: 100%;
     width: 47%;
     margin-right: 11%;
   }
+
 }
 
 @media screen and ((min-width: 611px) and (max-width: 768px)) {

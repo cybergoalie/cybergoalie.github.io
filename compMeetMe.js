@@ -1,11 +1,18 @@
-// Find the diploma image element
-const diplomaImage = document.querySelector('.single-image img');
+const certificateContainer = document.getElementById('certificateContainer');
+const certificatesData = /* ... your certificates array ... */;
+const totalCertificates = certificatesData.length;
+const displayLimit = 3;
+let currentIndex = 0;
 
-// Check if the diploma image element exists
-if (diplomaImage) {
-    // Add a click event listener to the diploma image
-    diplomaImage.addEventListener('click', function (event) {
-        openDiplomaModal(event);
-        lastModalId = 'diplomaModal';
-    });
+function updateCertificates() {
+  certificateContainer.innerHTML = ''; // Clear the container
+  for (let i = 0; i < displayLimit; i++) {
+    const adjustedIndex = (currentIndex + i) % totalCertificates;
+    const certificate = certificatesData[adjustedIndex];
+
+    const certificateElement = document.createElement('div');
+    certificateElement.className = 'certificate-item';
+    certificateElement.innerHTML = `<img src="${certificate.src}" alt="${certificate.alt}">`;
+    certificateContainer.appendChild(certificateElement);
+  }
 }
