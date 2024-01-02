@@ -8,49 +8,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fetch('certificates.json')
         .then(response => response.json())
-        .then(certificatesData => {
+        .then(data => {
+            certificates = data;
             const certificateContainer = document.getElementById('certificateContainer');
-
-            certificatesData.forEach((certificate, index) => {
-                const img = document.createElement('img');
-                img.src = certificate.src;
-                img.alt = certificate.alt;
-                img.className = 'certificate-item';
-                img.tabIndex = '0';
-                img.onclick = function () {
-                    openCertificatesModal(this);
-                };
-
-                certificateContainer.appendChild(img);
-            });
-        
-            // const certificates = document.querySelectorAll(".certificate-container img");
-            const totalCertificates = certificatesData.length;
+            const totalCertificates = certificates.length;
             const displayLimit = 3;
             let currentIndex = 0;
-          
+
             function updateCertificates() {
                 certificateContainer.innerHTML = ''; // Clear the container
                 for (let i = 0; i < displayLimit; i++) {
-                  const adjustedIndex = (currentIndex + i) % totalCertificates;
-                  const certificate = certificatesData[adjustedIndex];
-            
-                  const certificateElement = document.createElement('div');
-                  certificateElement.className = 'certificate-item';
-                 
-                  const img = document.createElement('img');
-                  img.src = certificate.src;
-                  img.alt = certificate.alt;
-                  img.tabIndex = '0';
-                  img.addEventListener('click', function () {
-                    openCertificatesModal(img);
-                  });
-            
-                  certificateElement.appendChild(img);
-                  certificateContainer.appendChild(certificateElement); }
+                    const adjustedIndex = (currentIndex + i) % totalCertificates;
+                    const certificate = certificates[adjustedIndex];
+
+                    const certificateElement = document.createElement('div');
+                    certificateElement.className = 'certificate-item';
+
+                    const img = document.createElement('img');
+                    img.src = certificate.src;
+                    img.alt = certificate.alt;
+                    img.tabIndex = '0';
+                    img.addEventListener('click', function () {
+                        openCertificatesModal(img);
+                    });
+
+                    certificateElement.appendChild(img);
+                    certificateContainer.appendChild(certificateElement);
+                }
             }
 
-        
+
             // LISTEN FOR CLICK EVENT TO GO FORWARDS THROUGH THE LOOP OF CERTIFICATES (THEN UPDATE CERTIFICATES)
 
             document.querySelector(".right").addEventListener("click", function () {
@@ -160,24 +147,27 @@ document.addEventListener("DOMContentLoaded", function () {
                 const modal = document.getElementById('certificatesModal');
                 const overlay = document.getElementById('overlay');
                 const certificateSlider = modal.querySelector('.certificate-slider');
-                const certificates = document.querySelectorAll('.certificate-container img');
+                console.log('# of CERTIFICATES in modal array when opened:', certificates.length);
 
                 const modalImage = document.createElement('img');
                 modalImage.classList.add('modal-content');
-                certificateSlider.innerHTML = '';
                 certificateSlider.appendChild(modalImage);
+
+
 
                 currentCertificateIndex = Array.from(certificates).findIndex(cert => cert === clickedCertificate);
 
                 modalImage.src = clickedCertificate.src;
 
                 certificates.forEach((certificate, index) => {
-                    if (index !== currentCertificateIndex) {
-                        certificate.classList.add('hidden');
-                    } else {
-                        certificate.classList.remove('hidden');
+                    const certificateElement = certificateContainer.children[index];
+                    if (index !== currentCertificateIndex && certificateElement) {
+                        certificateElement.classList.add('hidden');
+                    } else if (certificateElement) {
+                        certificateElement.classList.remove('hidden');
                     }
                 });
+                
 
                 modal.style.display = 'block';
                 overlay.style.display = 'block';
@@ -212,12 +202,12 @@ document.addEventListener("DOMContentLoaded", function () {
 let currentCertificateIndex;
 let modalWasNavigated = false;
 
+
 function navigateCertificates(direction) {
     const modal = document.getElementById('certificatesModal');
     const certificateSlider = modal.querySelector('.certificate-slider');
-    const certificates = Array.from(document.querySelectorAll('.certificate-container img'));
     const modalImage = certificateSlider.querySelector('.modal-content');
-
+const totalCertificates = certificates.length
     if (!modalImage) {
         console.error('modalImage is undefined');
         return;
@@ -235,17 +225,17 @@ function navigateCertificates(direction) {
     let currentIndex = currentCertificateIndex;
 
     if (direction === 'left') {
-        currentIndex = (currentIndex + 1 + certificates.length) % certificates.length;
+        currentIndex = (currentIndex + 1) % totalCertificates;
     } else if (direction === 'right') {
-        currentIndex = (currentIndex - 1 + certificates.length) % certificates.length;
+        currentIndex = (currentIndex - 1 + totalCertificates) % totalCertificates;
     }
-
-    const nextCertificate = certificates[currentIndex];
+        const nextCertificate = certificates[currentIndex];
 
     if (nextCertificate) {
         modalImage.src = nextCertificate.src;
         currentCertificateIndex = currentIndex;
         modalWasNavigated = true;
+
     } else {
         console.error('Next certificate not found');
     }
