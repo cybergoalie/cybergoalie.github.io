@@ -160,7 +160,6 @@ nav button i {
 }
 
 .meet-me {
-  /* max-height: 69vh; */
   overflow: hidden; /* Add overflow: hidden to hide any content exceeding the container height */
 }
 
@@ -269,7 +268,6 @@ h2 {
 /* Adjust the alignment for each certificate */
 .first-certificate {
   align-items: flex-start;
-  /* padding-top: 30%; */
 }
 
 .middle-certificate {
@@ -278,7 +276,6 @@ h2 {
 
 .last-certificate {
   align-items: flex-end;
-  /* padding-bottom: 30%; */
 }
 
 .certificate-container img.hidden {

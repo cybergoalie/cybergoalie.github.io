@@ -1,6 +1,6 @@
 // meetMe.js
 
-// MEET ME INITIALIZED MODULE
+// MEET ME MODULE
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -32,14 +32,14 @@ document.addEventListener("DOMContentLoaded", function () {
                         openCertificatesModal(img);
                     });
 
-                      // Add specific classes to each certificate for different alignment
-    if (i === 0) {
-        certificateElement.classList.add('first-certificate');
-      } else if (i === displayLimit - 1) {
-        certificateElement.classList.add('last-certificate');
-      } else {
-        certificateElement.classList.add('middle-certificate');
-      }
+                    // Add specific classes to each certificate for different alignment
+                    if (i === 0) {
+                        certificateElement.classList.add('first-certificate');
+                    } else if (i === displayLimit - 1) {
+                        certificateElement.classList.add('last-certificate');
+                    } else {
+                        certificateElement.classList.add('middle-certificate');
+                    }
 
                     // Adjust the margin to create the overlapping effect
                     const spacingFactor = 2; // Adjust this value based on your preference
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     img.style.zIndex = displayLimit - i;
 
 
-                    
+
                     certificateElement.appendChild(img);
                     certificateContainer.appendChild(certificateElement);
                 }
