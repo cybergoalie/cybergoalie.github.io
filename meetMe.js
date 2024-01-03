@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     lastModalId = 'diplomaModal';
                     console.log('Clicked on diplomaImage.');
                 });
-            }
+            }   
 
             // OPEN CERTIFICATES MODAL (includes click event)
 
@@ -147,27 +147,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 const modal = document.getElementById('certificatesModal');
                 const overlay = document.getElementById('overlay');
                 const certificateSlider = modal.querySelector('.certificate-slider');
-                console.log('# of CERTIFICATES in modal array when opened:', certificates.length);
+                const certificates = document.querySelectorAll('.certificate-container img');
 
                 const modalImage = document.createElement('img');
                 modalImage.classList.add('modal-content');
+                certificateSlider.innerHTML = '';
                 certificateSlider.appendChild(modalImage);
-
-
 
                 currentCertificateIndex = Array.from(certificates).findIndex(cert => cert === clickedCertificate);
 
                 modalImage.src = clickedCertificate.src;
 
                 certificates.forEach((certificate, index) => {
-                    const certificateElement = certificateContainer.children[index];
-                    if (index !== currentCertificateIndex && certificateElement) {
-                        certificateElement.classList.add('hidden');
-                    } else if (certificateElement) {
-                        certificateElement.classList.remove('hidden');
+                    if (index !== currentCertificateIndex) {
+                        certificate.classList.add('hidden');
+                    } else {
+                        certificate.classList.remove('hidden');
                     }
                 });
-                
 
                 modal.style.display = 'block';
                 overlay.style.display = 'block';
@@ -201,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let currentCertificateIndex;
 let modalWasNavigated = false;
+let certificates; // Declare certificates in the global scope
 
 
 function navigateCertificates(direction) {
