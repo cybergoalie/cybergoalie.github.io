@@ -32,14 +32,25 @@ document.addEventListener("DOMContentLoaded", function () {
                         openCertificatesModal(img);
                     });
 
-  // Adjust the margin to create the overlapping effect
-  const spacingFactor = 2; // Adjust this value based on your preference
+                      // Add specific classes to each certificate for different alignment
+    if (i === 0) {
+        certificateElement.classList.add('first-certificate');
+      } else if (i === displayLimit - 1) {
+        certificateElement.classList.add('last-certificate');
+      } else {
+        certificateElement.classList.add('middle-certificate');
+      }
 
-  img.style.marginRight = i === 0 ? '0' : `-${i * (100 / totalCertificates) * spacingFactor}%`;
-  
-       // Adjust the z-index based on the position in the loop
-       img.style.zIndex = displayLimit - i;
+                    // Adjust the margin to create the overlapping effect
+                    const spacingFactor = 2; // Adjust this value based on your preference
 
+                    img.style.marginRight = i === 0 ? '0' : `-${i * (100 / totalCertificates) * spacingFactor}%`;
+
+                    // Adjust the z-index based on the position in the loop
+                    img.style.zIndex = displayLimit - i;
+
+
+                    
                     certificateElement.appendChild(img);
                     certificateContainer.appendChild(certificateElement);
                 }
@@ -147,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     lastModalId = 'diplomaModal';
                     console.log('Clicked on diplomaImage.');
                 });
-            }   
+            }
 
             // OPEN CERTIFICATES MODAL (includes click event)
 
@@ -213,7 +224,7 @@ function navigateCertificates(direction) {
     const modal = document.getElementById('certificatesModal');
     const certificateSlider = modal.querySelector('.certificate-slider');
     const modalImage = certificateSlider.querySelector('.modal-content');
-const totalCertificates = certificates.length
+    const totalCertificates = certificates.length
     if (!modalImage) {
         console.error('modalImage is undefined');
         return;
@@ -235,7 +246,7 @@ const totalCertificates = certificates.length
     } else if (direction === 'right') {
         currentIndex = (currentIndex - 1 + totalCertificates) % totalCertificates;
     }
-        const nextCertificate = certificates[currentIndex];
+    const nextCertificate = certificates[currentIndex];
 
     if (nextCertificate) {
         modalImage.src = nextCertificate.src;

@@ -25,7 +25,6 @@
     <script src="script.js"></script>
     <script src="meetMe.js"></script>
 
-
     <link rel="stylesheet" href="styles.css" />
 
     <title>Meet Dr. Young, DAOM & Med-ucational Software Developer</title>
@@ -112,8 +111,10 @@
       <section class="meet-me">
         <h2>Integrative Medicine x Deep Tech</h2>
         <div class="verified-container">
-          <div class="single-image">
-            <img src="img/cy-diploma.jpg" alt="Diploma" />
+          <div class="diploma-section">
+            <div class-="diploma-wrapper">
+              <img src="img/cy-diploma.jpg" alt="Diploma" />
+            </div>
             <div class="caption">Doctoral Degree from FBU, 2018</div>
           </div>
 
@@ -121,9 +122,13 @@
             <div class="arrow left" tabindex="0">
               <i class="fa-solid fa-caret-left"></i>
             </div>
-            <!-- HTML structure for certificates container -->
-            <div class="certificate-container" id="certificateContainer"></div>
-
+            <div class="cert-container-wrapper">
+              <!-- HTML structure for certificates container -->
+              <div
+                class="certificate-container"
+                id="certificateContainer"
+              ></div>
+            </div>
             <div class="arrow right" tabindex="0">
               <i class="fa-solid fa-caret-right"></i>
             </div>
@@ -149,8 +154,12 @@
         <span class="close" onclick="closeModal('diplomaModal')"
           ><i class="fa-solid fa-xmark"></i
         ></span>
-        <div class="diploma-wrapper"> 
-          <img class="modal-content" alt="Clinical Doctorate Diploma from Five Branches University, 2018." id="diplomaImage" />
+        <div class="diploma-wrapper">
+          <img
+            class="modal-content"
+            alt="Clinical Doctorate Diploma from Five Branches University, 2018."
+            id="diplomaImage"
+          />
         </div>
       </div>
 

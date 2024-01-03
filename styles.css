@@ -172,35 +172,45 @@ h2 {
 
 .verified-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  height: 23vh;
 }
 
-.single-image {
+.diploma-section {
   padding: 3px;
   max-width: 30vw;
   margin: 1vw 15px 0px 5vw;
   height: 100%;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column;
   justify-content: flex-start;
   align-items: center;
 }
 
-.single-image img {
+.diploma-wrapper {
+  height: 81%;
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.diploma-wrapper img {
   border-radius: 5px;
+  object-fit: contain;
   padding: 3px;
   width: 100%;
+  height: 100%;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9); /* Adjust the values for your desired shadow */
   transition: box-shadow 0.3s ease;
   cursor: pointer;
 }
 
-.single-image:hover img {
+.diploma-wrapper:hover img {
   box-shadow: 0 0px 16px rgba(0, 0, 0, 0.9); /* Adjust the values for the hover shadow */
 }
 
-.single-image .caption {
+.diploma-section .caption {
   font-size: 11px;
   margin-top: 5px;
 }
@@ -214,11 +224,17 @@ h2 {
 
 .certificate-section {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin: 10px 3vw 10px 1vw;
-  height: auto;
+  height: 100%;
   width: 60%;
+}
+
+.cert-container-wrapper {
+  display: flex;
+  height: 81%;
+  width: 69%;
 }
 
 .certificate-container {
@@ -228,7 +244,7 @@ h2 {
   grid-template-columns: repeat(3, 1fr); /* Three columns */
   gap: 1%; /* Adjust gap between certificates as needed */
   width: 100%;
-  height: 25vh;
+  /* height: 20vh; */
 }
 
 .certificate-item {
@@ -245,11 +261,25 @@ h2 {
   height: auto;
   transition: transform 0.5s ease-in-out;
   cursor: pointer;
-  position: absolute;
+  /* position: absolute; */
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9); /* Adjust the values for your desired shadow */
-object-fit: contain;
+  object-fit: contain;
 }
 
+/* Adjust the alignment for each certificate */
+.first-certificate {
+  align-items: flex-start;
+  /* padding-top: 30%; */
+}
+
+.middle-certificate {
+  align-items: center;
+}
+
+.last-certificate {
+  align-items: flex-end;
+  /* padding-bottom: 30%; */
+}
 
 .certificate-container img.hidden {
   display: none;
