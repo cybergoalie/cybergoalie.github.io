@@ -218,22 +218,37 @@ h2 {
   align-items: center;
   margin: 10px 3vw 10px 1vw;
   height: auto;
+  width: 60%;
 }
 
 .certificate-container {
-   display: flex;
-  overflow: hidden;
-  flex-flow: row-reverse;
+  display: grid;
+  direction: rtl; /* Set right-to-left direction */
+  position: relative;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  gap: 1%; /* Adjust gap between certificates as needed */
+  width: 100%;
+  height: 25vh;
+}
+
+.certificate-item {
+  position: relative;
+  max-width: auto;
+  height: 100%;
+  display: flex; /* Use flexbox for centering */
+  justify-content: center;
+  align-items: center;
 }
 
 .certificate-container img {
-  width: 96%; /* Each certificate takes up 33.33% of the visible container */
-  box-sizing: border-box; /* Include padding and border in the width calculation */
-height: auto;
+  max-width: 100%;
+  height: auto;
   transition: transform 0.5s ease-in-out;
   cursor: pointer;
+  position: absolute;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9); /* Adjust the values for your desired shadow */
+object-fit: contain;
 }
-
 
 
 .certificate-container img.hidden {
@@ -266,7 +281,6 @@ height: auto;
   margin-right: 15%;
   text-align: right;
 }
-
 
 /* MODAL STYLES */
 
@@ -317,12 +331,12 @@ height: auto;
 }
 
 .diploma-wrapper {
-display: flex;
-justify-content: center;
-align-content: center;
-overflow: hidden;
-max-width: 100%;
-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
+  max-width: 100%;
+  height: 100%;
 }
 
 .certificate-slider {
@@ -418,7 +432,6 @@ height: 100%;
     width: 47%;
     margin-right: 11%;
   }
-
 }
 
 @media screen and ((min-width: 611px) and (max-width: 768px)) {

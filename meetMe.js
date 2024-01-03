@@ -32,6 +32,14 @@ document.addEventListener("DOMContentLoaded", function () {
                         openCertificatesModal(img);
                     });
 
+  // Adjust the margin to create the overlapping effect
+  const spacingFactor = 2; // Adjust this value based on your preference
+
+  img.style.marginRight = i === 0 ? '0' : `-${i * (100 / totalCertificates) * spacingFactor}%`;
+  
+       // Adjust the z-index based on the position in the loop
+       img.style.zIndex = displayLimit - i;
+
                     certificateElement.appendChild(img);
                     certificateContainer.appendChild(certificateElement);
                 }
