@@ -311,9 +311,10 @@ h2 {
 .arrow {
   cursor: pointer;
   font-size: 38px;
-  z-index: 2;
   font-weight: bold;
   color: PINK;
+  padding: 15px;
+  z-index: 2;
 }
 
 .arrow:hover {
