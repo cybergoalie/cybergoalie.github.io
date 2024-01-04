@@ -7,7 +7,8 @@ body {
   padding: 0;
   height: 100vh;
   font-family: "Prompt";
-  font-weight: 500;
+  letter-spacing: 1.3px;
+  font-weight: 300;
   background-color: #333; /* Dark mode background color */
   color: #fff; /* Dark mode text color */
 }
@@ -270,10 +271,7 @@ h2 {
 }
 
 .certificate-container img:hover {
-  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 0, 0, 0.5),
-    /* Red */ 0 0 50px rgba(0, 255, 0, 0.5),
-    /* Green */ 0 0 50px rgba(0, 0, 255, 0.5); /* Blue */
-
+  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.9), 0 0 30px rgba(235, 195, 195, 0.5), 0 0 30px rgba(193, 235, 193, 0.5), 0 0 30px rgba(170, 170, 227, 0.5);
     transform: scale(1.1) translateY(-24%);  
     transition: transform 0.5s ease-in-out;
 }
@@ -290,6 +288,7 @@ h2 {
 .middle-certificate {
   align-items: center;
 }
+
 .middle-certificate img:hover {
   transform: translateY(-24%);
 }
@@ -486,14 +485,16 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     margin: 20px 0;
     padding: 0 10px;
     font-size: 22px;
   }
 
   .arrow {
-    cursor: pointer;
+   
     font-size: 24px;
+      padding: 0px;
   }
 
 
