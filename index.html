@@ -22,6 +22,15 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- Google Fonts API (PROMPT FAM & WHISPER) -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,300;0,500;0,800;1,300&family=Whisper&display=swap"
+      rel="stylesheet"
+    />
+
     <script src="script.js"></script>
     <script src="meetMe.js"></script>
 
@@ -97,10 +106,10 @@
             <h1>
               Welcome to my Website <i class="fa-solid fa-heart-pulse"></i>
             </h1>
-            <p>Support the movement?...</p>
+            <p>Join the venture...</p>
             <form id="ctaForm">
               <!-- Your form elements go here -->
-              <button type="submit">Yes!</button>
+              <button type="submit"><i class="fas fa-heart-circle-plus"></i>Yes!</button>
             </form>
           </div>
         </section>
@@ -115,7 +124,6 @@
             <div class="diploma-wrapper">
               <img src="img/cy-diploma.jpg" alt="Diploma" />
             </div>
-            <div class="caption">Doctoral Degree from FBU, 2018</div>
           </div>
 
           <div class="certificate-section">
@@ -134,9 +142,11 @@
             </div>
           </div>
         </div>
-        <div class="certs-caption-wrapper">
+        <div class="captions-wrapper">
+          <div class="diploma-caption">Doctoral Degree from FBU, 2018</div>
           <div class="certs-caption">
-            Certificates achieved during OpenClassrooms Web Developer training, 01/22 to 12/23.
+            Certificates achieved during OpenClassrooms Web Developer training,
+            01/22 to 12/23.
           </div>
         </div>
       </section>
@@ -153,7 +163,7 @@
         <span class="close" onclick="closeModal('diplomaModal')"
           ><i class="fa-solid fa-xmark"></i
         ></span>
-        <div class="diploma-wrapper">
+        <div class="diploma-modal-wrapper">
           <img
             class="modal-content"
             alt="Clinical Doctorate Diploma from Five Branches University, 2018."

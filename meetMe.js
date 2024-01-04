@@ -144,13 +144,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let lastModalId;
 
-            const diplomaImage = document.querySelector('.single-image img');
+            const diplomaImage = document.querySelector('.diploma-wrapper img');
             if (diplomaImage) {
                 diplomaImage.addEventListener('click', function (event) {
+                   
                     openDiplomaModal(event);
                     lastModalId = 'diplomaModal';
                     console.log('Clicked on diplomaImage.');
                 });
+            }
+
+            // OPEN DIPLOMA MODAL
+
+            function openDiplomaModal(event) {
+                const overlay = document.getElementById('overlay');
+                const modal = document.getElementById('diplomaModal');
+                const modalImage = document.getElementById('diplomaImage');
+
+                    // Check if required elements exist
+    if (!overlay || !modal || !modalImage) {
+        console.error('Error: Required elements for the diploma modal are missing.');
+        return;
+    }
+
+                const clickedImageSrc = event.target.src;
+                modalImage.src = clickedImageSrc;
+
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
+
+                console.log('Diploma modal opened successfully.');
             }
 
             // OPEN CERTIFICATES MODAL (includes click event)
@@ -182,18 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 overlay.style.display = 'block';
                 lastModalId = 'certificatesModal';
             }
-            // OPEN DIPLOMA MODAL
 
-            function openDiplomaModal(event) {
-                const overlay = document.getElementById('overlay');
-                const modal = document.getElementById('diplomaModal');
-                const modalImage = document.getElementById('diplomaImage');
-
-                const clickedImageSrc = event.target.src;
-                modalImage.src = clickedImageSrc;
-                modal.style.display = 'block';
-                overlay.style.display = 'block';
-            }
             window.addEventListener("resize", updateCertificates);
             updateCertificates();
         })

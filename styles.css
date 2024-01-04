@@ -6,7 +6,8 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  font-family: "Arial", sans-serif;
+  font-family: "Prompt";
+  font-weight: 500;
   background-color: #333; /* Dark mode background color */
   color: #fff; /* Dark mode text color */
 }
@@ -22,6 +23,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .logo img {
@@ -82,6 +84,7 @@ nav button i {
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .video-container {
@@ -120,7 +123,7 @@ nav button i {
 }
 
 .fa-heart-pulse::after {
-  content: "Donate!";
+  content: "LOVE!";
   position: absolute;
   bottom: calc(100% + 3px); /* Position above the element with a 3px offset */
   left: 50%; /* Centered horizontally */
@@ -147,7 +150,7 @@ nav button i {
 
 .play-button {
   position: absolute;
-  top: 123px;
+  top: 10px;
   right: 3%;
   cursor: pointer;
   font-size: 31px;
@@ -161,11 +164,11 @@ nav button i {
 
 .meet-me {
   overflow: hidden; /* Add overflow: hidden to hide any content exceeding the container height */
-
+padding-bottom: 3vh;
 }
 
 h2 {
-  margin-left: 15px;
+  margin-left: 3.3vw;
   max-width: 100%;
   line-height: 1.369;
 }
@@ -185,6 +188,8 @@ h2 {
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  margin: 10px 5vw;
+
 }
 
 .diploma-wrapper {
@@ -192,11 +197,12 @@ h2 {
   width: 100%;
   display: flex;
   justify-content: center;
- 
+  border-radius: 10px;
+
 }
 
 .diploma-wrapper img {
-  border-radius: 5px;
+  border-radius: 10px;
   object-fit: contain;
   padding: 3px;
   width: 100%;
@@ -210,11 +216,6 @@ h2 {
   box-shadow: 0 0px 16px rgba(0, 0, 0, 0.9); /* Adjust the values for the hover shadow */
 }
 
-.diploma-section .caption {
-  font-size: 11px;
-  margin-top: 5px;
-}
-
 .certs-wrapper {
   display: flex;
   justify-content: center;
@@ -226,7 +227,7 @@ h2 {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 10px 3vw 10px 1vw;
+  margin: 10px 5vw;
   height: 100%;
   width: 60%;
 }
@@ -256,7 +257,6 @@ h2 {
   display: flex; /* Use flexbox for centering */
   justify-content: center;
   align-items: center;
-  
 }
 
 .certificate-container img {
@@ -264,42 +264,44 @@ h2 {
   height: auto;
   transition: transform 0.5s ease-in-out;
   cursor: pointer;
-  /* position: absolute; */
+  position: relative;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9); /* Adjust the values for your desired shadow */
   object-fit: contain;
 }
 
 .certificate-container img:hover {
-  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.9);
-  transform: scale(1.03); /* Adjust the values for your desired scaling and bouncing effect */
+  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 0, 0, 0.5),
+    /* Red */ 0 0 50px rgba(0, 255, 0, 0.5),
+    /* Green */ 0 0 50px rgba(0, 0, 255, 0.5); /* Blue */
 
+    transform: scale(1.1) translateY(-24%);  
+    transition: transform 0.5s ease-in-out;
 }
 
-
-/* Adjust the alignment for each certificate */
 .first-certificate {
-  margin-right: 20%; 
+  margin-right: 50%;
   margin-top: -20%;
 }
 
 .first-certificate img:hover {
- margin-top: -5%; */
+  transform: translateY(-24%);
 }
 
 .middle-certificate {
   align-items: center;
 }
 .middle-certificate img:hover {
-margin-top: -15%;
+  transform: translateY(-24%);
 }
 
 .last-certificate {
-  margin-right: -30%; 
+  margin-right: -50%;
   margin-top: 20%;
 }
 
 .last-certificate img:hover {
-  margin-top: -10%;
+  transform: translateY(-24%);
+
 }
 
 .certificate-container img.hidden {
@@ -319,17 +321,23 @@ margin-top: -15%;
   transition: transform 0.5s ease;
 }
 
-.certs-caption-wrapper {
+.captions-wrapper {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
   margin-top: 5px;
+}
+
+.diploma-caption {
+  font-size: 11px;
+  margin-left: 5.8vw;
+  width: 30%;
 }
 
 .certs-caption {
   font-size: 11px;
   width: 58%;
-  margin-right: 8.1%;
+  margin-right: 5.8vw;
   text-align: right;
 }
 
@@ -350,6 +358,8 @@ margin-top: -15%;
 .modal-content {
   margin: auto;
   display: flex;
+  border-radius: 10px;
+
   justify-content: center;
   align-content: center;
   object-fit: contain;
@@ -381,7 +391,7 @@ margin-top: -15%;
   z-index: 99; /* Set z-index below the modal */
 }
 
-.diploma-wrapper {
+.diploma-modal-wrapper {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -437,7 +447,7 @@ margin-top: -15%;
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 93px; /* Adjust the distance from the top as needed */
+    top: 100%; /* Adjust the distance from the top as needed */
     left: 0;
     width: 100%;
     background-color: #333;
@@ -466,12 +476,18 @@ margin-top: -15%;
   }
 
   .play-button {
-    top: 100px;
+    
     font-size: 23px;
   }
 
   h2 {
-    width: 81%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 0 10px;
+    font-size: 22px;
   }
 
   .arrow {
@@ -479,8 +495,9 @@ margin-top: -15%;
     font-size: 24px;
   }
 
+
+
   .certs-caption {
-    
     margin-right: 3%;
   }
 }
