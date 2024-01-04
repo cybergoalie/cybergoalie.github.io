@@ -1,0 +1,1 @@
+Making this repository public, so future teammembers can take a look at my style of code. Stay tuned for more information. Currently getting my portfolio and business plans set. Open to diverse opportunities.
