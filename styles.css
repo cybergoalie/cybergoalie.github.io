@@ -8,7 +8,7 @@ body {
   height: 100vh;
   font-family: "Prompt";
   letter-spacing: 1.3px;
-  font-weight: 300;
+  font-weight: 500;
   background-color: #333; /* Dark mode background color */
   color: #fff; /* Dark mode text color */
 }
@@ -55,7 +55,6 @@ nav li {
 nav a {
   text-decoration: none;
   color: #fff;
-  font-weight: bold;
 }
 
 nav a:hover {
@@ -106,6 +105,9 @@ nav button i {
   line-height: 1.369;
   padding: 20px;
   color: #fff;
+}
+.content h1 {
+  font-weight: 500;
 }
 
 .fa-heart-pulse {
@@ -172,6 +174,7 @@ h2 {
   margin-left: 3.3vw;
   max-width: 100%;
   line-height: 1.369;
+  font-weight: 500;
 }
 
 .verified-container {
@@ -483,6 +486,7 @@ h2 {
     margin: 20px 0;
     padding: 0 10px;
     font-size: 21px;
+    font-weight: 500;
   }
 
   .arrow {
