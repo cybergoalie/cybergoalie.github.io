@@ -109,7 +109,9 @@
             <p>Join the venture...</p>
             <form id="ctaForm">
               <!-- Your form elements go here -->
-              <button type="submit"><i class="fas fa-heart-circle-plus"></i>Yes!</button>
+              <button type="submit">
+                <i class="fas fa-heart-circle-plus"></i>Yes!
+              </button>
             </form>
           </div>
         </section>
@@ -164,11 +166,13 @@
           ><i class="fa-solid fa-xmark"></i
         ></span>
         <div class="diploma-modal-wrapper">
-          <img
-            class="modal-content"
-            alt="Clinical Doctorate Diploma from Five Branches University, 2018."
-            id="diplomaImage"
-          />
+          <div class="modal-content-wrapper">
+            <img
+              class="modal-content"
+              alt="Clinical Doctorate Diploma from Five Branches University, 2018."
+              id="diplomaImage"
+            />
+          </div>
         </div>
       </div>
 
@@ -179,9 +183,11 @@
         <div class="arrow left" onclick="navigateCertificates('left')">
           <i class="fa-solid fa-caret-left"></i>
         </div>
+
         <div class="certificate-slider">
           <!-- Initial certificate content will be replaced dynamically -->
         </div>
+
         <div class="arrow right" onclick="navigateCertificates('right')">
           <i class="fa-solid fa-caret-right"></i>
         </div>

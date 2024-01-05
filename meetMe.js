@@ -239,22 +239,32 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             // OPEN CERTIFICATES MODAL (includes click event)
-
             function openCertificatesModal(clickedCertificate) {
                 const modal = document.getElementById('certificatesModal');
                 const overlay = document.getElementById('overlay');
                 const certificateSlider = modal.querySelector('.certificate-slider');
                 const certificates = document.querySelectorAll('.certificate-container img');
-
+            
+                // Create modal content wrapper
+                const modalContentWrapper = document.createElement('div');
+                modalContentWrapper.classList.add('modal-content-wrapper');
+            
+                // Create modal image
                 const modalImage = document.createElement('img');
                 modalImage.classList.add('modal-content');
-                certificateSlider.innerHTML = '';
-                certificateSlider.appendChild(modalImage);
-
-                currentCertificateIndex = Array.from(certificates).findIndex(cert => cert === clickedCertificate);
-
                 modalImage.src = clickedCertificate.src;
-
+            
+                // Append modal image to the content wrapper
+                modalContentWrapper.appendChild(modalImage);
+            
+                // Clear certificateSlider and append the content wrapper
+                certificateSlider.innerHTML = '';
+                certificateSlider.appendChild(modalContentWrapper);
+            
+                // Update currentCertificateIndex
+                currentCertificateIndex = Array.from(certificates).findIndex(cert => cert === clickedCertificate);
+            
+                // Toggle visibility of certificates based on the index
                 certificates.forEach((certificate, index) => {
                     if (index !== currentCertificateIndex) {
                         certificate.classList.add('hidden');
@@ -262,11 +272,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         certificate.classList.remove('hidden');
                     }
                 });
-
+            
+                // Display modal and overlay
                 modal.style.display = 'block';
                 overlay.style.display = 'block';
                 lastModalId = 'certificatesModal';
             }
+            
 
             window.addEventListener("resize", updateCertificates);
             updateCertificates();
