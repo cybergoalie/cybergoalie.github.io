@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const displayLimit = 3;
             let currentIndex = 0;
 
+
             function updateCertificates() {
                 certificateContainer.innerHTML = ''; // Clear the container
                 for (let i = 0; i < displayLimit; i++) {
@@ -23,13 +24,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     const certificateElement = document.createElement('div');
                     certificateElement.className = 'certificate-item';
+                    certificateElement.setAttribute("draggable", "true");
 
                     const img = document.createElement('img');
                     img.src = certificate.src;
                     img.alt = certificate.alt;
                     img.tabIndex = '0';
+
                     img.addEventListener('click', function () {
                         openCertificatesModal(img);
+                    });
+                    img.addEventListener('dragstart', function (event) {
+                        handleDragStart(event, currentIndex + i);
                     });
 
                     // Add specific classes to each certificate for different alignment
@@ -83,6 +89,62 @@ document.addEventListener("DOMContentLoaded", function () {
                     event.preventDefault();
                 }
             });
+
+            // DRAG AND DROP EVENTS IN ORDER TO GO BACKWARDS (RIGHT) OR FORWARDS (LEFT) THROUGH THE LOOP
+
+
+
+
+            document.querySelectorAll(".certificate-item img").forEach(function (certificateImage) {
+                certificateImage.addEventListener("dragstart", function (event) {
+                    handleDragStart(event, currentIndex);
+                });
+                certificateImage.addEventListener("dragover", function (event) {
+                    handleDragMove(event);
+                });
+                certificateImage.addEventListener("dragend", function (event) {
+                    handleDragEnd(event);
+                });
+            });
+
+            // Store initial X position when drag starts
+            let initialX;
+            let isDragging = false;
+            let initialIndex;
+
+            function handleDragStart(event) {
+                isDragging = true;
+                initialX = event.clientX;
+                initialIndex = currentIndex;
+                console.log('Drag Start', initialIndex);
+            }
+
+            function handleDragMove(event) {
+                if (isDragging) {
+                    const deltaX = event.clientX - initialX;
+
+                    if (deltaX > 10) {
+                        // Dragging to the right
+                        currentIndex = (initialIndex + 1) % totalCertificates;
+                    } else if (deltaX < -10) {
+                        // Dragging to the left
+                        currentIndex = (initialIndex - 1 + totalCertificates) % totalCertificates;
+                        if (currentIndex < 0) {
+                            currentIndex += totalCertificates;
+                        }
+                    }
+
+                    updateCertificates();
+                }
+            }
+            function handleDragEnd() {
+                isDragging = false;
+                console.log('Drag End');
+            }
+
+            // Add event listeners for document-level drag events
+            document.addEventListener("drag", handleDragMove);
+            document.addEventListener("dragend", handleDragEnd);
 
             // MODAL LOGIC BEGINS HERE
 
@@ -147,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const diplomaImage = document.querySelector('.diploma-wrapper img');
             if (diplomaImage) {
                 diplomaImage.addEventListener('click', function (event) {
-                   
+
                     openDiplomaModal(event);
                     lastModalId = 'diplomaModal';
                     console.log('Clicked on diplomaImage.');
@@ -161,11 +223,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 const modal = document.getElementById('diplomaModal');
                 const modalImage = document.getElementById('diplomaImage');
 
-                    // Check if required elements exist
-    if (!overlay || !modal || !modalImage) {
-        console.error('Error: Required elements for the diploma modal are missing.');
-        return;
-    }
+                // Check if required elements exist
+                if (!overlay || !modal || !modalImage) {
+                    console.error('Error: Required elements for the diploma modal are missing.');
+                    return;
+                }
 
                 const clickedImageSrc = event.target.src;
                 modalImage.src = clickedImageSrc;

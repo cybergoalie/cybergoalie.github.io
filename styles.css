@@ -253,13 +253,12 @@ h2 {
 
 .certificate-item {
   position: relative;
-  max-width: auto;
   width: 100%;
   height: 100%;
   display: flex;
-  object-fit: contain;
   justify-content: center;
   align-items: center;
+  object-fit: contain;
 }
 
 .certificate-container img {
@@ -268,6 +267,7 @@ h2 {
   transition: transform 0.5s ease-in-out;
   cursor: pointer;
   position: relative;
+  border-radius: 10px;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9); /* Adjust the values for your desired shadow */
   object-fit: contain;
 }
@@ -365,9 +365,8 @@ h2 {
   justify-content: center;
   align-content: center;
   object-fit: contain;
-  width: 81%;
+  width: 69%;
   height: auto;
-  max-height: 50vh;
 }
 
 .close {
@@ -483,7 +482,7 @@ h2 {
     text-align: center;
     margin: 20px 0;
     padding: 0 10px;
-    font-size: 22px;
+    font-size: 21px;
   }
 
   .arrow {
