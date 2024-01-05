@@ -365,8 +365,8 @@ h2 {
   justify-content: center;
   align-content: center;
   object-fit: contain;
-  width: 69%;
-  height: auto;
+  max-width: 69%;
+  max-height: 91%;
 }
 
 .close {
