@@ -9,13 +9,13 @@ body {
   font-family: "Prompt";
   letter-spacing: 1.3px;
   font-weight: 500;
-  background-color: #333; /* Dark mode background color */
-  color: #fff; /* Dark mode text color */
+  background-color: #333; 
+  color: #fff; 
 }
 
 body.light-mode {
-  background-color: #fff; /* Light mode background color */
-  color: #000; /* Light mode text color */
+  background-color: #fff; 
+  color: #000;
 }
 
 header {
@@ -58,12 +58,12 @@ nav a {
 }
 
 nav a:hover {
-  color: #d2ace5; /* Set your preferred hover color */
+  color: #d2ace5; 
 }
 
 nav button {
   border-radius: 30px;
-  padding: 5.8px 10px; /* Add padding for better visual appearance */
+  padding: 5.8px 10px; 
 }
 
 nav button i {
@@ -73,7 +73,7 @@ nav button i {
 }
 
 .menu-toggle {
-  display: none; /* Hide by default on larger screens */
+  display: none; 
 }
 
 .welcome-banner {
@@ -90,7 +90,7 @@ nav button i {
 .video-container {
   z-index: -1;
   width: 100%;
-  height: 60vh; /* Adjust this value to your preference */
+  height: 60vh; 
 }
 
 .video-container video {
@@ -111,38 +111,38 @@ nav button i {
 }
 
 .fa-heart-pulse {
-  color: inherit; /* Inherit the text color of the parent */
-  transition: color 0.3s ease; /* Add a smooth transition for color change */
-  cursor: pointer; /* Set cursor to pointer on hover */
+  color: inherit; 
+  transition: color 0.3s ease; 
+  cursor: pointer; 
 }
 
 .fa-heart-pulse:hover {
-  color: purple; /* Change the color on hover */
+  color: purple; 
 }
 
 /* Tooltip styles */
 .fa-heart-pulse {
-  position: relative; /* Set positioning context for the ::after pseudo-element */
+  position: relative; 
 }
 
 .fa-heart-pulse::after {
   content: "LOVE!";
   position: absolute;
-  bottom: calc(100% + 3px); /* Position above the element with a 3px offset */
-  left: 50%; /* Centered horizontally */
-  transform: translateX(-50%); /* Adjust for centering */
+  bottom: calc(100% + 3px); 
+  left: 50%; /
+  transform: translateX(-50%); 
   padding: 8px;
   background-color: purple;
   color: white;
   border-radius: 4px;
   font-size: 14px;
-  opacity: 0; /* Initially hidden */
+  opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none; /* Allows clicks to pass through the tooltip */
+  pointer-events: none;
 }
 
 .fa-heart-pulse:hover::after {
-  opacity: 1; /* Show the tooltip on hover */
+  opacity: 1; 
 }
 
 #backgroundVideo {
@@ -158,16 +158,16 @@ nav button i {
   cursor: pointer;
   font-size: 31px;
   color: #fff;
-  z-index: 2; /* Ensure the play button is above the video */
+  z-index: 2; 
 }
 
 .play-button:hover {
-  color: purple; /* Change the color on hover if desired */
+  color: purple;
 }
 
 .meet-me {
-  overflow: hidden; /* Add overflow: hidden to hide any content exceeding the container height */
-padding-bottom: 3vh;
+  overflow: hidden;
+  padding-bottom: 3vh;
 }
 
 h2 {
@@ -181,19 +181,18 @@ h2 {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 100%;
+  height: auto;
 }
 
 .diploma-section {
   padding: 3px;
   width: 30%;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin: 10px 5vw;
-
+  margin: 10px 3vw;
 }
 
 .diploma-wrapper {
@@ -202,7 +201,6 @@ h2 {
   display: flex;
   justify-content: center;
   border-radius: 10px;
-
 }
 
 .diploma-wrapper img {
@@ -210,14 +208,14 @@ h2 {
   object-fit: contain;
   padding: 3px;
   width: 100%;
-  height: 100%;
-  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9); /* Adjust the values for your desired shadow */
+  height: auto;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9);
   transition: box-shadow 0.3s ease;
   cursor: pointer;
 }
 
 .diploma-wrapper:hover img {
-  box-shadow: 0 0px 16px rgba(0, 0, 0, 0.9); /* Adjust the values for the hover shadow */
+  box-shadow: 0 0px 16px rgba(0, 0, 0, 0.9);
 }
 
 .certs-wrapper {
@@ -246,12 +244,39 @@ h2 {
 
 .certificate-container {
   display: grid;
-  direction: rtl; /* Set right-to-left direction */
+  direction: rtl; 
   position: relative;
-  grid-template-columns: repeat(3, 1fr); /* Three columns */
-  gap: 1%; /* Adjust gap between certificates as needed */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1%; 
   width: 100%;
   height: auto;
+}
+
+/* TOC STYLES */
+
+.certificate-item.toc {
+  flex-flow: column nowrap;
+  color: black;
+  font-size: .5vw;
+  border-radius: 15px;
+}
+
+.toc-sections {
+  display: flex;
+  flex-flow: column nowrap; 
+}
+
+.toc-sections div {
+  margin: .5px; 
+  padding: .1px; 
+  background-color: #f0f0f0; 
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.toc-sections div:hover {
+  
+  background-color: #ddd; 
 }
 
 .certificate-item {
@@ -271,14 +296,15 @@ h2 {
   cursor: pointer;
   position: relative;
   border-radius: 10px;
-  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9); /* Adjust the values for your desired shadow */
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9); 
   object-fit: contain;
 }
 
 .certificate-container img:hover {
-  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.9), 0 0 30px rgba(235, 195, 195, 0.5), 0 0 30px rgba(193, 235, 193, 0.5), 0 0 30px rgba(170, 170, 227, 0.5);
-    transform: scale(1.1) translateY(-24%);  
-    transition: transform 0.5s ease-in-out;
+  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.9), 0 0 30px rgba(235, 195, 195, 0.5),
+    0 0 30px rgba(193, 235, 193, 0.5), 0 0 30px rgba(170, 170, 227, 0.5);
+  transform: scale(1.1) translateY(-24%);
+  transition: transform 0.5s ease-in-out;
 }
 
 .first-certificate {
@@ -286,7 +312,7 @@ h2 {
   margin-top: -20%;
 }
 
-.first-certificate img:hover {
+.first-certificate certiicate-item:hover {
   transform: translateY(-24%);
 }
 
@@ -294,7 +320,7 @@ h2 {
   align-items: center;
 }
 
-.middle-certificate img:hover {
+.middle-certificate certificate-item:hover {
   transform: translateY(-24%);
 }
 
@@ -303,9 +329,8 @@ h2 {
   margin-top: 20%;
 }
 
-.last-certificate img:hover {
+.last-certificate certificate-item:hover {
   transform: translateY(-24%);
-
 }
 
 .certificate-container img.hidden {
@@ -356,9 +381,15 @@ h2 {
   top: 10%;
   width: 81%;
   height: 81%;
-  overflow: auto;  
+  overflow: auto;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.9);
+}
+
+.toc-modal {
+  flex-flow: column nowrap;
+  justify-content: space-around!important;
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .modal-content-wrapper {
@@ -398,8 +429,8 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
-  z-index: 99; /* Set z-index below the modal */
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 99; 
 }
 
 .diploma-modal-wrapper {
@@ -432,7 +463,6 @@ h2 {
 .modal .arrow:hover {
   transform: scale(1.2);
   transition: transform 0.5s ease;
-  
 }
 
 .modal .arrow.left {
@@ -452,7 +482,7 @@ h2 {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 100%; /* Adjust the distance from the top as needed */
+    top: 100%; 
     left: 0;
     width: 100%;
     background-color: #333;
@@ -481,7 +511,6 @@ h2 {
   }
 
   .play-button {
-    
     font-size: 23px;
   }
 
@@ -498,12 +527,9 @@ h2 {
   }
 
   .arrow {
-   
     font-size: 24px;
-      padding: 0px;
+    padding: 0px;
   }
-
-
 
   .certs-caption {
     margin-right: 3%;
