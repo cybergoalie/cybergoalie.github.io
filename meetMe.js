@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const totalCertificates = certificates.length;
             const displayLimit = 3;
             let currentIndex = 0;
+            let initialIndex; // Declare initialIndex here
+
 
 
             function updateCertificates() {
@@ -32,6 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     img.addEventListener('click', function () {
                         openCertificatesModal(certificate);
+                    });
+
+                    img.addEventListener('dragstart', function (event) {
+                        handleDragStart(event, currentIndex + i);
                     });
 
                     let tocContentWrapper; // Declare tocContentWrapper outside the if statement
@@ -134,12 +140,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
             document.querySelectorAll(".certificate-item img").forEach(function (certificateImage) {
                 certificateImage.addEventListener("dragstart", function (event) {
+                    console.log('Drag start event fired on image:', event);
+
                     handleDragStart(event, currentIndex);
                 });
                 certificateImage.addEventListener("dragover", function (event) {
+                    console.log('Drag over event fired on image:', event);
+
                     handleDragMove(event);
                 });
                 certificateImage.addEventListener("dragend", function (event) {
+                    console.log('Drag end event fired on image:', event);
+
                     handleDragEnd(event);
                 });
             });
@@ -147,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Store initial X position when drag starts
             let initialX;
             let isDragging = false;
-            let initialIndex;
+            // let initialIndex;
 
             function handleDragStart(event) {
                 isDragging = true;
@@ -170,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             currentIndex += totalCertificates;
                         }
                     }
+                    console.log('Drag Move', deltaX, currentIndex);
 
                     updateCertificates();
                 }
@@ -467,8 +480,8 @@ function navigateCertificates(direction) {
     // Update lastModalId
     lastModalId = 'certificatesModal';
 
-      // Set the flag to true indicating modal navigation after successful navigation
-      modalWasNavigated = true;
+    // Set the flag to true indicating modal navigation after successful navigation
+    modalWasNavigated = true;
 
     // Display the modal
     const modal = document.getElementById('certificatesModal');
@@ -476,6 +489,8 @@ function navigateCertificates(direction) {
     modal.style.display = 'block';
     overlay.style.display = 'block';
 }
+
+
 
 // CLOSE MODAL (CERTIFICATE OR DIPLOMA) 
 
@@ -485,7 +500,7 @@ function closeModal(modalId) {
 
     if (modalId === 'diplomaModal') {
         // Handle diploma modal if needed
-    }  else {
+    } else {
         const modalContent = document.querySelector('#certificatesModal .modal-content');
 
         if (!modalContent) {
