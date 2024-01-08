@@ -1,6 +1,9 @@
 // meetMe.js
 
 // MEET ME MODULE
+            let currentIndex = 0;
+            let totalCertificates; // Declare totalCertificates in the global scope
+            let initialIndex; // Declare initialIndex here
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -13,10 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const certificateContainer = document.getElementById('certificateContainer');
             const totalCertificates = certificates.length;
             const displayLimit = 3;
-            let currentIndex = 0;
-            let initialIndex; // Declare initialIndex here
-
-
 
             function updateCertificates() {
                 certificateContainer.innerHTML = ''; // Clear the container
@@ -136,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
 
-            // DRAG AND DROP EVENTS IN ORDER TO GO BACKWARDS (RIGHT) OR FORWARDS (LEFT) THROUGH THE LOOP
+            // LISTEN FOR DRAG AND DROP EVENTS IN ORDER TO GO BACKWARDS (RIGHT) OR FORWARDS (LEFT) THROUGH THE LOOP
 
             document.querySelectorAll(".certificate-item img").forEach(function (certificateImage) {
                 certificateImage.addEventListener("dragstart", function (event) {
@@ -156,47 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             });
 
-            // Store initial X position when drag starts
-            let initialX;
-            let isDragging = false;
-            // let initialIndex;
-
-            function handleDragStart(event) {
-                isDragging = true;
-                initialX = event.clientX;
-                initialIndex = currentIndex;
-                console.log('Drag Start', initialIndex);
-            }
-
-            function handleDragMove(event) {
-                if (isDragging) {
-                    const deltaX = event.clientX - initialX;
-
-                    if (deltaX > 10) {
-                        // Dragging to the right
-                        currentIndex = (initialIndex + 1) % totalCertificates;
-                    } else if (deltaX < -10) {
-                        // Dragging to the left
-                        currentIndex = (initialIndex - 1 + totalCertificates) % totalCertificates;
-                        if (currentIndex < 0) {
-                            currentIndex += totalCertificates;
-                        }
-                    }
-                    console.log('Drag Move', deltaX, currentIndex);
-
-                    updateCertificates();
-                }
-            }
-            function handleDragEnd() {
-                isDragging = false;
-                console.log('Drag End');
-            }
-
-            // Add event listeners for document-level drag events
-            document.addEventListener("drag", handleDragMove);
-            document.addEventListener("dragend", handleDragEnd);
-
-            // MODAL LOGIC BEGINS HERE
+                   // MODAL LOGIC BEGINS HERE
 
             // LISTEN FOR DISPATCH OF THE MODALCLOSED EVENT (THEN UPDATE CERTIFICATES)
 
@@ -252,6 +211,61 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 });
             }
+
+            // Store initial X position when drag starts
+     let initialX;
+     let isDragging = false;
+
+     function handleDragStart(event) {
+         isDragging = true;
+         initialX = event.clientX;
+         initialIndex = currentIndex;
+         console.log('Drag Start', initialIndex);
+     }
+
+     function handleDragMove(event) {
+         if (isDragging) {
+             const deltaX = event.clientX - initialX;
+
+             if (deltaX > 10) {
+                 // Dragging to the right
+                 if (event.target.closest('.modal-content-wrapper')) {
+                     // Dragging inside modal content wrapper
+                     navigateCertificates('right');
+                 } else {
+                     // Dragging inside certificate-item
+                     currentIndex = (initialIndex + 1) % totalCertificates;
+                     updateCertificates();
+                 }
+             } else if (deltaX < -10) {
+                 // Dragging to the left
+                 if (event.target.closest('.modal-content-wrapper')) {
+                     // Dragging inside modal content wrapper
+                     navigateCertificates('left');
+                 } else {
+                     // Dragging inside certificate-item
+                     currentIndex = (initialIndex - 1 + totalCertificates) % totalCertificates;
+                     if (currentIndex < 0) {
+                         currentIndex += totalCertificates;
+                     }
+                     updateCertificates();
+                 }
+             }
+
+             console.log('Drag Move', deltaX, currentIndex);
+         }
+     }
+
+     function handleDragEnd() {
+         isDragging = false;
+         console.log('Drag End');
+     }
+
+     // Add event listeners for document-level drag events
+     document.addEventListener("drag", handleDragMove);
+     document.addEventListener("dragend", handleDragEnd);
+
+
             // LISTEN FOR CLICK EVENT ON DIPLOMA IMAGE TO OPEN DIPLOMA MODAL
 
             let lastModalId;
@@ -313,6 +327,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 const modalImage = document.createElement('img');
                 modalImage.classList.add('modal-content');
                 modalImage.src = clickedCertificate.src;
+
+
+                // Add drag event listeners to the modal image
+                modalImage.addEventListener("dragstart", function (event) {
+                    handleDragStart(event, currentIndex);
+                });
+
+                modalImage.addEventListener("dragover", function (event) {
+                    handleDragMove(event);
+                });
+
+                modalImage.addEventListener("dragend", function (event) {
+                    handleDragEnd(event);
+                });
+
                 modalContentWrapper.appendChild(modalImage);
 
                 // Add TOC-specific content if the certificate is of type 'toc'
@@ -367,25 +396,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-            window.addEventListener("resize", updateCertificates);
-            updateCertificates();
-        })
-        .catch(error => {
-            console.error('Error loading certificates:', error);
-        });
-
-
-}); // DOMContentLoaded Section Ends
-
-// GLOBALLY SCOPED FUNCTIONS (MODAL NAVI & CLOSE FX)
-
-
-// NAVIGATE THROUGH CERTIFICATES IN THE MODAL
-
-let modalWasNavigated = false;
-let certificates; // Declare certificates in the global scope
-
 // Function to navigate through certificates in the modal
 function navigateCertificates(direction) {
     if (!certificates || certificates.length === 0) {
@@ -434,6 +444,21 @@ function navigateCertificates(direction) {
     const newModalImage = document.createElement('img');
     newModalImage.classList.add('modal-content');
     newModalImage.src = certificates[currentIndex].src;
+
+
+    // Add drag event listeners to the modal image
+    newModalImage.addEventListener("dragstart", function (event) {
+        handleDragStart(event, currentIndex);
+    });
+
+    newModalImage.addEventListener("dragover", function (event) {
+        handleDragMove(event);
+    });
+
+    newModalImage.addEventListener("dragend", function (event) {
+        handleDragEnd(event);
+    });
+
     newModalContentWrapper.appendChild(newModalImage);
 
     // Add TOC-specific content if the certificate is of type 'toc'
@@ -489,6 +514,26 @@ function navigateCertificates(direction) {
     modal.style.display = 'block';
     overlay.style.display = 'block';
 }
+
+
+            window.addEventListener("resize", updateCertificates);
+            updateCertificates();
+        })
+        .catch(error => {
+            console.error('Error loading certificates:', error);
+        });
+
+
+}); // DOMContentLoaded Section Ends
+
+// GLOBALLY SCOPED FUNCTIONS (MODAL NAVI & CLOSE FX)
+
+
+
+// NAVIGATE THROUGH CERTIFICATES IN THE MODAL
+
+let modalWasNavigated = false;
+let certificates; // Declare certificates in the global scope
 
 
 
