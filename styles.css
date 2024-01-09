@@ -305,6 +305,11 @@ h2 {
     0 0 30px rgba(193, 235, 193, 0.5), 0 0 30px rgba(170, 170, 227, 0.5);
   transform: scale(1.1) translateY(-24%);
   transition: transform 0.5s ease-in-out;
+  
+}
+
+.toc-content-wrapper.hovered {
+  transform: scale(1.1) translateY(-24%);
 }
 
 .first-certificate {
@@ -407,8 +412,8 @@ h2 {
   justify-content: center;
   align-content: center;
   object-fit: contain;
-  width: auto;
-  height: 91%;
+  max-width: 81%;
+  height: auto;
 }
 
 .close {

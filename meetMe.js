@@ -1,9 +1,9 @@
 // meetMe.js
 
 // MEET ME MODULE
-            let currentIndex = 0;
-            let totalCertificates; // Declare totalCertificates in the global scope
-            let initialIndex; // Declare initialIndex here
+let currentIndex = 0;
+let totalCertificates; // Declare totalCertificates in the global scope
+let initialIndex; // Declare initialIndex here
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -91,6 +91,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Add a log for tocContentWrapper z-index
                     if (certificate.type === 'toc') {
                         console.log(`Certificate ${i} - tocContentWrapper z-index: ${tocContentWrapper.style.zIndex}`);
+                        // Add the 'toc-image' class to the modal image with 'toc-content-wrapper'
+                        img.classList.add('toc-image');
+                        
+                        // Add hover effect to .toc-content-wrapper when .toc-image is hovered
+                        img.addEventListener('mouseover', function () {
+                            tocContentWrapper.style.transform = 'scale(1.1) translateY(-24%)';
+                            tocContentWrapper.style.transition = 'transform 0.5s ease-in-out';
+                        });
+
+                        img.addEventListener('mouseout', function () {
+                            tocContentWrapper.style.transform = 'none';
+                            tocContentWrapper.style.transition = 'none';
+                        });
                     }
                 }
             }
@@ -99,6 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentIndex = targetIndex;
                 updateCertificates();
             }
+
+
 
 
             // LISTEN FOR CLICK EVENT TO GO FORWARDS THROUGH THE LOOP OF CERTIFICATES (THEN UPDATE CERTIFICATES)
@@ -155,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             });
 
-                   // MODAL LOGIC BEGINS HERE
+            // MODAL LOGIC BEGINS HERE
 
             // LISTEN FOR DISPATCH OF THE MODALCLOSED EVENT (THEN UPDATE CERTIFICATES)
 
@@ -213,57 +228,57 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             // Store initial X position when drag starts
-     let initialX;
-     let isDragging = false;
+            let initialX;
+            let isDragging = false;
 
-     function handleDragStart(event) {
-         isDragging = true;
-         initialX = event.clientX;
-         initialIndex = currentIndex;
-         console.log('Drag Start', initialIndex);
-     }
+            function handleDragStart(event) {
+                isDragging = true;
+                initialX = event.clientX;
+                initialIndex = currentIndex;
+                console.log('Drag Start', initialIndex);
+            }
 
-     function handleDragMove(event) {
-         if (isDragging) {
-             const deltaX = event.clientX - initialX;
+            function handleDragMove(event) {
+                if (isDragging) {
+                    const deltaX = event.clientX - initialX;
 
-             if (deltaX > 10) {
-                 // Dragging to the right
-                 if (event.target.closest('.modal-content-wrapper')) {
-                     // Dragging inside modal content wrapper
-                     navigateCertificates('right');
-                 } else {
-                     // Dragging inside certificate-item
-                     currentIndex = (initialIndex + 1) % totalCertificates;
-                     updateCertificates();
-                 }
-             } else if (deltaX < -10) {
-                 // Dragging to the left
-                 if (event.target.closest('.modal-content-wrapper')) {
-                     // Dragging inside modal content wrapper
-                     navigateCertificates('left');
-                 } else {
-                     // Dragging inside certificate-item
-                     currentIndex = (initialIndex - 1 + totalCertificates) % totalCertificates;
-                     if (currentIndex < 0) {
-                         currentIndex += totalCertificates;
-                     }
-                     updateCertificates();
-                 }
-             }
+                    if (deltaX > 10) {
+                        // Dragging to the right
+                        if (event.target.closest('.modal-content-wrapper')) {
+                            // Dragging inside modal content wrapper
+                            navigateCertificates('right');
+                        } else {
+                            // Dragging inside certificate-item
+                            currentIndex = (initialIndex + 1) % totalCertificates;
+                            updateCertificates();
+                        }
+                    } else if (deltaX < -10) {
+                        // Dragging to the left
+                        if (event.target.closest('.modal-content-wrapper')) {
+                            // Dragging inside modal content wrapper
+                            navigateCertificates('left');
+                        } else {
+                            // Dragging inside certificate-item
+                            currentIndex = (initialIndex - 1 + totalCertificates) % totalCertificates;
+                            if (currentIndex < 0) {
+                                currentIndex += totalCertificates;
+                            }
+                            updateCertificates();
+                        }
+                    }
 
-             console.log('Drag Move', deltaX, currentIndex);
-         }
-     }
+                    console.log('Drag Move', deltaX, currentIndex);
+                }
+            }
 
-     function handleDragEnd() {
-         isDragging = false;
-         console.log('Drag End');
-     }
+            function handleDragEnd() {
+                isDragging = false;
+                console.log('Drag End');
+            }
 
-     // Add event listeners for document-level drag events
-     document.addEventListener("drag", handleDragMove);
-     document.addEventListener("dragend", handleDragEnd);
+            // Add event listeners for document-level drag events
+            document.addEventListener("drag", handleDragMove);
+            document.addEventListener("dragend", handleDragEnd);
 
 
             // LISTEN FOR CLICK EVENT ON DIPLOMA IMAGE TO OPEN DIPLOMA MODAL
@@ -375,6 +390,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
 
                     tocContentWrapper.appendChild(sectionsDiv);
+                    tocContentWrapper.style.position = 'absolute';
 
                     modalContentWrapper.appendChild(tocContentWrapper);
                 }
@@ -396,124 +412,125 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Function to navigate through certificates in the modal
-function navigateCertificates(direction) {
-    if (!certificates || certificates.length === 0) {
-        console.error('Error: Certificates array is empty.');
-        return;
-    }
-    const totalCertificates = certificates.length;
-    console.log(totalCertificates);
+            // Function to navigate through certificates in the modal
+            function navigateCertificates(direction) {
+                if (!certificates || certificates.length === 0) {
+                    console.error('Error: Certificates array is empty.');
+                    return;
+                }
+                const totalCertificates = certificates.length;
+                console.log(totalCertificates);
 
-    // Get the modal content element
-    const modalContent = document.querySelector('#certificatesModal .modal-content');
+                // Get the modal content element
+                const modalContent = document.querySelector('#certificatesModal .modal-content');
 
-    // Check if the modal content exists
-    if (!modalContent) {
-        console.error('Error: Modal content element not found.');
-        return;
-    }
+                // Check if the modal content exists
+                if (!modalContent) {
+                    console.error('Error: Modal content element not found.');
+                    return;
+                }
 
-    // Get the displayed certificate source using getAttribute
-    const displayedCertificateSrc = modalContent.getAttribute('src');
-    console.log('Displayed Certificate Src:', displayedCertificateSrc);
+                // Get the displayed certificate source using getAttribute
+                const displayedCertificateSrc = modalContent.getAttribute('src');
+                console.log('Displayed Certificate Src:', displayedCertificateSrc);
 
-    // Find the index of the displayed certificate in the certificates array
-    const indexInCertificates = certificates.findIndex(cert => cert.src === displayedCertificateSrc);
+                // Find the index of the displayed certificate in the certificates array
+                const indexInCertificates = certificates.findIndex(cert => cert.src === displayedCertificateSrc);
 
-    console.log(`Navigating from #(${indexInCertificates}) of type: (${certificates[indexInCertificates]?.type})`);
-
-
-    // Update currentIndex based on the navigation direction
-
-    if (direction === 'left') {
-        currentIndex = (indexInCertificates - 1 + totalCertificates) % totalCertificates;
-    } else if (direction === 'right') {
-        currentIndex = (indexInCertificates + 1) % totalCertificates;
-    }
-
-    // Log the current index and type after navigation
-    console.log(`NAVIGATING TO #(${currentIndex}) OF TYPE: (${certificates[currentIndex].type})`);
-
-    // Update modalContentWrapper with the new certificate content
-    // Create a new modalContentWrapper with the updated certificate content
-    const newModalContentWrapper = document.createElement('div');
-    newModalContentWrapper.classList.add('modal-content-wrapper');
-
-    // Create a common modal image
-    const newModalImage = document.createElement('img');
-    newModalImage.classList.add('modal-content');
-    newModalImage.src = certificates[currentIndex].src;
+                console.log(`Navigating from #(${indexInCertificates}) of type: (${certificates[indexInCertificates]?.type})`);
 
 
-    // Add drag event listeners to the modal image
-    newModalImage.addEventListener("dragstart", function (event) {
-        handleDragStart(event, currentIndex);
-    });
+                // Update currentIndex based on the navigation direction
 
-    newModalImage.addEventListener("dragover", function (event) {
-        handleDragMove(event);
-    });
+                if (direction === 'left') {
+                    currentIndex = (indexInCertificates - 1 + totalCertificates) % totalCertificates;
+                } else if (direction === 'right') {
+                    currentIndex = (indexInCertificates + 1) % totalCertificates;
+                }
 
-    newModalImage.addEventListener("dragend", function (event) {
-        handleDragEnd(event);
-    });
+                // Log the current index and type after navigation
+                console.log(`NAVIGATING TO #(${currentIndex}) OF TYPE: (${certificates[currentIndex].type})`);
 
-    newModalContentWrapper.appendChild(newModalImage);
+                // Update modalContentWrapper with the new certificate content
+                // Create a new modalContentWrapper with the updated certificate content
+                const newModalContentWrapper = document.createElement('div');
+                newModalContentWrapper.classList.add('modal-content-wrapper');
 
-    // Add TOC-specific content if the certificate is of type 'toc'
-    if (certificates[currentIndex].type === 'toc') {
-        newModalContentWrapper.classList.add('toc-modal');
+                // Create a common modal image
+                const newModalImage = document.createElement('img');
+                newModalImage.classList.add('modal-content');
+                newModalImage.src = certificates[currentIndex].src;
 
-        const tocContentWrapper = document.createElement('div');
-        tocContentWrapper.className = 'toc-content-wrapper';
 
-        // Add TOC-specific content
-        const headlineDiv = document.createElement('div');
-        headlineDiv.innerText = certificates[currentIndex].alt; // Assuming 'alt' contains the headline
-        headlineDiv.classList.add('toc-headline');
+                // Add drag event listeners to the modal image
+                newModalImage.addEventListener("dragstart", function (event) {
+                    handleDragStart(event, currentIndex);
+                });
 
-        tocContentWrapper.appendChild(headlineDiv);
+                newModalImage.addEventListener("dragover", function (event) {
+                    handleDragMove(event);
+                });
 
-        const sectionsDiv = document.createElement('div');
-        sectionsDiv.className = 'toc-sections';
+                newModalImage.addEventListener("dragend", function (event) {
+                    handleDragEnd(event);
+                });
 
-        certificates[currentIndex].sections.forEach(section => {
-            const textDiv = document.createElement('div');
-            textDiv.innerText = section.name;
-            textDiv.tabIndex = '0';
+                newModalContentWrapper.appendChild(newModalImage);
 
-            textDiv.addEventListener('click', function () {
-                navigateToSection(section.targetIndex);
-            });
+                // Add TOC-specific content if the certificate is of type 'toc'
+                if (certificates[currentIndex].type === 'toc') {
+                    newModalContentWrapper.classList.add('toc-modal');
 
-            sectionsDiv.appendChild(textDiv);
-        });
+                    const tocContentWrapper = document.createElement('div');
+                    tocContentWrapper.className = 'toc-content-wrapper';
 
-        tocContentWrapper.appendChild(sectionsDiv);
+                    // Add TOC-specific content
+                    const headlineDiv = document.createElement('div');
+                    headlineDiv.innerText = certificates[currentIndex].alt; // Assuming 'alt' contains the headline
+                    headlineDiv.classList.add('toc-headline');
 
-        newModalContentWrapper.appendChild(tocContentWrapper);
-    }
+                    tocContentWrapper.appendChild(headlineDiv);
 
-    // Get the certificate slider
-    const certificateSlider = document.querySelector('#certificatesModal .certificate-slider');
+                    const sectionsDiv = document.createElement('div');
+                    sectionsDiv.className = 'toc-sections';
 
-    // Clear previous content and append the new modal content wrapper
-    certificateSlider.innerHTML = '';
-    certificateSlider.appendChild(newModalContentWrapper);
+                    certificates[currentIndex].sections.forEach(section => {
+                        const textDiv = document.createElement('div');
+                        textDiv.innerText = section.name;
+                        textDiv.tabIndex = '0';
 
-    // Update lastModalId
-    lastModalId = 'certificatesModal';
+                        textDiv.addEventListener('click', function () {
+                            navigateToSection(section.targetIndex);
+                        });
 
-    // Set the flag to true indicating modal navigation after successful navigation
-    modalWasNavigated = true;
+                        sectionsDiv.appendChild(textDiv);
+                    });
 
-    // Display the modal
-    const modal = document.getElementById('certificatesModal');
-    const overlay = document.getElementById('overlay');
-    modal.style.display = 'block';
-    overlay.style.display = 'block';
-}
+                    tocContentWrapper.appendChild(sectionsDiv);
+                    tocContentWrapper.style.position = 'absolute';
+
+                    newModalContentWrapper.appendChild(tocContentWrapper);
+                }
+
+                // Get the certificate slider
+                const certificateSlider = document.querySelector('#certificatesModal .certificate-slider');
+
+                // Clear previous content and append the new modal content wrapper
+                certificateSlider.innerHTML = '';
+                certificateSlider.appendChild(newModalContentWrapper);
+
+                // Update lastModalId
+                lastModalId = 'certificatesModal';
+
+                // Set the flag to true indicating modal navigation after successful navigation
+                modalWasNavigated = true;
+
+                // Display the modal
+                const modal = document.getElementById('certificatesModal');
+                const overlay = document.getElementById('overlay');
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
+            }
 
 
             window.addEventListener("resize", updateCertificates);
