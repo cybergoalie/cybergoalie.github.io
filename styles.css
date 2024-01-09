@@ -9,12 +9,12 @@ body {
   font-family: "Prompt";
   letter-spacing: 1.3px;
   font-weight: 500;
-  background-color: #333; 
-  color: #fff; 
+  background-color: #333;
+  color: #fff;
 }
 
 body.light-mode {
-  background-color: #fff; 
+  background-color: #fff;
   color: #000;
 }
 
@@ -58,12 +58,12 @@ nav a {
 }
 
 nav a:hover {
-  color: #d2ace5; 
+  color: #d2ace5;
 }
 
 nav button {
   border-radius: 30px;
-  padding: 5.8px 10px; 
+  padding: 5.8px 10px;
 }
 
 nav button i {
@@ -73,7 +73,7 @@ nav button i {
 }
 
 .menu-toggle {
-  display: none; 
+  display: none;
 }
 
 .welcome-banner {
@@ -90,7 +90,7 @@ nav button i {
 .video-container {
   z-index: -1;
   width: 100%;
-  height: 60vh; 
+  height: 60vh;
 }
 
 .video-container video {
@@ -111,26 +111,26 @@ nav button i {
 }
 
 .fa-heart-pulse {
-  color: inherit; 
-  transition: color 0.3s ease; 
-  cursor: pointer; 
+  color: inherit;
+  transition: color 0.3s ease;
+  cursor: pointer;
 }
 
 .fa-heart-pulse:hover {
-  color: purple; 
+  color: purple;
 }
 
 /* Tooltip styles */
 .fa-heart-pulse {
-  position: relative; 
+  position: relative;
 }
 
 .fa-heart-pulse::after {
   content: "LOVE!";
   position: absolute;
-  bottom: calc(100% + 3px); 
-  left: 50%; /
-  transform: translateX(-50%); 
+  bottom: calc(100% + 3px);
+  left: 50%;
+  /transform: translateX(-50%);
   padding: 8px;
   background-color: purple;
   color: white;
@@ -142,7 +142,7 @@ nav button i {
 }
 
 .fa-heart-pulse:hover::after {
-  opacity: 1; 
+  opacity: 1;
 }
 
 #backgroundVideo {
@@ -158,7 +158,7 @@ nav button i {
   cursor: pointer;
   font-size: 31px;
   color: #fff;
-  z-index: 2; 
+  z-index: 2;
 }
 
 .play-button:hover {
@@ -244,39 +244,48 @@ h2 {
 
 .certificate-container {
   display: grid;
-  direction: rtl; 
+  direction: rtl;
   position: relative;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 1%; 
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1%;
   width: 100%;
   height: auto;
 }
 
 /* TOC STYLES */
 
-.certificate-item.toc {
+.toc {
+  border-radius: 10px;
+  height: auto;
+  width: auto;
+}
+
+.toc-content-wrapper {
+  display: flex;
+  justify-content: space-around;
   flex-flow: column nowrap;
   color: black;
-  font-size: .5vw;
-  border-radius: 15px;
+  font-size: 0.5vw;
+  padding: 10px 5px;
+  border-radius: 10px;
 }
 
 .toc-sections {
   display: flex;
-  flex-flow: column nowrap; 
+  flex-flow: column nowrap;
+  margin-top: 3px;
 }
 
 .toc-sections div {
-  margin: .5px; 
-  padding: .1px; 
-  background-color: #f0f0f0; 
+  margin: 1px 0.5px;
+  padding: 0.1px;
+  background-color: #f0f0f0;
   cursor: pointer;
   border-radius: 5px;
 }
 
 .toc-sections div:hover {
-  
-  background-color: #ddd; 
+  background-color: #ddd;
 }
 
 .certificate-item {
@@ -296,7 +305,7 @@ h2 {
   cursor: pointer;
   position: relative;
   border-radius: 10px;
-  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9); 
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9);
   object-fit: contain;
 }
 
@@ -305,11 +314,6 @@ h2 {
     0 0 30px rgba(193, 235, 193, 0.5), 0 0 30px rgba(170, 170, 227, 0.5);
   transform: scale(1.1) translateY(-24%);
   transition: transform 0.5s ease-in-out;
-  
-}
-
-.toc-content-wrapper.hovered {
-  transform: scale(1.1) translateY(-24%);
 }
 
 .first-certificate {
@@ -393,8 +397,41 @@ h2 {
 
 .toc-modal {
   flex-flow: column nowrap;
-  justify-content: space-around!important;
+  justify-content: space-around !important;
   color: rgba(0, 0, 0, 0.9);
+}
+
+.toc-modal-content-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column nowrap;
+  color: black;
+  font-size: 14px;
+  padding: 10px 5px;
+  border-radius: 10px;
+}
+
+.toc-modal-headline {
+ text-align: center;
+ margin-bottom: 10px;
+}
+
+.toc-modal-sections {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-top: 3px;
+}
+
+.toc-modal-sections div {
+  margin: 5px 3px;
+  padding: 3px 10px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.toc-modal-sections div:hover {
+  background-color: #ddd;
 }
 
 .modal-content-wrapper {
@@ -413,7 +450,7 @@ h2 {
   align-content: center;
   object-fit: contain;
   max-width: 81%;
-  height: auto;
+  max-height: 81%;
 }
 
 .close {
@@ -434,8 +471,8 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
-  z-index: 99; 
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
 }
 
 .diploma-modal-wrapper {
@@ -487,7 +524,7 @@ h2 {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 100%; 
+    top: 100%;
     left: 0;
     width: 100%;
     background-color: #333;

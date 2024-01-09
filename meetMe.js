@@ -29,13 +29,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     const img = document.createElement('img');
                     img.src = certificate.src;
                     img.alt = certificate.alt;
-                    img.tabIndex = '0';
 
-                    img.addEventListener('click', function () {
+
+                    certificateElement.tabIndex = '0';
+
+                    certificateElement.addEventListener('click', function () {
                         openCertificatesModal(certificate);
                     });
 
-                    img.addEventListener('dragstart', function (event) {
+                    certificateElement.addEventListener('dragstart', function (event) {
                         handleDragStart(event, currentIndex + i);
                     });
 
@@ -71,18 +73,23 @@ document.addEventListener("DOMContentLoaded", function () {
                         });
 
                         tocContentWrapper.appendChild(sectionsDiv);
+                        tocContentWrapper.style.backgroundImage = `url(${certificate.src})`; // Set background image
+                        tocContentWrapper.style.backgroundSize = 'cover'; // Adjust background size as needed
 
-                        tocContentWrapper.style.position = 'absolute';
+                        // Set draggable to false on .toc-content-wrapper
+                        tocContentWrapper.draggable = false;
+
                         tocContentWrapper.style.zIndex = (i === 0) ? 5 + 1 : (i === displayLimit - 1) ? 1 + 1 : 3 + 1;
 
                         certificateElement.appendChild(tocContentWrapper);
-                        certificateElement.style.position = 'relative';
+                    } else {
+                        certificateElement.appendChild(img);
+
                     }
 
                     certificateElement.style.zIndex = (i === 0) ? 5 : (i === displayLimit - 1) ? 1 : 3;
                     certificateElement.classList.add((i === 0) ? 'first-certificate' : (i === displayLimit - 1) ? 'last-certificate' : 'middle-certificate');
 
-                    certificateElement.appendChild(img);
                     certificateContainer.appendChild(certificateElement);
 
                     // Log certificates for debugging
@@ -92,15 +99,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (certificate.type === 'toc') {
                         console.log(`Certificate ${i} - tocContentWrapper z-index: ${tocContentWrapper.style.zIndex}`);
                         // Add the 'toc-image' class to the modal image with 'toc-content-wrapper'
-                        img.classList.add('toc-image');
-                        
+                        certificateElement.classList.add('toc');
+
                         // Add hover effect to .toc-content-wrapper when .toc-image is hovered
-                        img.addEventListener('mouseover', function () {
+                        certificateElement.addEventListener('mouseover', function () {
                             tocContentWrapper.style.transform = 'scale(1.1) translateY(-24%)';
                             tocContentWrapper.style.transition = 'transform 0.5s ease-in-out';
                         });
 
-                        img.addEventListener('mouseout', function () {
+                        certificateElement.addEventListener('mouseout', function () {
                             tocContentWrapper.style.transform = 'none';
                             tocContentWrapper.style.transition = 'none';
                         });
@@ -150,9 +157,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
 
-            // LISTEN FOR DRAG AND DROP EVENTS IN ORDER TO GO BACKWARDS (RIGHT) OR FORWARDS (LEFT) THROUGH THE LOOP
+            // LISTEN FOR DRAG TO NAVIGATE EVENTS IN ORDER TO GO BACKWARDS (RIGHT) OR FORWARDS (LEFT) THROUGH THE LOOP
 
-            document.querySelectorAll(".certificate-item img").forEach(function (certificateImage) {
+            document.querySelectorAll(".certificate-item").forEach(function (certificateImage) {
                 certificateImage.addEventListener("dragstart", function (event) {
                     console.log('Drag start event fired on image:', event);
 
@@ -365,17 +372,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     modalContentWrapper.classList.add('toc-modal');
 
                     const tocContentWrapper = document.createElement('div');
-                    tocContentWrapper.className = 'toc-content-wrapper';
+                    tocContentWrapper.className = 'toc-modal-content-wrapper';
 
                     // Add TOC-specific content
                     const headlineDiv = document.createElement('div');
                     headlineDiv.innerText = clickedCertificate.alt; // Assuming 'alt' contains the headline
-                    headlineDiv.classList.add('toc-headline');
+                    headlineDiv.classList.add('toc-modal-headline');
 
                     tocContentWrapper.appendChild(headlineDiv);
 
                     const sectionsDiv = document.createElement('div');
-                    sectionsDiv.className = 'toc-sections';
+                    sectionsDiv.className = 'toc-modal-sections';
 
                     clickedCertificate.sections.forEach(section => {
                         const textDiv = document.createElement('div');
@@ -482,17 +489,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     newModalContentWrapper.classList.add('toc-modal');
 
                     const tocContentWrapper = document.createElement('div');
-                    tocContentWrapper.className = 'toc-content-wrapper';
+                    tocContentWrapper.className = 'toc-modal-content-wrapper';
 
                     // Add TOC-specific content
                     const headlineDiv = document.createElement('div');
                     headlineDiv.innerText = certificates[currentIndex].alt; // Assuming 'alt' contains the headline
-                    headlineDiv.classList.add('toc-headline');
+                    headlineDiv.classList.add('toc-modal-headline');
 
                     tocContentWrapper.appendChild(headlineDiv);
 
                     const sectionsDiv = document.createElement('div');
-                    sectionsDiv.className = 'toc-sections';
+                    sectionsDiv.className = 'toc-modal-sections';
 
                     certificates[currentIndex].sections.forEach(section => {
                         const textDiv = document.createElement('div');
