@@ -4,7 +4,9 @@
 let currentIndex = 0;
 let totalCertificates; // Declare totalCertificates in the global scope
 let initialIndex; // Declare initialIndex here
-let dragEndHandled = false; // Move the declaration here and initialize to false
+let modalWasNavigated = false;
+let certificates; // Declare certificates in the global scope
+let clickedCertificate; // Declare clickedCertificate in the global scope
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -37,6 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     certificateElement.addEventListener('click', function () {
                         openCertificatesModal(certificate);
                     });
+
+                    // LISTEN FOR DRAG TO NAVIGATE EVENTS IN ORDER TO GO BACKWARDS (RIGHT) OR FORWARDS (LEFT) THROUGH THE LOOP IN THE CERTIFICATE-CONTAINER
 
                     certificateElement.addEventListener('dragstart', function (event) {
                         handleDragStart(event, currentIndex + i);
@@ -121,9 +125,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateCertificates();
             }
 
-
-
-
             // LISTEN FOR CLICK EVENT TO GO FORWARDS THROUGH THE LOOP OF CERTIFICATES (THEN UPDATE CERTIFICATES)
 
             document.querySelector(".right").addEventListener("click", function () {
@@ -158,25 +159,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
 
-            // LISTEN FOR DRAG TO NAVIGATE EVENTS IN ORDER TO GO BACKWARDS (RIGHT) OR FORWARDS (LEFT) THROUGH THE LOOP
-
-            document.querySelectorAll(".certificate-item").forEach(function (certificateImage) {
-                certificateImage.addEventListener("dragstart", function (event) {
-                    console.log('Drag start event fired on image:', event);
-
-                    handleDragStart(event, currentIndex);
-                });
-                certificateImage.addEventListener("dragover", function (event) {
-                    console.log('Drag over event fired on image:', event);
-
-                    handleDragMove(event);
-                });
-                certificateImage.addEventListener("dragend", function (event) {
-                    console.log('Drag end event fired on image:', event);
-
-                    handleDragEnd(event);
-                });
-            });
 
             // MODAL LOGIC BEGINS HERE
 
@@ -202,6 +184,25 @@ document.addEventListener("DOMContentLoaded", function () {
                     closeModal(lastModalId);
                 }
             });
+
+            // LISTEN FOR CLICKS ON THE MODAL CLOSE ICON TO CLOSE THE MODAL
+
+            // Add event listener for certificatesModal close button
+            const certificatesCloseButton = document.getElementById('certificatesCloseButton');
+            if (certificatesCloseButton) {
+                certificatesCloseButton.addEventListener('click', function () {
+                    closeModal('certificatesModal');
+                });
+            }
+
+            // Add event listener for diplomaModal close button
+            const diplomaCloseButton = document.getElementById('diplomaCloseButton');
+            if (diplomaCloseButton) {
+                diplomaCloseButton.addEventListener('click', function () {
+                    closeModal('diplomaModal');
+                });
+            }
+
             // MODAL NAVI CLICK EVENT (GOES BACKWARD THROUGH LOOP) 
 
             const leftArrow = document.getElementById('leftArrow');
@@ -235,6 +236,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             }
 
+            // DRAG FUNCTIONS TO NAVIGATE THROUGH CERTIFICATES (IN CERT-CONTAINER/SLIDER)
+
             // Store initial X position when drag starts
             let initialX;
             let isDragging = false;
@@ -244,47 +247,55 @@ document.addEventListener("DOMContentLoaded", function () {
                 initialX = event.clientX;
                 initialIndex = currentIndex;
                 console.log('Drag Start', initialIndex);
-                // Reset the drag end flag when drag starts
-                dragEndHandled = false;
             }
 
             function handleDragMove(event) {
-                if (isDragging && !dragEndHandled) {
+                if (isDragging) {
                     const deltaX = event.clientX - initialX;
 
-                    if (deltaX > 10) {
-                        // Dragging to the right
-                        if (event.target.closest('.modal-content-wrapper')) {
-                            // Dragging inside modal content wrapper
-                            navigateCertificates('right');
-                        } else {
-                            // Dragging inside certificate-item
-                            currentIndex = (initialIndex + 1) % totalCertificates;
-                            updateCertificates();
-                        }
-                    } else if (deltaX < -10) {
-                        // Dragging to the left
-                        if (event.target.closest('.modal-content-wrapper')) {
-                            // Dragging inside modal content wrapper
-                            navigateCertificates('left');
-                        } else {
-                            // Dragging inside certificate-item
-                            currentIndex = (initialIndex - 1 + totalCertificates) % totalCertificates;
-                            if (currentIndex < 0) {
-                                currentIndex += totalCertificates;
+                    console.log('Drag Move', deltaX, currentIndex);
+
+                    // Adjust the threshold value as needed
+                    const dragThreshold = 7;
+
+                    if (Math.abs(deltaX) > dragThreshold) {
+                        if (deltaX > 0) {
+                            // Dragging to the right
+                            if (event.target.closest('.modal-content-wrapper')) {
+                                // Dragging inside modal content wrapper
+                                navigateCertificates('right');
+                            } else {
+                                // Dragging inside certificate-item
+                                currentIndex = (initialIndex + 1) % totalCertificates;
+                                updateCertificates();
                             }
-                            updateCertificates();
+                        } else if (deltaX < 0) {
+                            // Dragging to the left
+                            if (event.target.closest('.modal-content-wrapper')) {
+                                // Dragging inside modal content wrapper
+                                navigateCertificates('left');
+                            } else {
+                                // Dragging inside certificate-item
+                                currentIndex = (initialIndex - 1 + totalCertificates) % totalCertificates;
+                                if (currentIndex < 0) {
+                                    currentIndex += totalCertificates;
+                                }
+                                updateCertificates();
+                            }
                         }
                     }
 
-                    console.log('Drag Move', deltaX, currentIndex);
+                    isDragging = false; // Set isDragging to false at the end of the move
                 }
             }
 
+
+
+
+
             function handleDragEnd() {
                 isDragging = false;
-                // Set the drag end flag to true
-                dragEndHandled = true;
+
                 console.log('Drag End');
             }
 
@@ -329,7 +340,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log('Diploma modal opened successfully.');
             }
 
-            // OPEN CERTIFICATES MODAL (includes click event)
+            // OPEN CERTIFICATES MODAL (CREATES MODAL DISPLAY AND ADDS DRAG AND CLICK EVENT LISTENERS TO OPENED CERTIFICATE)
 
             function openCertificatesModal(clickedCertificate) {
                 const modal = document.getElementById('certificatesModal');
@@ -346,22 +357,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 const modalLog = `Opened modal for CERTIFICATE (${indexInCertificates}) AND TYPE (${clickedCertificate.type.toUpperCase()})`;
                 console.log(modalLog);
 
+                // Set currentIndex to the index of the clicked certificate
+                currentIndex = indexInCertificates;
+                // Log the source of the clicked certificate
+                console.log(`Displayed Certificate Source: ${clickedCertificate.src}`);
+
                 // Create modal content wrapper
                 const modalContentWrapper = document.createElement('div');
                 modalContentWrapper.classList.add('modal-content-wrapper');
 
                 // Add drag event listeners to the modal image
                 modalContentWrapper.addEventListener("dragstart", function (event) {
+                    console.log('Drag Start inside modal content wrapper:', event);
+
                     handleDragStart(event, currentIndex);
                 });
 
-                modalContentWrapper.addEventListener("dragover", function (event) {
-                    handleDragMove(event);
-                });
-
-                modalContentWrapper.addEventListener("dragend", function (event) {
-                    handleDragEnd(event);
-                });
 
                 // Add TOC-specific content if the certificate is of type 'toc'
                 if (clickedCertificate.type === 'toc') {
@@ -420,18 +431,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 overlay.style.display = 'block';
             }
 
-
-
-            // GLOBALLY SCOPED FUNCTIONS (MODAL NAVI & CLOSE FX)
-
-
-
             // NAVIGATE THROUGH CERTIFICATES IN THE MODAL
-
-            // let modalWasNavigated = false;
-            // let certificates; // Declare certificates in the global scope
-            // let clickedCertificate; // Declare clickedCertificate in the global scope
-
 
             // Function to navigate through certificates in the modal
             function navigateCertificates(direction) {
@@ -446,13 +446,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Check if the current certificate is of type 'toc'
                 if (certificates[currentIndex].type === 'toc') {
-                    const tocContentWrapper = document.querySelector('#certificatesModal .toc-modal-content-wrapper');
-
-                    // Check if the tocContentWrapper exists and has a background image
-                    if (tocContentWrapper && tocContentWrapper.style.backgroundImage) {
-                        // Extract the URL from the background image property
-                        displayedCertificateSrc = tocContentWrapper.style.backgroundImage.replace('url("', '').replace('")', '');
-                    }
+                    // Use the source directly from the clicked certificate
+                    displayedCertificateSrc = certificates[currentIndex].src;
                 } else {
                     // Get the modal content element
                     const modalContent = document.querySelector('#certificatesModal .modal-content');
@@ -497,18 +492,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log('Drag Start inside modal content wrapper:', event);
 
                     handleDragStart(event, currentIndex);
-                });
-
-                newModalContentWrapper.addEventListener("dragover", function (event) {
-                    console.log('Dragging to Navigate from inside modal content wrapper:', event);
-
-                    handleDragMove(event);
-                });
-
-                newModalContentWrapper.addEventListener("dragend", function (event) {
-                    console.log('Drag End inside modal content wrapper:', event);
-
-                    handleDragEnd(event);
                 });
 
                 // Add TOC-specific content if the certificate is of type 'toc'
