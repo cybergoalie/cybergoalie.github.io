@@ -1,12 +1,12 @@
   [
     { "src": "img/cert-toc-canvas.png", "alt": "Certificates Table of Contents", "type": "toc",
       "sections": [
-        { "name": "BUSINESS", "targetIndex": 0 },
-        { "name": "DATA", "targetIndex": 1 },
-        { "name": "DESIGN", "targetIndex": 2 },
-        { "name": "DEVELOPMENT", "targetIndex": 3 },
-        { "name": "MARKETING AND COMMUNICATION", "targetIndex": 4 },
-        { "name": "PROJECT MANAGEMENT", "targetIndex": 7 },
+        { "name": "BUSINESS", "targetIndex": 2 },
+        { "name": "DATA", "targetIndex": 3 },
+        { "name": "DESIGN", "targetIndex": 4 },
+        { "name": "DEVELOPMENT", "targetIndex": 5 },
+        { "name": "MARKETING AND COMMUNICATION", "targetIndex": 6 },
+        { "name": "PROJECT MANAGEMENT", "targetIndex": 8 },
         { "name": "SYSTEMS AND NETWORK", "targetIndex": 9 }
       ] 
     },

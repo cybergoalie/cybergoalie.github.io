@@ -69,10 +69,13 @@ document.addEventListener("DOMContentLoaded", function () {
                             const textDiv = document.createElement('div');
                             textDiv.innerText = section.name;
                             textDiv.tabIndex = '0';
+                            textDiv.addEventListener('click', function (event) {
+                                event.stopPropagation();
+                                clickedCertificate = certificate; // Ensure clickedCertificate is assigned appropriately
 
-                            textDiv.addEventListener('click', function () {
                                 navigateToSection(section.targetIndex);
                             });
+
 
                             sectionsDiv.appendChild(textDiv);
                         });
@@ -120,10 +123,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
 
-            function navigateToSection(targetIndex) {
+            function navigateToSection(targetIndex, isModal = false) {
                 currentIndex = targetIndex;
-                updateCertificates();
+            
+                if (isModal) {
+                    const clickedCertificate = certificates[currentIndex];
+                    openCertificatesModal(clickedCertificate);
+                } else {
+                    updateCertificates();
+                }
             }
+
 
             // LISTEN FOR CLICK EVENT TO GO FORWARDS THROUGH THE LOOP OF CERTIFICATES (THEN UPDATE CERTIFICATES)
 
@@ -289,10 +299,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
 
-
-
-
-
             function handleDragEnd() {
                 isDragging = false;
 
@@ -354,8 +360,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Get the index of the clickedCertificate within the certificates array
                 const indexInCertificates = certificates.findIndex(cert => cert.src === clickedCertificate.src);
-                const modalLog = `Opened modal for CERTIFICATE (${indexInCertificates}) AND TYPE (${clickedCertificate.type.toUpperCase()})`;
+                const modalLog = `Opened modal for CERTIFICATE (${indexInCertificates}) AND TYPE (${clickedCertificate.type ? clickedCertificate.type.toUpperCase() : 'Unknown'})`;
                 console.log(modalLog);
+                
 
                 // Set currentIndex to the index of the clicked certificate
                 currentIndex = indexInCertificates;
@@ -397,9 +404,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         textDiv.innerText = section.name;
                         textDiv.tabIndex = '0';
 
-                        textDiv.addEventListener('click', function () {
-                            navigateToSection(section.targetIndex);
+                        textDiv.addEventListener('click', function (event) {
+                            event.stopPropagation();
+                            clickedCertificate = certificates[currentIndex]; // Ensure clickedCertificate is assigned appropriately
+
+                            console.log('Before navigateToSection in TOC modal:', currentIndex);
+                            navigateToSection(section.targetIndex, true);
+                            console.log('After navigateToSection in TOC modal:', currentIndex);
                         });
+
 
                         sectionsDiv.appendChild(textDiv);
                     });
@@ -516,9 +529,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         textDiv.innerText = section.name;
                         textDiv.tabIndex = '0';
 
-                        textDiv.addEventListener('click', function () {
-                            navigateToSection(section.targetIndex);
+                        textDiv.addEventListener('click', function (event) {
+                            event.stopPropagation();
+                            navigateToSection(section.targetIndex, true);
                         });
+
 
                         sectionsDiv.appendChild(textDiv);
                     });
@@ -563,6 +578,7 @@ document.addEventListener("DOMContentLoaded", function () {
             function closeModal(modalId) {
                 const modal = document.getElementById(modalId);
                 const overlay = document.getElementById('overlay');
+                let displayedCertificateSrc;
 
                 if (modalId === 'diplomaModal') {
                     // Handle diploma modal if needed
