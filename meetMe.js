@@ -459,11 +459,25 @@ document.addEventListener("DOMContentLoaded", function () {
                     tocContentWrapper.className = 'toc-modal-content-wrapper';
 
                     // Add TOC-specific content
-                    const headlineDiv = document.createElement('div');
-                    headlineDiv.innerText = clickedCertificate.alt; // Assuming 'alt' contains the headline
-                    headlineDiv.classList.add('toc-modal-headline');
 
-                    tocContentWrapper.appendChild(headlineDiv);
+const headlineDiv = document.createElement('div');
+headlineDiv.classList.add('toc-modal-headline');
+headlineDiv.innerText = clickedCertificate.alt; // Assuming 'alt' contains the headline
+
+// Split the headline text into words
+const words = headlineDiv.innerText.split(' ');
+
+// Insert <br> after the first word
+words.splice(1, 0, '<br>');
+
+// Join the words back together
+const updatedHeadline = words.join(' ');
+
+// Set the innerHTML with the updated headline
+headlineDiv.innerHTML = updatedHeadline;
+
+// Append the headline to the modal content wrapper
+tocContentWrapper.appendChild(headlineDiv);
 
                     const sectionsDiv = document.createElement('div');
                     sectionsDiv.className = 'toc-modal-sections';

@@ -1,5 +1,5 @@
   [
-    { "src": "img/cert-toc-canvas.png", "alt": "Certificates Table of Contents", "type": "toc",
+    { "src": "img/cert-toc-canvas.png", "alt": "Certificates, Table of Contents", "type": "toc",
       "sections": [
         { "name": "BUSINESS", "targetIndex": 2, "noteId": "noteC" },
       { "name": "DATA", "targetIndex": 3, "noteId": "noteD" },
