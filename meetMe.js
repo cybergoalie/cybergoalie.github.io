@@ -111,23 +111,23 @@ document.addEventListener("DOMContentLoaded", function () {
                                     }
                                 }
                             });
-
-
-                            // Inside your mouseleave event listener
+                            
                             textDiv.addEventListener('mouseleave', function () {
                                 const audioElement = document.getElementById(section.noteId);
                                 if (userInteracted && audioElement) {
                                     if (!audioElement.paused) {
-                                        audioElement.pause(); // Pause only if it's currently playing
-                                        audioElement.currentTime = 0; // Reset audio to start
-                                        console.log(`Music is paused for section with noteId ${section.noteId}`);
+                                        // Add a short delay before pausing to avoid the warning
+                                        setTimeout(() => {
+                                            audioElement.pause(); // Pause only if it's currently playing
+                                            audioElement.currentTime = 0; // Reset audio to start
+                                            console.log(`Music is paused for section with noteId ${section.noteId}`);
+                                        }, 100);
                                     }
                                 }
                             });
-
+                            
                             textDiv.addEventListener('click', function (event) {
                                 event.stopPropagation();
-
                                 // Stop the audio playback
                                 const audioElement = document.getElementById(section.noteId);
                                 if (audioElement) {
@@ -135,9 +135,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                     audioElement.currentTime = 0; // Reset audio to start
                                     console.log(`Music is stopped because the user chose the certificate with target index ${section.targetIndex}`);
                                 }
-
                                 navigateToSection(section.targetIndex);
                             });
+                            
 
 
 
@@ -474,7 +474,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         textDiv.tabIndex = '0';
 
                         // Add hover event to play the corresponding note
-                        // Inside your mouseover event listener
                         textDiv.addEventListener('mouseover', function () {
                             if (userInteracted) {
                                 const audioElement = document.getElementById(section.noteId);
@@ -485,22 +484,21 @@ document.addEventListener("DOMContentLoaded", function () {
                                 }
                             }
                         });
-
-
-                        // Inside your mouseleave event listener
-                      // Inside your mouseleave event listener
-textDiv.addEventListener('mouseleave', function () {
-    const audioElement = document.getElementById(section.noteId);
-    if (userInteracted && audioElement) {
-        if (!audioElement.paused) {
-            audioElement.pause(); // Pause only if it's currently playing
-            audioElement.currentTime = 0; // Reset audio to start
-            console.log(`Music is paused for section with noteId ${section.noteId}`);
-        }
-    }
-});
-
-
+                        
+                        textDiv.addEventListener('mouseleave', function () {
+                            const audioElement = document.getElementById(section.noteId);
+                            if (userInteracted && audioElement) {
+                                if (!audioElement.paused) {
+                                    // Add a short delay before pausing to avoid the warning
+                                    setTimeout(() => {
+                                        audioElement.pause(); // Pause only if it's currently playing
+                                        audioElement.currentTime = 0; // Reset audio to start
+                                        console.log(`Music is paused for section with noteId ${section.noteId}`);
+                                    }, 100);
+                                }
+                            }
+                        });
+                        
                         textDiv.addEventListener('click', function (event) {
                             event.stopPropagation();
                             // Stop the audio playback
@@ -512,6 +510,7 @@ textDiv.addEventListener('mouseleave', function () {
                             }
                             navigateToSection(section.targetIndex, true);
                         });
+                        
 
 
                         sectionsDiv.appendChild(textDiv);
