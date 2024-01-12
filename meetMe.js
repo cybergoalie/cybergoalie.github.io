@@ -4,9 +4,10 @@
 let currentIndex = 0;
 let totalCertificates; // Declare totalCertificates in the global scope
 let initialIndex; // Declare initialIndex here
-let modalWasNavigated = false;
 let certificates; // Declare certificates in the global scope
 let clickedCertificate; // Declare clickedCertificate in the global scope
+// Add a flag to check if the user has interacted
+let userInteracted = false;
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -50,8 +51,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     certificateElement.tabIndex = '0';
 
                     certificateElement.addEventListener('click', function () {
-                        openCertificatesModal(certificate);
+                        currentIndex = certificates.indexOf(certificate);
+                        updateCertificatesModal();
                     });
+
 
                     // LISTEN FOR DRAG TO NAVIGATE EVENTS IN ORDER TO GO BACKWARDS (RIGHT) OR FORWARDS (LEFT) THROUGH THE LOOP IN THE CERTIFICATE-CONTAINER
 
@@ -94,41 +97,50 @@ document.addEventListener("DOMContentLoaded", function () {
                             const textDiv = document.createElement('div');
                             textDiv.innerText = section.name;
                             textDiv.tabIndex = '0';
+
+                            // EVENT LISTENERS TO TRIGGER AUDIO LOGIC FOR EACH OF THE 7 TOC SECTIONS TABS
+
                             // Add hover event to play the corresponding note
                             textDiv.addEventListener('mouseover', function () {
-                                const audioElement = document.getElementById(section.noteId);
-                                if (audioElement) {
-                                    audioElement.currentTime = 0; // Reset audio to start
-                                    audioElement.play(); // Start playing
-                                    console.log('Music is playing');
+                                if (userInteracted) {
+                                    const audioElement = document.getElementById(section.noteId);
+                                    if (audioElement) {
+                                        audioElement.currentTime = 0; // Reset audio to start
+                                        audioElement.play(); // Start playing
+                                        console.log(`Music is playing for section with noteId ${section.noteId}`);
+                                    }
                                 }
                             });
-                            
+
+
+                            // Inside your mouseleave event listener
                             textDiv.addEventListener('mouseleave', function () {
                                 const audioElement = document.getElementById(section.noteId);
-                                if (audioElement) {
-                                    audioElement.pause(); // Pause when mouse leaves
-                                    audioElement.currentTime = 0; // Reset audio to start
-                                    console.log('Music is paused');
+                                if (userInteracted && audioElement) {
+                                    if (!audioElement.paused) {
+                                        audioElement.pause(); // Pause only if it's currently playing
+                                        audioElement.currentTime = 0; // Reset audio to start
+                                        console.log(`Music is paused for section with noteId ${section.noteId}`);
+                                    }
                                 }
                             });
-                            
+
                             textDiv.addEventListener('click', function (event) {
                                 event.stopPropagation();
-                                clickedCertificate = certificates[currentIndex];
-                            
+
                                 // Stop the audio playback
                                 const audioElement = document.getElementById(section.noteId);
                                 if (audioElement) {
                                     audioElement.pause();
                                     audioElement.currentTime = 0; // Reset audio to start
-                                    console.log('Music is stopped because the user chose a certificate target index');
+                                    console.log(`Music is stopped because the user chose the certificate with target index ${section.targetIndex}`);
                                 }
-                            
+
                                 navigateToSection(section.targetIndex);
                             });
-                            
-                            
+
+
+
                             sectionsDiv.appendChild(textDiv);
 
                         });
@@ -180,12 +192,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentIndex = targetIndex;
 
                 if (isModal) {
-                    const clickedCertificate = certificates[currentIndex];
-                    openCertificatesModal(clickedCertificate);
+                    updateCertificatesModal(); // Call the combined function to handle modal updates
                 } else {
                     updateCertificates();
                 }
             }
+
+            // Listen for any user interaction event (e.g., click)
+            document.addEventListener('click', function () {
+                // Set the flag to true once the user interacts
+                userInteracted = true;
+            });
+
 
 
             // LISTEN FOR CLICK EVENT TO GO FORWARDS THROUGH THE LOOP OF CERTIFICATES (THEN UPDATE CERTIFICATES)
@@ -224,6 +242,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             // MODAL LOGIC BEGINS HERE
+
+            // MODAL NAVI CLICK EVENT (GOES BACKWARD THROUGH LOOP) 
+
+            document.querySelector("#leftArrow").addEventListener("click", function () {
+                currentIndex = (currentIndex - 1 + totalCertificates) % totalCertificates;
+                updateCertificatesModal();
+            });
+
+            // MODAL NAVI CLICK EVENT (GOES FORWARD THROUGH LOOP)
+
+            document.querySelector("#rightArrow").addEventListener("click", function () {
+                currentIndex = (currentIndex + 1) % totalCertificates;
+                updateCertificatesModal();
+            });
+
 
             // LISTEN FOR DISPATCH OF THE MODALCLOSED EVENT (THEN UPDATE CERTIFICATES)
 
@@ -266,38 +299,39 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             }
 
-            // MODAL NAVI CLICK EVENT (GOES BACKWARD THROUGH LOOP) 
-
-            const leftArrow = document.getElementById('leftArrow');
-            if (leftArrow) {
-                leftArrow.addEventListener('click', function () {
-                    navigateCertificates('left');
-                });
-            }
-
-            // MODAL NAVI CLICK EVENT (GOES FORWARD THROUGH LOOP)
-
-            const rightArrow = document.getElementById('rightArrow');
-            if (rightArrow) {
-                rightArrow.addEventListener('click', function () {
-                    navigateCertificates('right');
-                });
-            }
-
             // ACCESSIBILITY MATTERS: KEYBOARD EVENTS FOR MODAL NAVI
 
+
+            // Accessible keyboard events for CERTIFICATE modal navigation
             const keyboardNavigation = document.getElementById('certificatesModal');
             if (keyboardNavigation) {
                 keyboardNavigation.addEventListener('keydown', function (event) {
-                    if (event.key === 'ArrowLeft') {
-                        navigateCertificates('left');
-                    } else if (event.key === 'ArrowRight') {
-                        navigateCertificates('right');
-                    } else if (event.key === 'Escape') {
-                        closeModal();
+                    if (userInteracted) {
+                        if (event.key === 'ArrowLeft') {
+                            currentIndex = (currentIndex - 1 + totalCertificates) % totalCertificates;
+                            updateCertificatesModal();
+                        } else if (event.key === 'ArrowRight') {
+                            currentIndex = (currentIndex + 1) % totalCertificates;
+                            updateCertificatesModal();
+                        } else if (event.key === 'Escape') {
+                            closeModal();
+                        }
                     }
                 });
             }
+
+            // Accessible keyboard events for DIPLOMA modal navigation
+            const diplomaModal = document.getElementById('diplomaModal');
+            if (diplomaModal) {
+                diplomaModal.addEventListener('keydown', function (event) {
+                    if (userInteracted) {
+                        if (event.key === 'Escape') {
+                            closeModal('diplomaModal');
+                        }
+                    }
+                });
+            }
+
 
             // DRAG FUNCTIONS TO NAVIGATE THROUGH CERTIFICATES (IN CERT-CONTAINER/SLIDER)
 
@@ -324,27 +358,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (Math.abs(deltaX) > dragThreshold) {
                         if (deltaX > 0) {
                             // Dragging to the right
-                            if (event.target.closest('.modal-content-wrapper')) {
-                                // Dragging inside modal content wrapper
-                                navigateCertificates('right');
-                            } else {
-                                // Dragging inside certificate-item
-                                currentIndex = (initialIndex + 1) % totalCertificates;
-                                updateCertificates();
-                            }
+                            currentIndex = (initialIndex + 1) % totalCertificates;
+                            updateCertificatesModal();
                         } else if (deltaX < 0) {
                             // Dragging to the left
-                            if (event.target.closest('.modal-content-wrapper')) {
-                                // Dragging inside modal content wrapper
-                                navigateCertificates('left');
-                            } else {
-                                // Dragging inside certificate-item
-                                currentIndex = (initialIndex - 1 + totalCertificates) % totalCertificates;
-                                if (currentIndex < 0) {
-                                    currentIndex += totalCertificates;
-                                }
-                                updateCertificates();
+                            currentIndex = (initialIndex - 1 + totalCertificates) % totalCertificates;
+                            if (currentIndex < 0) {
+                                currentIndex += totalCertificates;
                             }
+                            updateCertificatesModal();
                         }
                     }
 
@@ -361,9 +383,6 @@ document.addEventListener("DOMContentLoaded", function () {
             // Add event listeners for document-level drag events
             document.addEventListener("drag", handleDragMove);
             document.addEventListener("dragend", handleDragEnd);
-
-
-
 
             // LISTEN FOR CLICK EVENT ON DIPLOMA IMAGE TO OPEN DIPLOMA MODAL
 
@@ -403,7 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // OPEN CERTIFICATES MODAL (CREATES MODAL DISPLAY AND ADDS DRAG AND CLICK EVENT LISTENERS TO OPENED CERTIFICATE)
 
-            function openCertificatesModal(clickedCertificate) {
+            function updateCertificatesModal() {
                 const modal = document.getElementById('certificatesModal');
                 const overlay = document.getElementById('overlay');
                 const certificateSlider = modal.querySelector('.certificate-slider');
@@ -414,15 +433,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 // Get the index of the clickedCertificate within the certificates array
-                const indexInCertificates = certificates.findIndex(cert => cert.src === clickedCertificate.src);
+                const indexInCertificates = currentIndex;
+                const clickedCertificate = certificates[indexInCertificates];
                 const modalLog = `Opened modal for CERTIFICATE (${indexInCertificates}) AND TYPE (${clickedCertificate.type ? clickedCertificate.type.toUpperCase() : 'Unknown'})`;
                 console.log(modalLog);
 
-
                 // Set currentIndex to the index of the clicked certificate
                 currentIndex = indexInCertificates;
-                // Log the source of the clicked certificate
-                console.log(`Displayed Certificate Source: ${clickedCertificate.src}`);
 
                 // Create modal content wrapper
                 const modalContentWrapper = document.createElement('div');
@@ -431,14 +448,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Add drag event listeners to the modal image
                 modalContentWrapper.addEventListener("dragstart", function (event) {
                     console.log('Drag Start inside modal content wrapper:', event);
-
                     handleDragStart(event, currentIndex);
                 });
 
-
                 // Add TOC-specific content if the certificate is of type 'toc'
                 if (clickedCertificate.type === 'toc') {
-
                     modalContentWrapper.classList.add('toc-modal');
 
                     const tocContentWrapper = document.createElement('div');
@@ -460,43 +474,47 @@ document.addEventListener("DOMContentLoaded", function () {
                         textDiv.tabIndex = '0';
 
                         // Add hover event to play the corresponding note
+                        // Inside your mouseover event listener
                         textDiv.addEventListener('mouseover', function () {
-                            const audioElement = document.getElementById(section.noteId);
-                            if (audioElement) {
-                                audioElement.currentTime = 0; // Reset audio to start
-                                audioElement.play(); // Start playing
-                                console.log('Music is playing');
+                            if (userInteracted) {
+                                const audioElement = document.getElementById(section.noteId);
+                                if (audioElement) {
+                                    audioElement.currentTime = 0; // Reset audio to start
+                                    audioElement.play(); // Start playing
+                                    console.log(`Music is playing for section with noteId ${section.noteId}`);
+                                }
                             }
                         });
-                        
-                        textDiv.addEventListener('mouseleave', function () {
-                            const audioElement = document.getElementById(section.noteId);
-                            if (audioElement) {
-                                audioElement.pause(); // Pause when mouse leaves
-                                audioElement.currentTime = 0; // Reset audio to start
-                                console.log('Music is paused');
-                            }
-                        });
-                        
+
+
+                        // Inside your mouseleave event listener
+                      // Inside your mouseleave event listener
+textDiv.addEventListener('mouseleave', function () {
+    const audioElement = document.getElementById(section.noteId);
+    if (userInteracted && audioElement) {
+        if (!audioElement.paused) {
+            audioElement.pause(); // Pause only if it's currently playing
+            audioElement.currentTime = 0; // Reset audio to start
+            console.log(`Music is paused for section with noteId ${section.noteId}`);
+        }
+    }
+});
+
+
                         textDiv.addEventListener('click', function (event) {
                             event.stopPropagation();
-                            clickedCertificate = certificates[currentIndex];
-                        
                             // Stop the audio playback
                             const audioElement = document.getElementById(section.noteId);
                             if (audioElement) {
                                 audioElement.pause();
                                 audioElement.currentTime = 0; // Reset audio to start
-                                console.log('Music is stopped because the user chose a certificate target index');
+                                console.log(`Music is stopped because the user chose the certificate with target index ${section.targetIndex}`);
                             }
-                        
                             navigateToSection(section.targetIndex, true);
                         });
-                        
-                        
+
 
                         sectionsDiv.appendChild(textDiv);
-
                     });
 
                     tocContentWrapper.appendChild(sectionsDiv);
@@ -520,172 +538,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 lastModalId = 'certificatesModal';
                 console.log(certificates);
 
-
                 // Display the modal
                 modal.style.display = 'block';
                 overlay.style.display = 'block';
             }
-
-            // NAVIGATE THROUGH CERTIFICATES IN THE MODAL
-
-            // Function to navigate through certificates in the modal
-            function navigateCertificates(direction) {
-                if (!certificates || certificates.length === 0) {
-                    console.error('Error: Certificates array is empty.');
-                    return;
-                }
-                const totalCertificates = certificates.length;
-                console.log(totalCertificates);
-
-                let displayedCertificateSrc;
-
-                // Check if the current certificate is of type 'toc'
-                if (certificates[currentIndex].type === 'toc') {
-                    // Use the source directly from the clicked certificate
-                    displayedCertificateSrc = certificates[currentIndex].src;
-                } else {
-                    // Get the modal content element
-                    const modalContent = document.querySelector('#certificatesModal .modal-content');
-
-                    // Check if the modal content exists
-                    if (modalContent) {
-                        // Get the displayed certificate source using getAttribute
-                        displayedCertificateSrc = modalContent.tagName === 'IMG' ? modalContent.getAttribute('src') : null;
-                    }
-                }
-
-                console.log('Displayed Certificate Src:', displayedCertificateSrc);
-
-                // Find the index of the displayed certificate in the certificates array
-                const indexInCertificates = certificates.findIndex(cert => cert.src === displayedCertificateSrc);
-
-                console.log(`Navigating from #(${indexInCertificates}) of type: (${certificates[indexInCertificates]?.type})`);
-
-
-                // Update currentIndex based on the navigation direction
-
-                if (direction === 'left') {
-                    currentIndex = (indexInCertificates - 1 + totalCertificates) % totalCertificates;
-                } else if (direction === 'right') {
-                    currentIndex = (indexInCertificates + 1) % totalCertificates;
-                }
-
-                // Set the clickedCertificate for the updated currentIndex
-                clickedCertificate = certificates[currentIndex];
-
-
-                // Log the current index and type after navigation
-                console.log(`NAVIGATING TO #(${currentIndex}) OF TYPE: (${certificates[currentIndex].type})`);
-
-                // Update modalContentWrapper with the new certificate content
-                // Create a new modalContentWrapper with the updated certificate content
-                const newModalContentWrapper = document.createElement('div');
-                newModalContentWrapper.classList.add('modal-content-wrapper');
-
-                // Add drag event listeners to the modal image
-                newModalContentWrapper.addEventListener("dragstart", function (event) {
-                    console.log('Drag Start inside modal content wrapper:', event);
-
-                    handleDragStart(event, currentIndex);
-                });
-
-                // Add TOC-specific content if the certificate is of type 'toc'
-                if (certificates[currentIndex].type === 'toc') {
-                    newModalContentWrapper.classList.add('toc-modal');
-
-                    const tocContentWrapper = document.createElement('div');
-                    tocContentWrapper.className = 'toc-modal-content-wrapper';
-
-                    // Add TOC-specific content
-                    const headlineDiv = document.createElement('div');
-                    headlineDiv.innerText = certificates[currentIndex].alt; // Assuming 'alt' contains the headline
-                    headlineDiv.classList.add('toc-modal-headline');
-
-                    tocContentWrapper.appendChild(headlineDiv);
-
-                    const sectionsDiv = document.createElement('div');
-                    sectionsDiv.className = 'toc-modal-sections';
-
-                    certificates[currentIndex].sections.forEach(section => {
-                        const textDiv = document.createElement('div');
-                        textDiv.innerText = section.name;
-                        textDiv.tabIndex = '0';
-
-                        // Add hover event to play the corresponding note
-                        textDiv.addEventListener('mouseover', function () {
-                            const audioElement = document.getElementById(section.noteId);
-                            if (audioElement) {
-                                audioElement.currentTime = 0; // Reset audio to start
-                                audioElement.play(); // Start playing
-                                console.log('Music is playing');
-                            }
-                        });
-                        
-                        textDiv.addEventListener('mouseleave', function () {
-                            const audioElement = document.getElementById(section.noteId);
-                            if (audioElement) {
-                                audioElement.pause(); // Pause when mouse leaves
-                                audioElement.currentTime = 0; // Reset audio to start
-                                console.log('Music is paused');
-                            }
-                        });
-                        
-                        textDiv.addEventListener('click', function (event) {
-                            event.stopPropagation();
-                            clickedCertificate = certificates[currentIndex];
-                        
-                            // Stop the audio playback
-                            const audioElement = document.getElementById(section.noteId);
-                            if (audioElement) {
-                                audioElement.pause();
-                                audioElement.currentTime = 0; // Reset audio to start
-                                console.log('Music is stopped because the user chose a certificate target index');
-                            }
-                        
-                            navigateToSection(section.targetIndex, true);
-                        });
-                        
-                        
-
-
-                        sectionsDiv.appendChild(textDiv);
-
-                    });
-
-                    tocContentWrapper.appendChild(sectionsDiv);
-                    tocContentWrapper.style.backgroundImage = `url(${clickedCertificate.src})`; // Set background image
-                    tocContentWrapper.style.backgroundSize = 'cover'; // Adjust background size as needed
-
-                    newModalContentWrapper.appendChild(tocContentWrapper);
-
-                } else {
-                    // Create a modal image for general certificates
-                    const newModalImage = document.createElement('img');
-                    newModalImage.classList.add('modal-content');
-                    newModalImage.src = certificates[currentIndex].src;
-                    newModalContentWrapper.appendChild(newModalImage);
-                }
-
-                // Get the certificate slider
-                const certificateSlider = document.querySelector('#certificatesModal .certificate-slider');
-
-                // Clear previous content and append the new modal content wrapper
-                certificateSlider.innerHTML = '';
-                certificateSlider.appendChild(newModalContentWrapper);
-
-                // Update lastModalId
-                lastModalId = 'certificatesModal';
-
-                // Set the flag to true indicating modal navigation after successful navigation
-                modalWasNavigated = true;
-
-                // Display the modal
-                const modal = document.getElementById('certificatesModal');
-                const overlay = document.getElementById('overlay');
-                modal.style.display = 'block';
-                overlay.style.display = 'block';
-            }
-
 
             // CLOSE MODAL (CERTIFICATE OR DIPLOMA) 
 
@@ -697,42 +553,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (modalId === 'diplomaModal') {
                     // Handle diploma modal if needed
                 } else {
+                    // Get the modal content element directly from the modal
+                    const modalContent = modal.querySelector('.modal-content');
 
-                    // Check if the current certificate is of type 'toc'
-                    if (certificates[currentIndex].type === 'toc') {
-                        const tocContentWrapper = document.querySelector('#certificatesModal .toc-modal-content-wrapper');
+                    // Check if the modal content exists
+                    if (modalContent) {
+                        // Get the displayed certificate source using getAttribute
+                        displayedCertificateSrc = modalContent.tagName === 'IMG' ? modalContent.getAttribute('src') : null;
 
-                        // Check if the tocContentWrapper exists and has a background image
-                        if (tocContentWrapper && tocContentWrapper.style.backgroundImage) {
-                            // Extract the URL from the background image property
-                            displayedCertificateSrc = tocContentWrapper.style.backgroundImage.replace('url("', '').replace('")', '');
-                        }
-                    } else {
-                        // Get the modal content element
-                        const modalContent = document.querySelector('#certificatesModal .modal-content');
+                        console.log('Displayed Certificate Src:', displayedCertificateSrc);
 
-                        // Check if the modal content exists
-                        if (modalContent) {
-                            // Get the displayed certificate source using getAttribute
-                            displayedCertificateSrc = modalContent.tagName === 'IMG' ? modalContent.getAttribute('src') : null;
-                        }
+                        // Find the index of the displayed certificate in the certificates array
+                        const currentIndexInArray = certificates.findIndex(cert => cert.src === displayedCertificateSrc);
 
+                        console.log(`Closed Certificate Modal. Index: ${currentIndexInArray}`);
+                        const closeModalEvent = new CustomEvent('modalClosed', { detail: { currentIndex: currentIndexInArray } });
+                        document.dispatchEvent(closeModalEvent);
                     }
-
-                    console.log('Displayed Certificate Src:', displayedCertificateSrc);
-
-                    // Find the index of the displayed certificate in the certificates array
-                    const currentIndexInArray = certificates.findIndex(cert => cert.src === displayedCertificateSrc);
-
-                    console.log(`Closed Certificate Modal. Index: ${currentIndexInArray}`);
-                    const closeModalEvent = new CustomEvent('modalClosed', { detail: { currentIndex: currentIndexInArray } });
-                    document.dispatchEvent(closeModalEvent);
                 }
 
                 modal.style.display = 'none';
                 overlay.style.display = 'none';
                 console.log(`Modal with ID ${modalId} closed. Display: ${modal.style.display}`);
             }
+
 
             window.addEventListener("resize", updateCertificates);
             updateCertificates();
