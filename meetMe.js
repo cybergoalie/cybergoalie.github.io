@@ -22,7 +22,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
             function updateCertificates() {
                 certificateContainer.innerHTML = ''; // Clear the container
+                const tocIcon = document.getElementById('tocIcon');
+                // Check if TOC certificate is in the container
+                const tocCertificateInContainer = certificates.some(cert => cert.type === 'toc' && currentIndex % totalCertificates === certificates.indexOf(cert) % totalCertificates);
 
+                // Toggle the display of the icon based on the condition
+                tocIcon.style.display = tocCertificateInContainer ? 'none' : 'block';
+
+                // Add an event listener to the tocIcon
+                tocIcon.addEventListener('click', function () {
+
+                    // Update the currentIndex and certificates with the TOC index
+                    currentIndex = 0;
+                    updateCertificates();
+                });
                 for (let i = 0; i < displayLimit; i++) {
                     const certificate = certificates[(currentIndex + i) % totalCertificates];
 
@@ -57,10 +70,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         // Add TOC-specific content
                         const headlineDiv = document.createElement('div');
-                        headlineDiv.innerText = certificate.alt; // Assuming 'alt' contains the headline
-                        headlineDiv.classList.add('toc-headline');
 
+                        // Split the alt text into words
+                        const words = certificate.alt.split(' ');
+
+                        // Insert <br> after the first word
+                        words.splice(1, 0, '<br>');
+
+                        // Join the words back together
+                        const updatedAlt = words.join(' ');
+
+                        // Set the innerText with the updated alt
+                        headlineDiv.innerHTML = updatedAlt;
+
+                        headlineDiv.classList.add('toc-headline');
                         tocContentWrapper.appendChild(headlineDiv);
+
 
                         const sectionsDiv = document.createElement('div');
                         sectionsDiv.className = 'toc-sections';
@@ -69,6 +94,27 @@ document.addEventListener("DOMContentLoaded", function () {
                             const textDiv = document.createElement('div');
                             textDiv.innerText = section.name;
                             textDiv.tabIndex = '0';
+                            // Add hover event to play the corresponding note
+                            textDiv.addEventListener('mouseover', function () {
+                                const audioElement = document.getElementById(section.noteId);
+                                if (audioElement) {
+                                    audioElement.currentTime = 0; // Reset audio to start
+                                    audioElement.play(); // Start playing
+                                }
+                            });
+                            
+                            textDiv.addEventListener('mouseout', function () {
+                                const audioElement = document.getElementById(section.noteId);
+                                if (audioElement) {
+                                    audioElement.pause(); // Pause when mouse leaves
+                                    audioElement.currentTime = 0; // Reset audio to start
+                                }
+                            });
+                            
+                            
+                            
+                            
+                            
                             textDiv.addEventListener('click', function (event) {
                                 event.stopPropagation();
                                 clickedCertificate = certificate; // Ensure clickedCertificate is assigned appropriately
@@ -78,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                             sectionsDiv.appendChild(textDiv);
+
                         });
 
                         tocContentWrapper.appendChild(sectionsDiv);
@@ -125,7 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             function navigateToSection(targetIndex, isModal = false) {
                 currentIndex = targetIndex;
-            
+
                 if (isModal) {
                     const clickedCertificate = certificates[currentIndex];
                     openCertificatesModal(clickedCertificate);
@@ -310,6 +357,8 @@ document.addEventListener("DOMContentLoaded", function () {
             document.addEventListener("dragend", handleDragEnd);
 
 
+
+
             // LISTEN FOR CLICK EVENT ON DIPLOMA IMAGE TO OPEN DIPLOMA MODAL
 
             let lastModalId;
@@ -362,7 +411,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const indexInCertificates = certificates.findIndex(cert => cert.src === clickedCertificate.src);
                 const modalLog = `Opened modal for CERTIFICATE (${indexInCertificates}) AND TYPE (${clickedCertificate.type ? clickedCertificate.type.toUpperCase() : 'Unknown'})`;
                 console.log(modalLog);
-                
+
 
                 // Set currentIndex to the index of the clicked certificate
                 currentIndex = indexInCertificates;
@@ -404,6 +453,28 @@ document.addEventListener("DOMContentLoaded", function () {
                         textDiv.innerText = section.name;
                         textDiv.tabIndex = '0';
 
+                        // Add hover event to play the corresponding note
+                        textDiv.addEventListener('mouseover', function () {
+                            const audioElement = document.getElementById(section.noteId);
+                            if (audioElement) {
+                                audioElement.currentTime = 0; // Reset audio to start
+                                audioElement.play(); // Start playing
+                            }
+                        });
+                        
+                        textDiv.addEventListener('mouseout', function () {
+                            const audioElement = document.getElementById(section.noteId);
+                            if (audioElement) {
+                                audioElement.pause(); // Pause when mouse leaves
+                                audioElement.currentTime = 0; // Reset audio to start
+                            }
+                        });
+                        
+                        
+                        
+                        
+                        
+
                         textDiv.addEventListener('click', function (event) {
                             event.stopPropagation();
                             clickedCertificate = certificates[currentIndex]; // Ensure clickedCertificate is assigned appropriately
@@ -415,6 +486,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                         sectionsDiv.appendChild(textDiv);
+
                     });
 
                     tocContentWrapper.appendChild(sectionsDiv);
@@ -529,6 +601,27 @@ document.addEventListener("DOMContentLoaded", function () {
                         textDiv.innerText = section.name;
                         textDiv.tabIndex = '0';
 
+                        // Add hover event to play the corresponding note
+                        textDiv.addEventListener('mouseover', function () {
+                            const audioElement = document.getElementById(section.noteId);
+                            if (audioElement) {
+                                audioElement.currentTime = 0; // Reset audio to start
+                                audioElement.play(); // Start playing
+                            }
+                        });
+                        
+                        textDiv.addEventListener('mouseout', function () {
+                            const audioElement = document.getElementById(section.noteId);
+                            if (audioElement) {
+                                audioElement.pause(); // Pause when mouse leaves
+                                audioElement.currentTime = 0; // Reset audio to start
+                            }
+                        });
+                        
+                        
+                        
+                        
+                        
                         textDiv.addEventListener('click', function (event) {
                             event.stopPropagation();
                             navigateToSection(section.targetIndex, true);
@@ -536,6 +629,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                         sectionsDiv.appendChild(textDiv);
+
                     });
 
                     tocContentWrapper.appendChild(sectionsDiv);

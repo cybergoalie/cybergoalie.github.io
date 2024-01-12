@@ -11,6 +11,14 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
+    <audio id="noteC" src="audio/c.mp3"></audio>
+<audio id="noteD" src="audio/d.mp3"></audio>
+<audio id="noteE" src="audio/e.mp3"></audio>
+<audio id="noteF" src="audio/f.mp3"></audio>
+<audio id="noteG" src="audio/g.mp3"></audio>
+<audio id="noteA" src="audio/a.mp3"></audio>
+<audio id="noteB" src="audio/b.mp3"></audio>
+
     <meta name="robots" content="index, follow" />
 
     <link rel="icon" type="image/png" href="/img/favicon.png" />
@@ -120,7 +128,10 @@
 
       <!-- Meet Me Section Begins -->
       <section class="meet-me">
-        <h2>Integrative Medicine x Deep Tech</h2>
+        <div class="meetme-tagline">
+          <h2>Integrative Medicine x Deep Tech</h2>
+          <i class="fa-solid fa-folder-tree" id="tocIcon" style="display: none;"></i>
+        </div>
         <div class="verified-container">
           <div class="diploma-section">
             <div class="diploma-wrapper">
@@ -129,8 +140,10 @@
           </div>
 
           <div class="certificate-section">
-            <div class="arrow left" tabindex="0">
-              <i class="fa-solid fa-caret-left"></i>
+            <div class="arrow-wrapper-left">
+              <div class="arrow left" tabindex="0">
+                <i class="fa-solid fa-caret-left"></i>
+              </div>
             </div>
             <div class="cert-container-wrapper">
               <!-- HTML structure for certificates container -->
@@ -139,8 +152,10 @@
                 id="certificateContainer"
               ></div>
             </div>
-            <div class="arrow right" tabindex="0">
-              <i class="fa-solid fa-caret-right"></i>
+            <div class="arrow-wrapper-right">
+              <div class="arrow right" tabindex="0">
+                <i class="fa-solid fa-caret-right"></i>
+              </div>
             </div>
           </div>
         </div>

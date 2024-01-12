@@ -1,14 +1,14 @@
   [
     { "src": "img/cert-toc-canvas.png", "alt": "Certificates Table of Contents", "type": "toc",
       "sections": [
-        { "name": "BUSINESS", "targetIndex": 2 },
-        { "name": "DATA", "targetIndex": 3 },
-        { "name": "DESIGN", "targetIndex": 4 },
-        { "name": "DEVELOPMENT", "targetIndex": 5 },
-        { "name": "MARKETING AND COMMUNICATION", "targetIndex": 6 },
-        { "name": "PROJECT MANAGEMENT", "targetIndex": 8 },
-        { "name": "SYSTEMS AND NETWORK", "targetIndex": 9 }
-      ] 
+        { "name": "BUSINESS", "targetIndex": 2, "noteId": "noteC" },
+      { "name": "DATA", "targetIndex": 3, "noteId": "noteD" },
+      { "name": "DESIGN", "targetIndex": 4, "noteId": "noteE" },
+      { "name": "DEVELOPMENT", "targetIndex": 5, "noteId": "noteF" },
+      { "name": "MARKETING AND COMMUNICATION", "targetIndex": 6, "noteId": "noteG" },
+      { "name": "PROJECT MANAGEMENT", "targetIndex": 8, "noteId": "noteA" },
+      { "name": "SYSTEMS AND NETWORK", "targetIndex": 9, "noteId": "noteB" }
+       ] 
     },
   
     { "src": "img/cert/administer-linux-fr.png", "alt": "Certificate 1", "type": "certificate" },
