@@ -100,29 +100,35 @@ document.addEventListener("DOMContentLoaded", function () {
                                 if (audioElement) {
                                     audioElement.currentTime = 0; // Reset audio to start
                                     audioElement.play(); // Start playing
+                                    console.log('Music is playing');
                                 }
                             });
                             
-                            textDiv.addEventListener('mouseout', function () {
+                            textDiv.addEventListener('mouseleave', function () {
                                 const audioElement = document.getElementById(section.noteId);
                                 if (audioElement) {
                                     audioElement.pause(); // Pause when mouse leaves
                                     audioElement.currentTime = 0; // Reset audio to start
+                                    console.log('Music is paused');
                                 }
                             });
                             
-                            
-                            
-                            
-                            
                             textDiv.addEventListener('click', function (event) {
                                 event.stopPropagation();
-                                clickedCertificate = certificate; // Ensure clickedCertificate is assigned appropriately
-
+                                clickedCertificate = certificates[currentIndex];
+                            
+                                // Stop the audio playback
+                                const audioElement = document.getElementById(section.noteId);
+                                if (audioElement) {
+                                    audioElement.pause();
+                                    audioElement.currentTime = 0; // Reset audio to start
+                                    console.log('Music is stopped because the user chose a certificate target index');
+                                }
+                            
                                 navigateToSection(section.targetIndex);
                             });
-
-
+                            
+                            
                             sectionsDiv.appendChild(textDiv);
 
                         });
@@ -459,31 +465,35 @@ document.addEventListener("DOMContentLoaded", function () {
                             if (audioElement) {
                                 audioElement.currentTime = 0; // Reset audio to start
                                 audioElement.play(); // Start playing
+                                console.log('Music is playing');
                             }
                         });
                         
-                        textDiv.addEventListener('mouseout', function () {
+                        textDiv.addEventListener('mouseleave', function () {
                             const audioElement = document.getElementById(section.noteId);
                             if (audioElement) {
                                 audioElement.pause(); // Pause when mouse leaves
                                 audioElement.currentTime = 0; // Reset audio to start
+                                console.log('Music is paused');
                             }
                         });
                         
-                        
-                        
-                        
-                        
-
                         textDiv.addEventListener('click', function (event) {
                             event.stopPropagation();
-                            clickedCertificate = certificates[currentIndex]; // Ensure clickedCertificate is assigned appropriately
-
-                            console.log('Before navigateToSection in TOC modal:', currentIndex);
+                            clickedCertificate = certificates[currentIndex];
+                        
+                            // Stop the audio playback
+                            const audioElement = document.getElementById(section.noteId);
+                            if (audioElement) {
+                                audioElement.pause();
+                                audioElement.currentTime = 0; // Reset audio to start
+                                console.log('Music is stopped because the user chose a certificate target index');
+                            }
+                        
                             navigateToSection(section.targetIndex, true);
-                            console.log('After navigateToSection in TOC modal:', currentIndex);
                         });
-
+                        
+                        
 
                         sectionsDiv.appendChild(textDiv);
 
@@ -607,25 +617,35 @@ document.addEventListener("DOMContentLoaded", function () {
                             if (audioElement) {
                                 audioElement.currentTime = 0; // Reset audio to start
                                 audioElement.play(); // Start playing
+                                console.log('Music is playing');
                             }
                         });
                         
-                        textDiv.addEventListener('mouseout', function () {
+                        textDiv.addEventListener('mouseleave', function () {
                             const audioElement = document.getElementById(section.noteId);
                             if (audioElement) {
                                 audioElement.pause(); // Pause when mouse leaves
                                 audioElement.currentTime = 0; // Reset audio to start
+                                console.log('Music is paused');
                             }
                         });
                         
-                        
-                        
-                        
-                        
                         textDiv.addEventListener('click', function (event) {
                             event.stopPropagation();
+                            clickedCertificate = certificates[currentIndex];
+                        
+                            // Stop the audio playback
+                            const audioElement = document.getElementById(section.noteId);
+                            if (audioElement) {
+                                audioElement.pause();
+                                audioElement.currentTime = 0; // Reset audio to start
+                                console.log('Music is stopped because the user chose a certificate target index');
+                            }
+                        
                             navigateToSection(section.targetIndex, true);
                         });
+                        
+                        
 
 
                         sectionsDiv.appendChild(textDiv);
