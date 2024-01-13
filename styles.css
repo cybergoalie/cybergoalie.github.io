@@ -245,7 +245,7 @@ nav button i {
 
 .tagline-border {
   position: absolute;
-  width: calc(103% + 23px); /* Adjust the width as needed */
+  width: calc(103% + 13px); /* Adjust the width as needed */
   height: auto;
   z-index: 0;
   top: 0;
