@@ -488,11 +488,13 @@ h2 {
 
 .diploma-caption {
   font-size: 11px;
+  width: 35%;
 }
 
 .certs-caption {
   font-size: 11px;
   text-align: right;
+  width: 45%;
 }
 
 /* MODAL STYLES */
