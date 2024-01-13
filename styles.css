@@ -34,6 +34,15 @@ body:not(.light-mode) #meetMeImageDark {
   display: block;
 }
 
+body.light-mode .meetme-tagline {
+  background-color: rgba(190, 214, 200, 0.645); /* Adjust the color values for a lighter shade */
+}
+
+body.light-mode .meetme-tagline::before,
+body.light-mode .meetme-tagline::after {
+  background-color: rgba(190, 214, 200, 0.645); /* Adjust the color values for a lighter shade */
+}
+
 header {
   background-color: #333;
   padding: 15px;
@@ -269,11 +278,9 @@ h2 {
 #tocIcon::after {
   content: "TOC";
   position: absolute;
-  top: calc(
-    103% + 10px
-  ); /* the tooltip will be positioned 150% of the height of the icon plus an additional 10 pixels below the icon */
-  left: 50%;
-  transform: translateX(-50%);
+  top: calc( 103% + 13.369px );
+  left: 30%;
+  transform: translateX(-69%);
   padding: 8px;
   background-color: purple;
   color: white;
