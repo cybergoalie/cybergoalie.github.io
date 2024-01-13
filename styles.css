@@ -250,7 +250,7 @@ nav button i {
   z-index: 0;
   top: 0;
   opacity: .3;
-  margin-left: -20px;
+  margin-left: -15px;
   margin-right: -30px;
   margin-top: -10px;
 }
@@ -565,13 +565,13 @@ h2 {
 }
 
 .diploma-caption {
-  font-size: 1.1vh;
+  font-size: 12px;
   width: 35%;
   margin-left: 2.3vw;
 }
 
 .certs-caption {
-  font-size: 1.1vh;
+  font-size: 12px;
   text-align: right;
   width: 50%;
 
@@ -812,7 +812,7 @@ h2 {
 
   .certs-caption {
     margin-right: 3vw;
-    width: 53%;
+    width: 49%;
   }
 }
 
