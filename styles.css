@@ -279,7 +279,7 @@ h2 {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 10px 5vw 10px 8vw;
+  margin: 10px 8vw;
   height: 100%;
   max-width: 53%;
 }
@@ -412,7 +412,7 @@ h2 {
 }
 
 .first-certificate {
-  margin-right: 30%;
+  margin-right: 50%;
   margin-top: -20%;
 }
 
@@ -429,7 +429,7 @@ h2 {
 }
 
 .last-certificate {
-  margin-right: -30%;
+  margin-right: -50%;
   margin-top: 20%;
 }
 
@@ -494,9 +494,9 @@ h2 {
 }
 
 .certs-caption {
-  font-size: 11px;
+  font-size: 10px;
   text-align: right;
-  width: 45%;
+  width: 50%;
 }
 
 /* MODAL STYLES */
