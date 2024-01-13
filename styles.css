@@ -162,6 +162,7 @@ nav button i {
   font-size: 2.3vh;
   color: #fff;
   z-index: 2;
+  font-size: 2vw;
 }
 
 .play-button:hover {
