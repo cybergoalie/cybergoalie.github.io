@@ -566,8 +566,7 @@ h2 {
 
 .diploma-caption {
   font-size: 12px;
-  width: 35%;
-  margin-left: 2.3vw;
+  width: 30%;
 }
 
 .certs-caption {
@@ -806,12 +805,12 @@ h2 {
   }
 
   .diploma-caption {
-    margin-left: 2.3vw;
+    margin-left: 1.3vw;
     width: 28%;
   }
 
   .certs-caption {
-    margin-right: 3vw;
+    margin-right: 1.3vw;
     width: 49%;
   }
 }
