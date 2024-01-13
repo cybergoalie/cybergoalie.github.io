@@ -490,7 +490,7 @@ h2 {
 
 .diploma-caption {
   font-size: 11px;
-  margin-left: 3.3vw;
+  margin-left: 6.9vw;
   width: 30%;
 }
 
@@ -702,8 +702,9 @@ h2 {
     display: block;
     cursor: pointer;
     color: #fff;
-    font-size: 23px;
-    margin: 0 2.3vw 0 2vw;
+    font-size: 2.3vh;
+    margin: 0 3.3vw 0 2vw;
+}
   }
 
   .menu-toggle.active {
@@ -731,7 +732,7 @@ h2 {
   }
 
   .diploma-caption {
-    margin-left: 3vw;
+    margin-left: 5.5vw;
   }
 
   .certs-caption {
