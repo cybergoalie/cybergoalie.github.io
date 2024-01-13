@@ -196,7 +196,7 @@ nav button i {
 .meetme-image {
   position: absolute;
   width: calc(63% + 9px); /* Adjust the width to spread across with padding */
-  bottom: -10px;
+  bottom: 0px;
   height: 96%;
   right: 3px;
   z-index: 1;
