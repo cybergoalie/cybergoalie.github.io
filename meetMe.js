@@ -25,8 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 certificateContainer.innerHTML = ''; // Clear the container
                 const tocIcon = document.getElementById('tocIcon');
                 // Check if TOC certificate is in the container
-                const tocCertificateInContainer = certificates.some(cert => cert.type === 'toc' && currentIndex % totalCertificates === certificates.indexOf(cert) % totalCertificates);
-
+                const tocCertificateInContainer = certificates.some((cert, index) => 
+                cert.type === 'toc' && 
+                index === 0 && 
+                currentIndex % totalCertificates === index % totalCertificates
+              );
                 // Toggle the display of the icon based on the condition
                 tocIcon.style.display = tocCertificateInContainer ? 'none' : 'block';
 

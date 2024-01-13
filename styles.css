@@ -208,7 +208,7 @@ nav button i {
   bottom: 0px;
   height: 96%;
   right: 3px;
-  z-index: 1;
+  z-index: 0;
 }
 
 
@@ -493,25 +493,13 @@ h2 {
   margin-top: -20%;
 }
 
-.first-certificate certiicate-item:hover {
-  transform: translateY(-24%);
-}
-
 .middle-certificate {
   align-items: center;
-}
-
-.middle-certificate certificate-item:hover {
-  transform: translateY(-24%);
 }
 
 .last-certificate {
   margin-right: -50%;
   margin-top: 20%;
-}
-
-.last-certificate certificate-item:hover {
-  transform: translateY(-24%);
 }
 
 .certificate-container img.hidden {

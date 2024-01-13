@@ -1,24 +1,162 @@
   [
     { "src": "img/cert-toc-canvas.png", "alt": "Certificates, Table of Contents", "type": "toc",
       "sections": [
-        { "name": "BUSINESS", "targetIndex": 2, "noteId": "noteC" },
-      { "name": "DATA", "targetIndex": 3, "noteId": "noteD" },
-      { "name": "DESIGN", "targetIndex": 4, "noteId": "noteE" },
-      { "name": "DEVELOPMENT", "targetIndex": 5, "noteId": "noteF" },
-      { "name": "MARKETING AND COMMUNICATION", "targetIndex": 6, "noteId": "noteG" },
-      { "name": "PROJECT MANAGEMENT", "targetIndex": 8, "noteId": "noteA" },
-      { "name": "SYSTEMS AND NETWORK", "targetIndex": 9, "noteId": "noteB" }
-       ] 
+        { "name": "BUSINESS", "targetIndex": 1, "noteId": "noteC" },
+        { "name": "DATA", "targetIndex": 9, "noteId": "noteD" },
+        { "name": "DESIGN", "targetIndex": 17, "noteId": "noteE" },
+        { "name": "DEVELOPMENT", "targetIndex": 25, "noteId": "noteF" },
+        { "name": "MARKETING AND COMMUNICATION", "targetIndex": 33, "noteId": "noteG" },
+        { "name": "PROJECT MANAGEMENT", "targetIndex": 41, "noteId": "noteA" },
+        { "name": "SYSTEMS AND NETWORK", "targetIndex": 49, "noteId": "noteB" }
+      ] 
     },
   
-    { "src": "img/cert/administer-linux-fr.png", "alt": "Certificate 1", "type": "certificate" },
-    { "src": "img/cert/administer-network-arch-fr.png", "alt": "Certificate 2", "type": "certificate" },
-    { "src": "img/cert/adopt-mvc-architecture-fr.png", "alt": "Certificate 3", "type": "certificate" },
-    { "src": "img/cert/adopt-rest-apis-fr.png", "alt": "Certificate 4", "type": "certificate" },
-    { "src": "img/cert/agile-project-management.png", "alt": "Certificate 5", "type": "certificate" },
-    { "src": "img/cert/analyze-data-design-decisions-fr.png", "alt": "Certificate 6", "type": "certificate" },
-    { "src": "img/cert/analyze-is-risks-fr.png", "alt": "Certificate 7", "type": "certificate" },
-    { "src": "img/cert/analyze-marketing-data-fr.png", "alt": "Certificate 8", "type": "certificate" },
-    { "src": "img/cert/analyze-text-data-fr.png", "alt": "Certificate 9", "type": "certificate" },
-    { "src": "img/cert/apply-psych-fr.png", "alt": "Certificate 10", "type": "certificate" }
-  ]
+{ "src": "img/cert-toc-canvas.png", "alt": "Business Courses", "type": "toc",
+      "sections": [
+        { "name": "Digital Essentials", "targetIndex": 2, "noteId": "noteC" },
+        { "name": "Create Your Canvas", "targetIndex": 3, "noteId": "noteD" },
+        { "name": "Develop Your Venture", "targetIndex": 4, "noteId": "noteE" },
+        { "name": "Launch Your Venture", "targetIndex": 5, "noteId": "noteF" },
+        { "name": "Growth-Hacking", "targetIndex": 6, "noteId": "noteG" },
+        { "name": "Produce + with AI", "targetIndex": 7, "noteId": "noteA" },
+        { "name": "Client Briefing", "targetIndex": 8, "noteId": "noteB" }
+      ] 
+    },  
+
+    { "src": "img/cert/biz/digital-essentials.png", "alt": "Business Cert 1", "type": "certificate" },
+    { "src": "img/cert/biz/business-canvas.png", "alt": "Business Cert 2", "type": "certificate" },
+    { "src": "img/cert/biz/develop-venture.png", "alt": "Business Cert 3", "type": "certificate" },
+    { "src": "img/cert/biz/launch-venture.png", "alt": "Business Cert 4", "type": "certificate" },
+    { "src": "img/cert/biz/growth-hacking.png", "alt": "Business Cert 5", "type": "certificate" },
+    { "src": "img/cert/biz/productivity-gpt.png", "alt": "Business Cert 6", "type": "certificate" },
+    { "src": "img/cert/biz/client-brief.png", "alt": "Business Cert 7", "type": "certificate" },
+
+
+    { "src": "img/cert-toc-canvas.png", "alt": "Data Courses", "type": "toc",
+    "sections": [
+      { "name": "Backup Solutions", "targetIndex": 10, "noteId": "noteC" },
+      { "name": "Master Spreadsheets", "targetIndex": 11, "noteId": "noteD" },
+      { "name": "Python Basics for Data Analysis", "targetIndex": 12, "noteId": "noteE" },
+      { "name": "Python Libraries for Data Science", "targetIndex": 13, "noteId": "noteF" },
+      { "name": "Discover Cloud with AWS", "targetIndex": 14, "noteId": "noteG" },
+      { "name": "Intro to Cybersecurity", "targetIndex": 15, "noteId": "noteA" },
+      { "name": "Secure with OWASP", "targetIndex": 16, "noteId": "noteB" }
+    ] 
+  },
+
+  { "src": "img/cert/data/backup-solutions.png", "alt": "Data Cert 1", "type": "certificate" },
+{ "src": "img/cert/data/master-spreadsheets.png", "alt": "Data Cert 2", "type": "certificate" },
+{ "src": "img/cert/data/python-basics.png", "alt": "Data Cert 3", "type": "certificate" },
+{ "src": "img/cert/data/python-data.png", "alt": "Data Cert 4", "type": "certificate" },
+{ "src": "img/cert/data/cloud-aws.png", "alt": "Data Cert 5", "type": "certificate" },
+{ "src": "img/cert/data/cybersecurity.png", "alt": "Data Cert 6", "type": "certificate" },
+{ "src": "img/cert/data/owasp.png", "alt": "Data Cert 7", "type": "certificate" },
+
+
+
+
+{ "src": "img/cert-toc-canvas.png", "alt": "Development Courses", "type": "toc",
+"sections": [
+  { "name": "Build a Full-Stack", "targetIndex": 26, "noteId": "noteC" },
+  { "name": "Create with React", "targetIndex": 27, "noteId": "noteD" },
+  { "name": "Create with Vue", "targetIndex": 28, "noteId": "noteE" },
+  { "name": "Optimize with Docker", "targetIndex": 29, "noteId": "noteF" },
+  { "name": "Natural Language Processing", "targetIndex": 30, "noteId": "noteG" },
+  { "name": "Develop an Android App", "targetIndex": 31, "noteId": "noteA" },
+  { "name": "100% Offline App", "targetIndex": 32, "noteId": "noteB" }
+] 
+},
+
+{ "src": "img/cert/dev/full-stack.png", "alt": "Dev Cert 1", "type": "certificate" },
+{ "src": "img/cert/dev/react.png", "alt": "Dev Cert 2", "type": "certificate" },
+{ "src": "img/cert/dev/vue.png", "alt": "Dev Cert 3", "type": "certificate" },
+{ "src": "img/cert/dev/docker.png", "alt": "Dev Cert 4", "type": "certificate" },
+{ "src": "img/cert/dev/nlp.png", "alt": "Dev Cert 5", "type": "certificate" },
+{ "src": "img/cert/dev/develop-app.png", "alt": "Dev Cert 6", "type": "certificate" },
+{ "src": "img/cert/dev/offline-android.png", "alt": "Dev Cert 7", "type": "certificate" },
+
+
+  { "src": "img/cert-toc-canvas.png", "alt": "Design Courses", "type": "toc",
+  "sections": [
+    { "name": "Des.Cert1", "targetIndex": 18, "noteId": "noteC" },
+    { "name": "Des.Cert2", "targetIndex": 19, "noteId": "noteD" },
+    { "name": "Des.Cert3", "targetIndex": 20, "noteId": "noteE" },
+    { "name": "Des.Cert4", "targetIndex": 21, "noteId": "noteF" },
+    { "name": "Des.Cert5", "targetIndex": 22, "noteId": "noteG" },
+    { "name": "Des.Cert6", "targetIndex": 23, "noteId": "noteA" },
+    { "name": "Des.Cert7", "targetIndex": 24, "noteId": "noteB" }
+  ] 
+},
+
+{ "src": "img/cert/design", "alt": "Design Cert 1", "type": "certificate" },
+{ "src": "img/cert/design", "alt": "Design Cert 2", "type": "certificate" },
+{ "src": "img/cert/design", "alt": "Design Cert 3", "type": "certificate" },
+{ "src": "img/cert/design", "alt": "Design Cert 4", "type": "certificate" },
+{ "src": "img/cert/design", "alt": "Design Cert 5", "type": "certificate" },
+{ "src": "img/cert/design", "alt": "Design Cert 6", "type": "certificate" },
+{ "src": "img/cert/design", "alt": "Design Cert 7", "type": "certificate" },
+
+
+{ "src": "img/cert-toc-canvas.png", "alt": "Marketing & Communication Courses", "type": "toc",
+"sections": [
+  { "name": "MC.Cert1", "targetIndex": 34, "noteId": "noteC" },
+  { "name": "MC.Cert2", "targetIndex": 35, "noteId": "noteD" },
+  { "name": "MC.Cert3", "targetIndex": 36, "noteId": "noteE" },
+  { "name": "MC.Cert4", "targetIndex": 37, "noteId": "noteF" },
+  { "name": "MC.Cert5", "targetIndex": 38, "noteId": "noteG" },
+  { "name": "MC.Cert6", "targetIndex": 39, "noteId": "noteA" },
+  { "name": "MC.Cert7", "targetIndex": 40, "noteId": "noteB" }
+] 
+},
+
+{ "src": "img/cert/mc", "alt": "MC Cert 1", "type": "certificate" },
+{ "src": "img/cert/mc", "alt": "MC Cert 2", "type": "certificate" },
+{ "src": "img/cert/mc", "alt": "MC Cert 3", "type": "certificate" },
+{ "src": "img/cert/mc", "alt": "MC Cert 4", "type": "certificate" },
+{ "src": "img/cert/mc", "alt": "MC Cert 5", "type": "certificate" },
+{ "src": "img/cert/mc", "alt": "MC Cert 6", "type": "certificate" },
+{ "src": "img/cert/mc", "alt": "MC Cert 7", "type": "certificate" },
+
+
+{ "src": "img/cert-toc-canvas.png", "alt": "Project Management Courses", "type": "toc",
+"sections": [
+  { "name": "PM.Cert1", "targetIndex": 42, "noteId": "noteC" },
+  { "name": "PM.Cert2", "targetIndex": 43, "noteId": "noteD" },
+  { "name": "PM.Cert3", "targetIndex": 44, "noteId": "noteE" },
+  { "name": "PM.Cert4", "targetIndex": 45, "noteId": "noteF" },
+  { "name": "PM.Cert5", "targetIndex": 46, "noteId": "noteG" },
+  { "name": "PM.Cert6", "targetIndex": 47, "noteId": "noteA" },
+  { "name": "PM.Cert7", "targetIndex": 48, "noteId": "noteB" }
+] 
+},
+
+{ "src": "img/cert/pm", "alt": "PM Cert 1", "type": "certificate" },
+{ "src": "img/cert/pm", "alt": "PM Cert 2", "type": "certificate" },
+{ "src": "img/cert/pm", "alt": "PM Cert 3", "type": "certificate" },
+{ "src": "img/cert/pm", "alt": "PM Cert 4", "type": "certificate" },
+{ "src": "img/cert/pm", "alt": "PM Cert 5", "type": "certificate" },
+{ "src": "img/cert/pm", "alt": "PM Cert 6", "type": "certificate" },
+{ "src": "img/cert/pm", "alt": "PM Cert 7", "type": "certificate" },
+
+
+{ "src": "img/cert-toc-canvas.png", "alt": "Systems & Network Courses", "type": "toc",
+"sections": [
+  { "name": "Sys.Cert1", "targetIndex": 50, "noteId": "noteC" },
+  { "name": "Sys.Cert2", "targetIndex": 51, "noteId": "noteD" },
+  { "name": "Sys.Cert3", "targetIndex": 52, "noteId": "noteE" },
+  { "name": "Sys.Cert4", "targetIndex": 53, "noteId": "noteF" },
+  { "name": "Sys.Cert5", "targetIndex": 54, "noteId": "noteG" },
+  { "name": "Sys.Cert6", "targetIndex": 55, "noteId": "noteA" },
+  { "name": "Sys.Cert7", "targetIndex": 56, "noteId": "noteB" }
+] 
+},
+
+{ "src": "img/cert/sys", "alt": "Systems Cert 1", "type": "certificate" },
+{ "src": "img/cert/sys", "alt": "Systems Cert 2", "type": "certificate" },
+{ "src": "img/cert/sys", "alt": "Systems Cert 3", "type": "certificate" },
+{ "src": "img/cert/sys", "alt": "Systems Cert 4", "type": "certificate" },
+{ "src": "img/cert/sys", "alt": "Systems Cert 5", "type": "certificate" },
+{ "src": "img/cert/sys", "alt": "Systems Cert 6", "type": "certificate" },
+{ "src": "img/cert/sys", "alt": "Systems Cert 7", "type": "certificate" }
+
+]
