@@ -105,6 +105,7 @@ nav button i {
   line-height: 1.369;
   padding: 20px;
   color: #fff;
+  font-size: 3vh;
 }
 .content h1 {
   font-weight: 500;
@@ -156,9 +157,9 @@ nav button i {
 .play-button {
   position: absolute;
   top: 10px;
-  right: 5.3%;
+  right: 23px;
   cursor: pointer;
-  font-size: 31px;
+  font-size: 2.3vh;
   color: #fff;
   z-index: 2;
 }
@@ -174,30 +175,27 @@ nav button i {
 
 .meetme-tagline {
   display: flex;
-  width: 100%;
+  max-width: 100%;
   justify-content: space-between;
   align-items: center;
+  height: 5vh;
+  margin: 1.69vh 2vw;
 }
 
 h2 {
-  margin-left: 3.3vw;
-  max-width: 100%;
+  margin-left: 3%;
+  max-width: 69%;
   line-height: 1.369;
   font-weight: 500;
-}
-
-.verified-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 224px;
-  margin: 3.69% 0;
+  font-size: 2vh;
 }
 
 #tocIcon {
   position: relative;
   margin: 10px 28px 10px;
   padding: 3px;
+  font-size: 2vh;
+
 }
 
 #tocIcon::after {
@@ -227,15 +225,26 @@ h2 {
   cursor: pointer;
 }
 
+.verified-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 3.69% 1%;
+  min-height: 9vh;
+  width: 100%;
+}
+
+
 .diploma-section {
   padding: 3px;
-  width: 30%;
+  max-width: 30%;
   height: auto;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin: 10px 1vw 10px 5vw;}
+  margin: 10px 1vw 10px 5vw;
+}
 
 .diploma-wrapper {
   height: 81%;
@@ -271,9 +280,9 @@ h2 {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 10px 5vw 10px 8vw;  
+  margin: 10px 5vw 10px 8vw;
   height: 100%;
-  width: 60%;
+  max-width: 53%;
 }
 
 .cert-container-wrapper {
@@ -288,15 +297,15 @@ h2 {
   display: grid;
   direction: rtl;
   position: relative;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1%;
-  width: 100%;
+  grid-template-columns: repeat(3, 1fr);  
   height: 100%;
+  gap: 1%;
 }
 
 /* TOC STYLES */
 
 .toc {
+  margin-top: 0;
   border-radius: 10px;
 }
 
@@ -305,7 +314,7 @@ h2 {
   font-size: 0.5vw;
   padding: 10px 5px;
   border-radius: 10px;
-  height: 150px !important;
+  height: 127.25px;
   display: flex;
   justify-content: flex-start;
   flex-flow: column nowrap;
@@ -344,7 +353,7 @@ h2 {
   align-content: center;
   height: 100%;
   width: 100%;
-  margin: 10% 3%;
+  margin: 0% 3% 5.5%;
   font-size: 1.2vw;
   text-align: center;
 }
@@ -362,7 +371,7 @@ h2 {
   background-color: #f0f0f0;
   cursor: pointer;
   border-radius: 5px;
-  height: 20px;
+  height: 23px;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -377,8 +386,8 @@ h2 {
 
 .certificate-item {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 180px !important;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -404,7 +413,7 @@ h2 {
 }
 
 .first-certificate {
-  margin-right: 50%;
+  margin-right: 30%;
   margin-top: -20%;
 }
 
@@ -421,7 +430,7 @@ h2 {
 }
 
 .last-certificate {
-  margin-right: -50%;
+  margin-right: -30%;
   margin-top: 20%;
 }
 
@@ -438,7 +447,12 @@ h2 {
   display: flex;
   flex-flow: row wrap;
   align-content: flex-end;
-  margin-bottom: 24px;
+  margin-top: 20%;
+  margin-left: 3%;
+}
+
+.arrow-wrapper-left .arrow {
+  padding-right: 0px;
 }
 
 .arrow-wrapper-right {
@@ -446,7 +460,11 @@ h2 {
   display: flex;
   flex-flow: row wrap;
   align-content: flex-start;
-  margin-top: 24px;
+  margin-bottom: 20%; 
+  margin-right: 3%;
+}
+.arrow-wrapper-right .arrow {
+  padding-left: 0px;
 }
 
 .arrow {
@@ -454,7 +472,7 @@ h2 {
   font-size: 38px;
   font-weight: bold;
   color: PINK;
-  padding: 15px;
+  padding: 5px;
   z-index: 2;
 }
 
@@ -472,14 +490,14 @@ h2 {
 
 .diploma-caption {
   font-size: 11px;
-  margin-left: 5.8vw;
+  margin-left: 3.3vw;
   width: 30%;
 }
 
 .certs-caption {
   font-size: 11px;
-  width: 55%;
-  margin-right: 5.8vw;
+  width: 45%;
+  margin-right: 3.3vw;
   text-align: right;
 }
 
@@ -492,7 +510,7 @@ h2 {
   left: 10%;
   top: 10%;
   width: 81%;
-  height: 81%;
+  height: 53%;
   overflow: auto;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.9);
@@ -639,14 +657,19 @@ h2 {
 }
 
 @media screen and ((max-width: 1100px)) {
-  .toc-content-wrapper {
+  /* .toc {
     height: 124px !important;
-  }
+  } */
 }
 
 @media screen and ((max-width: 911px)) {
+
+  .certificate-item {
+    width: 150px!important;
+    height: 150px!important;
+  }
   .toc-content-wrapper {
-    height: 100px !important;
+    height: 106.5px !important;
   }
 }
 
@@ -691,30 +714,25 @@ h2 {
     font-size: 23px;
   }
 
-  h2 {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 20px 0;
-    padding: 0 10px;
-    font-size: 21px;
-    font-weight: 500;
+  .certificate-item {
+    width: 100px !important;
+    height: 100px !important;
   }
 
+ 
+
   .toc-content-wrapper {
-    height: 100px !important;
+    height: 70.69px !important;
   }
 
   .arrow {
     font-size: 24px;
-    padding: 0px;
+    padding: 3px;
   }
 
-.diploma-caption {
-  margin-left: 3vw;
-}
+  .diploma-caption {
+    margin-left: 3vw;
+  }
 
   .certs-caption {
     margin-right: 3vw;
@@ -723,19 +741,37 @@ h2 {
 }
 
 @media screen and ((max-width: 611px)) {
+.certificate-item {
+    width: 90px !important;
+    height: 90px !important;
+  }
+  
   .toc-content-wrapper {
-    height: 69px !important;
+    height: 63.33px !important;
   }
 }
 
 @media screen and ((max-width: 480px)) {
+ 
+  .certificate-item {
+    width: 70px !important;
+    height: 70px !important;
+  } 
+  
   .toc-content-wrapper {
-    height: 50px !important;
+    height: 49.48px !important;
   }
 }
 
 @media screen and ((max-width: 369px)) {
+ 
+
+  .certificate-item {
+    width: 58px !important;
+    height: 58px !important;
+  } 
+  
   .toc-content-wrapper {
-    height: 35px !important;
+    height: 41px !important;
   }
 }
