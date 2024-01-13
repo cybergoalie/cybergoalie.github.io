@@ -220,9 +220,13 @@ nav button i {
   z-index: 0;
   top: 0;
   opacity: .3;
-  margin-left: -20px; /* Negative margin to stretch on the left */
-  margin-right: -30px; /* Negative margin to stretch on the right */
+  margin-left: -20px;
+  margin-right: -30px;
+  margin-top: -10px;
+}
 
+.tagline-border {
+  opacity: 1;
 }
 
 h2 {
