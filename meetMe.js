@@ -564,34 +564,20 @@ tocContentWrapper.appendChild(headlineDiv);
             function closeModal(modalId) {
                 const modal = document.getElementById(modalId);
                 const overlay = document.getElementById('overlay');
-                let displayedCertificateSrc;
-
-                if (modalId === 'diplomaModal') {
-                    // Handle diploma modal if needed
-                } else {
-                    // Get the modal content element directly from the modal
-                    const modalContent = modal.querySelector('.modal-content');
-
-                    // Check if the modal content exists
-                    if (modalContent) {
-                        // Get the displayed certificate source using getAttribute
-                        displayedCertificateSrc = modalContent.tagName === 'IMG' ? modalContent.getAttribute('src') : null;
-
-                        console.log('Displayed Certificate Src:', displayedCertificateSrc);
-
-                        // Find the index of the displayed certificate in the certificates array
-                        const currentIndexInArray = certificates.findIndex(cert => cert.src === displayedCertificateSrc);
-
-                        console.log(`Closed Certificate Modal. Index: ${currentIndexInArray}`);
-                        const closeModalEvent = new CustomEvent('modalClosed', { detail: { currentIndex: currentIndexInArray } });
-                        document.dispatchEvent(closeModalEvent);
-                    }
-                }
-
+            
+                // Get the index of the certificate to be on top when closing the modal
+                const currentIndexInArray = currentIndex;
+            
+                // Update the certificates display
+                const closeModalEvent = new CustomEvent('modalClosed', { detail: { currentIndex: currentIndexInArray } });
+                document.dispatchEvent(closeModalEvent);
+            
+                // Close the modal
                 modal.style.display = 'none';
                 overlay.style.display = 'none';
                 console.log(`Modal with ID ${modalId} closed. Display: ${modal.style.display}`);
             }
+            
 
 
             window.addEventListener("resize", updateCertificates);
