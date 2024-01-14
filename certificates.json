@@ -53,6 +53,26 @@
 { "src": "img/cert/data/owasp.png", "alt": "Data Cert 7", "type": "certificate" },
 
 
+  { "src": "img/cert-toc-canvas.png", "alt": "Design Courses", "type": "toc",
+  "sections": [
+    { "name": "UX Design", "targetIndex": 18, "noteId": "noteC" },
+    { "name": "UI Design", "targetIndex": 19, "noteId": "noteD" },
+    { "name": "Design Psych", "targetIndex": 20, "noteId": "noteE" },
+    { "name": "Design Standards", "targetIndex": 21, "noteId": "noteF" },
+    { "name": "Sketch Prototypes", "targetIndex": 22, "noteId": "noteG" },
+    { "name": "Design Metrics", "targetIndex": 23, "noteId": "noteA" },
+    { "name": "Design Data Models", "targetIndex": 24, "noteId": "noteB" }
+  ] 
+},
+
+{ "src": "img/cert/design/ux-design.png", "alt": "Design Cert 1", "type": "certificate" },
+{ "src": "img/cert/design/ui-design.png", "alt": "Design Cert 2", "type": "certificate" },
+{ "src": "img/cert/design/psych-design.png", "alt": "Design Cert 3", "type": "certificate" },
+{ "src": "img/cert/design/design-standards.png", "alt": "Design Cert 4", "type": "certificate" },
+{ "src": "img/cert/design/sketch.png", "alt": "Design Cert 5", "type": "certificate" },
+{ "src": "img/cert/design/design-metrics.png", "alt": "Design Cert 6", "type": "certificate" },
+{ "src": "img/cert/design/design-statistics.png", "alt": "Design Cert 7", "type": "certificate" },
+
 
 
 { "src": "img/cert-toc-canvas.png", "alt": "Development Courses", "type": "toc",
@@ -76,87 +96,66 @@
 { "src": "img/cert/dev/offline-android.png", "alt": "Dev Cert 7", "type": "certificate" },
 
 
-  { "src": "img/cert-toc-canvas.png", "alt": "Design Courses", "type": "toc",
-  "sections": [
-    { "name": "Des.Cert1", "targetIndex": 18, "noteId": "noteC" },
-    { "name": "Des.Cert2", "targetIndex": 19, "noteId": "noteD" },
-    { "name": "Des.Cert3", "targetIndex": 20, "noteId": "noteE" },
-    { "name": "Des.Cert4", "targetIndex": 21, "noteId": "noteF" },
-    { "name": "Des.Cert5", "targetIndex": 22, "noteId": "noteG" },
-    { "name": "Des.Cert6", "targetIndex": 23, "noteId": "noteA" },
-    { "name": "Des.Cert7", "targetIndex": 24, "noteId": "noteB" }
-  ] 
-},
-
-{ "src": "img/cert/design", "alt": "Design Cert 1", "type": "certificate" },
-{ "src": "img/cert/design", "alt": "Design Cert 2", "type": "certificate" },
-{ "src": "img/cert/design", "alt": "Design Cert 3", "type": "certificate" },
-{ "src": "img/cert/design", "alt": "Design Cert 4", "type": "certificate" },
-{ "src": "img/cert/design", "alt": "Design Cert 5", "type": "certificate" },
-{ "src": "img/cert/design", "alt": "Design Cert 6", "type": "certificate" },
-{ "src": "img/cert/design", "alt": "Design Cert 7", "type": "certificate" },
-
-
 { "src": "img/cert-toc-canvas.png", "alt": "Marketing & Communication Courses", "type": "toc",
 "sections": [
-  { "name": "MC.Cert1", "targetIndex": 34, "noteId": "noteC" },
-  { "name": "MC.Cert2", "targetIndex": 35, "noteId": "noteD" },
-  { "name": "MC.Cert3", "targetIndex": 36, "noteId": "noteE" },
-  { "name": "MC.Cert4", "targetIndex": 37, "noteId": "noteF" },
-  { "name": "MC.Cert5", "targetIndex": 38, "noteId": "noteG" },
-  { "name": "MC.Cert6", "targetIndex": 39, "noteId": "noteA" },
-  { "name": "MC.Cert7", "targetIndex": 40, "noteId": "noteB" }
+  { "name": "Public Speaking", "targetIndex": 34, "noteId": "noteC" },
+  { "name": "Story-Telling", "targetIndex": 35, "noteId": "noteD" },
+  { "name": "Host a Workshop", "targetIndex": 36, "noteId": "noteE" },
+  { "name": "Product Research", "targetIndex": 37, "noteId": "noteF" },
+  { "name": "Digital Marketing", "targetIndex": 38, "noteId": "noteG" },
+  { "name": "Facebook Ads", "targetIndex": 39, "noteId": "noteA" },
+  { "name": "Google Ads", "targetIndex": 40, "noteId": "noteB" }
 ] 
 },
 
-{ "src": "img/cert/mc", "alt": "MC Cert 1", "type": "certificate" },
-{ "src": "img/cert/mc", "alt": "MC Cert 2", "type": "certificate" },
-{ "src": "img/cert/mc", "alt": "MC Cert 3", "type": "certificate" },
-{ "src": "img/cert/mc", "alt": "MC Cert 4", "type": "certificate" },
-{ "src": "img/cert/mc", "alt": "MC Cert 5", "type": "certificate" },
-{ "src": "img/cert/mc", "alt": "MC Cert 6", "type": "certificate" },
-{ "src": "img/cert/mc", "alt": "MC Cert 7", "type": "certificate" },
+{ "src": "img/cert/mc/public-speaking.png", "alt": "MC Cert 1", "type": "certificate" },
+{ "src": "img/cert/mc/communicate-ideas.png", "alt": "MC Cert 2", "type": "certificate" },
+{ "src": "img/cert/mc/host-workshop.png", "alt": "MC Cert 3", "type": "certificate" },
+{ "src": "img/cert/mc/product-research.png", "alt": "MC Cert 4", "type": "certificate" },
+{ "src": "img/cert/mc/digital-ads.png", "alt": "MC Cert 5", "type": "certificate" },
+{ "src": "img/cert/mc/fb-ads.png", "alt": "MC Cert 6", "type": "certificate" },
+{ "src": "img/cert/mc/google-ads.png", "alt": "MC Cert 7", "type": "certificate" },
 
 
 { "src": "img/cert-toc-canvas.png", "alt": "Project Management Courses", "type": "toc",
 "sections": [
-  { "name": "PM.Cert1", "targetIndex": 42, "noteId": "noteC" },
-  { "name": "PM.Cert2", "targetIndex": 43, "noteId": "noteD" },
-  { "name": "PM.Cert3", "targetIndex": 44, "noteId": "noteE" },
-  { "name": "PM.Cert4", "targetIndex": 45, "noteId": "noteF" },
-  { "name": "PM.Cert5", "targetIndex": 46, "noteId": "noteG" },
-  { "name": "PM.Cert6", "targetIndex": 47, "noteId": "noteA" },
-  { "name": "PM.Cert7", "targetIndex": 48, "noteId": "noteB" }
+  { "name": "Manage with Git", "targetIndex": 42, "noteId": "noteC" },
+  { "name": "Working Remotely", "targetIndex": 43, "noteId": "noteD" },
+  { "name": "Resolve Conflicts", "targetIndex": 44, "noteId": "noteE" },
+  { "name": "Zendesk Tickets", "targetIndex": 45, "noteId": "noteF" },
+  { "name": "Powershell Scheduler", "targetIndex": 46, "noteId": "noteG" },
+  { "name": "Essential Safeguarding", "targetIndex": 47, "noteId": "noteA" },
+  { "name": "Think Like an Editor", "targetIndex": 48, "noteId": "noteB" }
 ] 
 },
 
-{ "src": "img/cert/pm", "alt": "PM Cert 1", "type": "certificate" },
-{ "src": "img/cert/pm", "alt": "PM Cert 2", "type": "certificate" },
-{ "src": "img/cert/pm", "alt": "PM Cert 3", "type": "certificate" },
-{ "src": "img/cert/pm", "alt": "PM Cert 4", "type": "certificate" },
-{ "src": "img/cert/pm", "alt": "PM Cert 5", "type": "certificate" },
-{ "src": "img/cert/pm", "alt": "PM Cert 6", "type": "certificate" },
-{ "src": "img/cert/pm", "alt": "PM Cert 7", "type": "certificate" },
+{ "src": "img/cert/pm/manage-with-git.png", "alt": "PM Cert 1", "type": "certificate" },
+{ "src": "img/cert/pm/working-remotely.png", "alt": "PM Cert 2", "type": "certificate" },
+{ "src": "img/cert/pm/resolve-conflicts.png", "alt": "PM Cert 3", "type": "certificate" },
+{ "src": "img/cert/pm/zendesk.png", "alt": "PM Cert 4", "type": "certificate" },
+{ "src": "img/cert/pm/schedule-tasks.png", "alt": "PM Cert 5", "type": "certificate" },
+{ "src": "img/cert/pm/safeguarding.png", "alt": "PM Cert 6", "type": "certificate" },
+{ "src": "img/cert/pm/think-editor.png", "alt": "PM Cert 7", "type": "certificate" },
 
 
 { "src": "img/cert-toc-canvas.png", "alt": "Systems & Network Courses", "type": "toc",
 "sections": [
-  { "name": "Sys.Cert1", "targetIndex": 50, "noteId": "noteC" },
-  { "name": "Sys.Cert2", "targetIndex": 51, "noteId": "noteD" },
-  { "name": "Sys.Cert3", "targetIndex": 52, "noteId": "noteE" },
-  { "name": "Sys.Cert4", "targetIndex": 53, "noteId": "noteF" },
-  { "name": "Sys.Cert5", "targetIndex": 54, "noteId": "noteG" },
-  { "name": "Sys.Cert6", "targetIndex": 55, "noteId": "noteA" },
-  { "name": "Sys.Cert7", "targetIndex": 56, "noteId": "noteB" }
+  { "name": "Assemble a Computer", "targetIndex": 50, "noteId": "noteC" },
+  { "name": "Set Up Networks", "targetIndex": 51, "noteId": "noteD" },
+  { "name": "Simulate w/ Cisco", "targetIndex": 52, "noteId": "noteE" },
+  { "name": "Run a PC w/ Linux", "targetIndex": 53, "noteId": "noteF" },
+  { "name": "Set up Virtual Machines", "targetIndex": 54, "noteId": "noteG" },
+  { "name": "Manage Windows Server", "targetIndex": 55, "noteId": "noteA" },
+  { "name": "Drive Traffic w/ SEO", "targetIndex": 56, "noteId": "noteB" }
 ] 
 },
 
-{ "src": "img/cert/sys", "alt": "Systems Cert 1", "type": "certificate" },
-{ "src": "img/cert/sys", "alt": "Systems Cert 2", "type": "certificate" },
-{ "src": "img/cert/sys", "alt": "Systems Cert 3", "type": "certificate" },
-{ "src": "img/cert/sys", "alt": "Systems Cert 4", "type": "certificate" },
-{ "src": "img/cert/sys", "alt": "Systems Cert 5", "type": "certificate" },
-{ "src": "img/cert/sys", "alt": "Systems Cert 6", "type": "certificate" },
-{ "src": "img/cert/sys", "alt": "Systems Cert 7", "type": "certificate" }
+{ "src": "img/cert/sys/assemble-pc.png", "alt": "Systems Cert 1", "type": "certificate" },
+{ "src": "img/cert/sys/tcp.png", "alt": "Systems Cert 2", "type": "certificate" },
+{ "src": "img/cert/sys/cisco.png", "alt": "Systems Cert 3", "type": "certificate" },
+{ "src": "img/cert/sys/run-linux.png", "alt": "Systems Cert 4", "type": "certificate" },
+{ "src": "img/cert/sys/vbox.png", "alt": "Systems Cert 5", "type": "certificate" },
+{ "src": "img/cert/sys/windows-server.png", "alt": "Systems Cert 6", "type": "certificate" },
+{ "src": "img/cert/sys/drive-traffic.png", "alt": "Systems Cert 7", "type": "certificate" }
 
 ]
