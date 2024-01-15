@@ -655,6 +655,7 @@ h2 {
   object-fit: contain;
   max-width: 81%;
   max-height: 81%;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5), 0px 0px 0px 5px rgba(255, 255, 255, 0.8);
 }
 
 .close {
@@ -662,7 +663,8 @@ h2 {
   top: 18px;
   right: 35px;
   color: RED;
-  font-size: 40px;
+  font-size: 3vh;
+  padding: 5px;
   font-weight: bold;
   cursor: pointer;
   z-index: 101;
@@ -688,13 +690,52 @@ h2 {
   height: 100%;
 }
 
+/* Add the keyframes and animation for the flash effect */
+
+@keyframes gradientFlash {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+
+.flash-animation {
+  animation: gradientFlash 0.5s ease;
+}
+
 .certificate-slider {
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
   align-content: center;
   overflow: hidden;
   max-width: 100%;
   height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add the gradient overlay for the flash effect */
+.certificate-slider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 3px;
+  bottom: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none; /* Allow clicks to pass through */
+  z-index: 1;
+  opacity: 0;
+}
+
+.certificate-slider.flash-animation::before {
+  opacity: 1;
 }
 
 .modal .arrow {

@@ -25,11 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 certificateContainer.innerHTML = ''; // Clear the container
                 const tocIcon = document.getElementById('tocIcon');
                 // Check if TOC certificate is in the container
-                const tocCertificateInContainer = certificates.some((cert, index) => 
-                cert.type === 'toc' && 
-                index === 0 && 
-                currentIndex % totalCertificates === index % totalCertificates
-              );
+                const tocCertificateInContainer = certificates.some((cert, index) =>
+                    cert.type === 'toc' &&
+                    index === 0 &&
+                    currentIndex % totalCertificates === index % totalCertificates
+                );
                 // Toggle the display of the icon based on the condition
                 tocIcon.style.display = tocCertificateInContainer ? 'none' : 'block';
 
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     }
                                 }
                             });
-                            
+
                             textDiv.addEventListener('mouseleave', function () {
                                 const audioElement = document.getElementById(section.noteId);
                                 if (userInteracted && audioElement) {
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     }
                                 }
                             });
-                            
+
                             textDiv.addEventListener('click', function (event) {
                                 event.stopPropagation();
                                 // Stop the audio playback
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 }
                                 navigateToSection(section.targetIndex);
                             });
-                            
+
 
 
 
@@ -463,24 +463,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // Add TOC-specific content
 
-const headlineDiv = document.createElement('div');
-headlineDiv.classList.add('toc-modal-headline');
-headlineDiv.innerText = clickedCertificate.alt; // Assuming 'alt' contains the headline
+                    const headlineDiv = document.createElement('div');
+                    headlineDiv.classList.add('toc-modal-headline');
+                    headlineDiv.innerText = clickedCertificate.alt; // Assuming 'alt' contains the headline
 
-// Split the headline text into words
-const words = headlineDiv.innerText.split(' ');
+                    // Split the headline text into words
+                    const words = headlineDiv.innerText.split(' ');
 
-// Insert <br> after the first word
-words.splice(1, 0, '<br>');
+                    // Insert <br> after the first word
+                    words.splice(1, 0, '<br>');
 
-// Join the words back together
-const updatedHeadline = words.join(' ');
+                    // Join the words back together
+                    const updatedHeadline = words.join(' ');
 
-// Set the innerHTML with the updated headline
-headlineDiv.innerHTML = updatedHeadline;
+                    // Set the innerHTML with the updated headline
+                    headlineDiv.innerHTML = updatedHeadline;
 
-// Append the headline to the modal content wrapper
-tocContentWrapper.appendChild(headlineDiv);
+                    // Append the headline to the modal content wrapper
+                    tocContentWrapper.appendChild(headlineDiv);
 
                     const sectionsDiv = document.createElement('div');
                     sectionsDiv.className = 'toc-modal-sections';
@@ -501,7 +501,7 @@ tocContentWrapper.appendChild(headlineDiv);
                                 }
                             }
                         });
-                        
+
                         textDiv.addEventListener('mouseleave', function () {
                             const audioElement = document.getElementById(section.noteId);
                             if (userInteracted && audioElement) {
@@ -515,7 +515,7 @@ tocContentWrapper.appendChild(headlineDiv);
                                 }
                             }
                         });
-                        
+
                         textDiv.addEventListener('click', function (event) {
                             event.stopPropagation();
                             // Stop the audio playback
@@ -527,7 +527,7 @@ tocContentWrapper.appendChild(headlineDiv);
                             }
                             navigateToSection(section.targetIndex, true);
                         });
-                        
+
 
 
                         sectionsDiv.appendChild(textDiv);
@@ -550,6 +550,15 @@ tocContentWrapper.appendChild(headlineDiv);
                 certificateSlider.innerHTML = ''; // Clear previous content
                 certificateSlider.appendChild(modalContentWrapper);
 
+                // Add a class to the certificate-slider when updating the modal
+                certificateSlider.classList.add('flash-animation');
+
+                // Wait for the animation to complete and then remove the class
+                setTimeout(() => {
+                    certificateSlider.classList.remove('flash-animation');
+                }, 500); // Adjust the duration to match your CSS animation duration
+
+
                 // Update lastModalId
                 lastModalId = 'certificatesModal';
                 console.log(certificates);
@@ -564,20 +573,20 @@ tocContentWrapper.appendChild(headlineDiv);
             function closeModal(modalId) {
                 const modal = document.getElementById(modalId);
                 const overlay = document.getElementById('overlay');
-            
+
                 // Get the index of the certificate to be on top when closing the modal
                 const currentIndexInArray = currentIndex;
-            
+
                 // Update the certificates display
                 const closeModalEvent = new CustomEvent('modalClosed', { detail: { currentIndex: currentIndexInArray } });
                 document.dispatchEvent(closeModalEvent);
-            
+
                 // Close the modal
                 modal.style.display = 'none';
                 overlay.style.display = 'none';
                 console.log(`Modal with ID ${modalId} closed. Display: ${modal.style.display}`);
             }
-            
+
 
 
             window.addEventListener("resize", updateCertificates);
