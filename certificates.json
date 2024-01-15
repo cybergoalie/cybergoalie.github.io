@@ -146,7 +146,9 @@
   { "name": "Run a PC w/ Linux", "targetIndex": 53, "noteId": "noteF" },
   { "name": "Set up Virtual Machines", "targetIndex": 54, "noteId": "noteG" },
   { "name": "Manage Windows Server", "targetIndex": 55, "noteId": "noteA" },
-  { "name": "Drive Traffic w/ SEO", "targetIndex": 56, "noteId": "noteB" }
+  { "name": "Drive Traffic w/ SEO", "targetIndex": 56, "noteId": "noteB" },
+  { "name": "Emerging Technologies", "targetIndex": 57, "noteId": "noteC" }
+
 ] 
 },
 
@@ -156,6 +158,7 @@
 { "src": "img/cert/sys/run-linux.png", "alt": "Systems Cert 4", "type": "certificate" },
 { "src": "img/cert/sys/vbox.png", "alt": "Systems Cert 5", "type": "certificate" },
 { "src": "img/cert/sys/windows-server.png", "alt": "Systems Cert 6", "type": "certificate" },
-{ "src": "img/cert/sys/drive-traffic.png", "alt": "Systems Cert 7", "type": "certificate" }
+{ "src": "img/cert/sys/drive-traffic.png", "alt": "Systems Cert 7", "type": "certificate" },
+{ "src": "img/cert/sys/emerging-tech.png", "alt": "Systems Cert 8", "type": "certificate" }
 
 ]
