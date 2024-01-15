@@ -774,15 +774,15 @@ h2 {
 footer {
   background: linear-gradient(
       to right,
-      rgba(74, 0, 224, 0.3),
-      rgba(142, 45, 226, 0.3),
-      rgba(74, 0, 224, 0.3)
+      rgba(74, 0, 224, 0.1),
+      rgba(142, 45, 226, 0.1),
+      rgba(74, 0, 224, 0.1)
     ),
     radial-gradient(
       circle at top right,
-      rgba(255, 51, 102, 0.3),
-      rgba(0, 204, 255, 0.3),
-      rgba(255, 153, 0, 0.3)
+      rgba(255, 51, 102, 0.1),
+      rgba(0, 204, 255, 0.1),
+      rgba(255, 153, 0, 0.1)
     );
   background-blend-mode: screen;
   background-color: #333; /* Choose your desired background color */
