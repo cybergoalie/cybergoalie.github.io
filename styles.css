@@ -818,6 +818,11 @@ padding: 10px;
 border-radius: 50px;
 transition: background-color 0.3s ease;}
 
+.social-icons a:active {
+  background-color: rgba(0, 0, 0, 0.9); /* Adjust the background color for the pressed state */
+}
+
+
 .social-icons i {
   width: 40px;
   height: 40px;
