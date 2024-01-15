@@ -35,12 +35,22 @@ body:not(.light-mode) #meetMeImageDark {
 }
 
 body.light-mode .meetme-tagline {
-  background-color: rgba(190, 214, 200, 0.645); /* Adjust the color values for a lighter shade */
+  background-color: rgba(
+    190,
+    214,
+    200,
+    0.645
+  ); /* Adjust the color values for a lighter shade */
 }
 
 body.light-mode .meetme-tagline::before,
 body.light-mode .meetme-tagline::after {
-  background-color: rgba(190, 214, 200, 0.645); /* Adjust the color values for a lighter shade */
+  background-color: rgba(
+    190,
+    214,
+    200,
+    0.645
+  ); /* Adjust the color values for a lighter shade */
 }
 
 header {
@@ -199,7 +209,6 @@ nav button i {
   padding-bottom: 3vh;
   width: 100%;
   position: relative;
-
 }
 
 .meetme-image {
@@ -210,7 +219,6 @@ nav button i {
   right: 3px;
   z-index: 0;
 }
-
 
 .meetme-tagline {
   display: flex;
@@ -226,7 +234,7 @@ nav button i {
 
 .meetme-tagline::before,
 .meetme-tagline::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 10px; /* Adjust the height to control the wave amplitude */
@@ -249,7 +257,7 @@ nav button i {
   height: auto;
   z-index: 0;
   top: 0;
-  opacity: .3;
+  opacity: 0.3;
   margin-left: -15px;
   margin-right: -15px;
   margin-top: -10px;
@@ -265,7 +273,7 @@ h2 {
   line-height: 1.369;
   font-weight: 500;
   font-size: 16px;
-  z-index: 1
+  z-index: 1;
 }
 
 #tocIcon {
@@ -278,7 +286,7 @@ h2 {
 #tocIcon::after {
   content: "TOC";
   position: absolute;
-  top: calc( 103% + 13.369px );
+  top: calc(103% + 13.369px);
   left: 30%;
   transform: translateX(-69%);
   padding: 8px;
@@ -358,7 +366,6 @@ h2 {
   margin: 10px 8vw;
   height: 100%;
   max-width: 53%;
-
 }
 
 .cert-container-wrapper {
@@ -561,7 +568,6 @@ h2 {
   font-size: 12px;
   text-align: right;
   width: 50%;
-
 }
 
 /* MODAL STYLES */
@@ -655,7 +661,8 @@ h2 {
   object-fit: contain;
   max-width: 81%;
   max-height: 81%;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5), 0px 0px 0px 5px rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5),
+    0px 0px 0px 5px rgba(255, 255, 255, 0.8);
 }
 
 .close {
@@ -702,7 +709,6 @@ h2 {
   }
 }
 
-
 .flash-animation {
   animation: gradientFlash 0.5s ease;
 }
@@ -728,7 +734,12 @@ h2 {
   right: 3px;
   bottom: 0;
   transition: opacity 0.5s ease;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 100%);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
   pointer-events: none; /* Allow clicks to pass through */
   z-index: 1;
   opacity: 0;
@@ -760,7 +771,56 @@ h2 {
   right: 8.1px;
 }
 
+footer {
+  background: linear-gradient(
+      to right,
+      rgba(74, 0, 224, 0.3),
+      rgba(142, 45, 226, 0.3),
+      rgba(74, 0, 224, 0.3)
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(255, 51, 102, 0.3),
+      rgba(0, 204, 255, 0.3),
+      rgba(255, 153, 0, 0.3)
+    );
+  background-blend-mode: screen;
+  background-color: #333; /* Choose your desired background color */
+  color: #fff; /* Choose your desired text color */
+  padding: 13px 20px 20px 20px;
+  text-align: center;
+}
 
+.social-icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 19.6px;
+}
+
+.social-icons a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.social-icons i {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-image {
+  width: 53%;
+  height: auto;
+  max-height: 21px;
+  margin-top: 3px;
+}
 
 @media screen and ((max-width: 1100px)) {
   /* .toc {
