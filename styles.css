@@ -796,6 +796,7 @@ footer {
   justify-content: space-around;
   align-items: center;
   font-size: 19.6px;
+  
 }
 
 .social-icons a {
@@ -803,7 +804,19 @@ footer {
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-}
+  color: white; /* Text color when not hovered */
+  background-color: rgba(0, 0, 0, 0.7); /* Initial background color with opacity */
+  background: radial-gradient(rgba(255, 255, 255, 0.2) 5%, transparent 10%),
+  radial-gradient(rgba(255, 255, 255, 0.15) 15%, transparent 20%),
+  radial-gradient(rgba(255, 255, 255, 0.1) 30%, transparent 35%),
+  radial-gradient(rgba(255, 255, 255, 0.05) 50%, transparent 55%),
+  radial-gradient(rgba(255, 255, 255, 0.02) 65%, transparent 70%);
+background-size: 100% 100%;
+background-repeat: no-repeat;
+background-position: center;
+padding: 10px;
+border-radius: 50px;
+transition: background-color 0.3s ease;}
 
 .social-icons i {
   width: 40px;
