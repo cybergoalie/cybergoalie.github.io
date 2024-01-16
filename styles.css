@@ -9,17 +9,17 @@ body {
   font-family: "Prompt";
   letter-spacing: 1.3px;
   font-weight: 500;
-  background-color: #333;
+  background: #333;
   color: #fff;
 }
 
 body.light-mode {
-  background-color: #fff;
+  background: #fff;
   color: #000;
 }
 
 body.light-mode .meet-me {
-  background: beige;
+  background: #f5f5dc59;
 }
 
 body.light-mode #meetMeImageLight {
