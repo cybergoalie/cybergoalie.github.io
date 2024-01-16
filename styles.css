@@ -18,6 +18,10 @@ body.light-mode {
   color: #000;
 }
 
+body.light-mode .meet-me {
+  background: beige;
+}
+
 body.light-mode #meetMeImageLight {
   display: block;
 }
@@ -35,22 +39,20 @@ body:not(.light-mode) #meetMeImageDark {
 }
 
 body.light-mode .meetme-tagline {
-  background-color: rgba(
-    190,
-    214,
-    200,
-    0.645
-  ); /* Adjust the color values for a lighter shade */
+  background-color: rgba(190, 214, 200, 0.645);
 }
 
 body.light-mode .meetme-tagline::before,
 body.light-mode .meetme-tagline::after {
-  background-color: rgba(
-    190,
-    214,
-    200,
-    0.645
-  ); /* Adjust the color values for a lighter shade */
+  background-color: rgba(190, 214, 200, 0.645);
+}
+
+body.light-mode header {
+  background-color: rgba(99, 26, 110, 0.6);
+}
+
+body.light-mode footer {
+  background-color: rgba(99, 26, 110, 0.3);
 }
 
 header {
@@ -796,7 +798,6 @@ footer {
   justify-content: space-around;
   align-items: center;
   font-size: 19.6px;
-  
 }
 
 .social-icons a {
@@ -805,23 +806,33 @@ footer {
   align-items: center;
   text-decoration: none;
   color: white; /* Text color when not hovered */
-  background-color: rgba(0, 0, 0, 0.7); /* Initial background color with opacity */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.7
+  ); /* Initial background color with opacity */
   background: radial-gradient(rgba(255, 255, 255, 0.2) 5%, transparent 10%),
-  radial-gradient(rgba(255, 255, 255, 0.15) 15%, transparent 20%),
-  radial-gradient(rgba(255, 255, 255, 0.1) 30%, transparent 35%),
-  radial-gradient(rgba(255, 255, 255, 0.05) 50%, transparent 55%),
-  radial-gradient(rgba(255, 255, 255, 0.02) 65%, transparent 70%);
-background-size: 100% 100%;
-background-repeat: no-repeat;
-background-position: center;
-padding: 10px;
-border-radius: 50px;
-transition: background-color 0.3s ease;}
-
-.social-icons a:active {
-  background-color: rgba(0, 0, 0, 0.9); /* Adjust the background color for the pressed state */
+    radial-gradient(rgba(255, 255, 255, 0.15) 15%, transparent 20%),
+    radial-gradient(rgba(255, 255, 255, 0.1) 30%, transparent 35%),
+    radial-gradient(rgba(255, 255, 255, 0.05) 50%, transparent 55%),
+    radial-gradient(rgba(255, 255, 255, 0.02) 65%, transparent 70%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 10px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
 }
 
+.social-icons a:active {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.9
+  ); /* Adjust the background color for the pressed state */
+}
 
 .social-icons i {
   width: 40px;
