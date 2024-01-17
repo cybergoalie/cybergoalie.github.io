@@ -13,6 +13,8 @@ body {
   color: #fff;
 }
 
+/* LIGHT MODE */
+
 body.light-mode {
   background: #fff;
   color: #000;
@@ -787,8 +789,8 @@ footer {
       rgba(255, 153, 0, 0.1)
     );
   background-blend-mode: screen;
-  background-color: #333; /* Choose your desired background color */
-  color: #fff; /* Choose your desired text color */
+  background-color: #333;
+  color: #fff; 
   padding: 13px 20px 20px 20px;
   text-align: center;
 }
@@ -800,18 +802,13 @@ footer {
   font-size: 19.6px;
 }
 
-.social-icons a {
+.social-icons i {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: white; /* Text color when not hovered */
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.7
-  ); /* Initial background color with opacity */
+  color: white; 
+  background-color: rgba(0,0,0,0.7); 
   background: radial-gradient(rgba(255, 255, 255, 0.2) 5%, transparent 10%),
     radial-gradient(rgba(255, 255, 255, 0.15) 15%, transparent 20%),
     radial-gradient(rgba(255, 255, 255, 0.1) 30%, transparent 35%),
@@ -825,23 +822,12 @@ footer {
   transition: background-color 0.3s ease;
 }
 
-.social-icons a:active {
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.9
-  ); /* Adjust the background color for the pressed state */
+.social-icons i:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
-.social-icons i {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.social-icons i:active {
+  background-color: rgba(0,0,0,0.9);
 }
 
 .arrow-image {
