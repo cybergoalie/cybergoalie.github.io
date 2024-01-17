@@ -775,6 +775,165 @@ h2 {
   right: 8.1px;
 }
 
+/* Add these styles to your existing stylesheet */
+
+.services {
+  background-color: #f8f8f8; /* Set a light background color */
+  padding: 80px 0; /* Adjust padding for spacing */
+
+}
+
+.services-container {
+  max-width: 81%;
+  margin: 0 auto; 
+}
+
+.service-headline {
+  display: block;
+  text-align: center;
+  font-size: 2rem; 
+  font-weight: bold; 
+  color: #333;
+  margin-bottom: 30px; 
+}
+
+
+.service-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.service-card {
+  background-color: #fff; 
+  border: 1px solid #e1e1e1; 
+  border-radius: 8px; 
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out; 
+  width: 30%; 
+  margin-bottom: 20px; 
+}
+
+.service-card:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.service-card img {
+  max-width: 100%; 
+  border-radius: 8px; 
+}
+
+.service-headline {
+  font-size: 1.5rem;
+  color: #333;
+  margin-top: 15px;
+}
+
+.service-desc {
+  color: #e3cc9b; 
+  margin-top: 10px; 
+}
+
+
+/* PORTFOLIO SECTION */
+
+.portfolio {
+  background-color: #333;
+  color: #fff;
+  padding: 80px 0; 
+}
+
+.portfolio-container {
+  max-width: 81%;
+  margin: 0 auto;
+}
+
+.projects-headline {
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+
+.projects-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.project-card {
+  background-color: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  width: 30%;
+  margin-bottom: 20px;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.project-headline {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 15px;
+}
+
+.project-desc {
+  color: #666;
+  margin-top: 10px;
+}
+
+/* CALL TO ACTION FORM */
+
+/* Add these styles to your existing stylesheet */
+
+/* For Terms and Privacy Section */
+.terms-privacy {
+  background-color: #f8f8f8;
+  color: #333;
+  padding: 80px 0;
+}
+
+.terms-privacy-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.terms, .privacy {
+  width: 45%; /* Adjust the width as needed */
+}
+
+.terms-headline, .privacy-headline {
+  font-size: 3vh;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.terms-content, .privacy-content {
+  line-height: 1.6;
+}
+
+
+
+
 footer {
   background: linear-gradient(
       to right,
