@@ -975,12 +975,13 @@ h2 {
 
 .projects-wrapper {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   margin: 3vh 0;
   height: 53vh;
+  width: 100%;
 }
 
 .project-card {
@@ -991,7 +992,7 @@ h2 {
   padding: 20px;
   text-align: center;
   transition: transform 0.3s ease-in-out;
-  width: 100%;
+  width: 69%;
   margin-bottom: 20px;
   height: 43vh;
 }
