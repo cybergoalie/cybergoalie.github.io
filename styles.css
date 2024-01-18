@@ -824,7 +824,7 @@ h2 {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  padding: 80px 0;
+  padding: 5vh 3vw;
 }
 
 .services-container {
@@ -836,7 +836,7 @@ h2 {
 .services-headline {
   display: block;
   text-align: center;
-  font-size: 2rem;
+  font-size: 3.69vh;
   font-weight: bold;
   color: #516199;
   margin-bottom: 10vh;
@@ -896,7 +896,7 @@ h2 {
   background-color: rgb(175 164 164 / 90%);
   min-width: 100%;
   color: #fff;
-  padding: 10vh 0;
+  padding: 1vh 0;
 }
 
 .portfolio-container {
@@ -907,28 +907,36 @@ h2 {
 .projects-headline {
   display: block;
   text-align: center;
-  font-size: 2rem;
+  font-size: 3.69vh;
   font-weight: bold;
   color: #516199;
-  margin: 5vh 0;
+  margin: 2vh 0;
+  padding-top: 2vh;
 }
 
 .projects-wrapper {
   display: flex;
+  flex-flow: column wrap;
   justify-content: space-around;
+  align-items: center;
   flex-wrap: wrap;
   margin: 3vh 0;
 }
 
 .project-card {
+  display: none;
   background-color: black;
   border: 1px solid #a77c7c;
   border-radius: 8px;
   padding: 20px;
   text-align: center;
   transition: transform 0.3s ease-in-out;
-  width: 30%;
+  width: 35%;
   margin-bottom: 20px;
+}
+
+.project-card.active {
+  display: block;
 }
 
 .project-card:hover {
@@ -955,6 +963,28 @@ h2 {
   overflow: hidden;
 }
 
+/* Add these styles to your existing stylesheet */
+
+.project-circles {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #999; /* Inactive circle color */
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.circle.active {
+  background-color: #555; /* Active circle color */
+}
+
+
 .portfolio-section-band {
   background-color: rgb(49 7 4 / 85%);
 }
@@ -967,7 +997,6 @@ h2 {
   background-size: cover;
   background-position: center center;
   background-color: #f8f8f8;
-  padding-top: 3vh;
 }
 
 .terms-privacy-container {
@@ -985,7 +1014,7 @@ h2 {
 
 .terms-headline,
 .privacy-headline {
-  font-size: 3.69vh;
+  font-size: 3.169vh;
   font-weight: bold;
   margin-bottom: 20px;
   color: #516199;

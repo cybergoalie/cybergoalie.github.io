@@ -48,3 +48,32 @@ function toggleVideo() {
 }
 
 // MEET ME SECTION WAS SUCCESSFULLY FILTERED OUT, ORGANIZED AND IS NOW THE MEETME.JS (ALSO IMPORTED INTO THE INDEX.HTML) & CERTIFICATES.JSON FILES
+
+
+// SHOWCASE ONE PROJECT IN PORTFOLIO SECTION AT A TIME
+document.addEventListener('DOMContentLoaded', function () {
+    const projectCards = document.querySelectorAll('.project-card');
+    const circles = document.querySelectorAll('.circle');
+
+    // Show the second project card by default
+    showProject(1);
+
+    circles.forEach((circle, index) => {
+      circle.addEventListener('click', () => {
+        showProject(index);
+      });
+    });
+
+    function showProject(index) {
+      projectCards.forEach((card, i) => {
+        if (i === index) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+        circles[i].classList.remove('active');
+      });
+
+      circles[index].classList.add('active');
+    }
+  });
