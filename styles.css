@@ -952,7 +952,7 @@ h2 {
   min-width: 100%;
   color: #fff;
   padding: 1vh 0;
-  height: 69vh;
+  height: 81vh;
 }
 
 .portfolio-container {
@@ -966,7 +966,7 @@ h2 {
   font-size: 4.17vh;
   font-weight: bold;
   color: #516199;
-  margin: 2vh 0;
+  margin: 5vh 0;
   padding-top: 2vh;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -978,6 +978,7 @@ h2 {
   align-items: center;
   flex-wrap: wrap;
   margin: 3vh 0;
+  height: 53vh;
 }
 
 .project-card {
@@ -990,7 +991,7 @@ h2 {
   transition: transform 0.3s ease-in-out;
   width: auto;
   margin-bottom: 20px;
-  height: 28%;
+  height: 33vh;
 }
 
 .project-card.active {
@@ -1227,6 +1228,7 @@ footer {
   }
   .portfolio {
     background-size: cover;
+    background-position: left center;
   }
   .service-wrapper {
     align-items: center;
