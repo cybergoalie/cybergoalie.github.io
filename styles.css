@@ -21,7 +21,8 @@ body.light-mode {
 }
 
 body.light-mode .meet-me {
-  background-color: rgb(175 164 164 / 10%);}
+  background-color: rgb(175 164 164 / 10%);
+}
 
 body.light-mode #meetMeImageLight {
   display: block;
@@ -86,23 +87,27 @@ body.light-mode .service-headline {
 
 body.light-mode .portfolio {
   background: linear-gradient(
-      to right,
-      rgba(74, 0, 224, 0.1),
-      rgba(142, 45, 226, 0.1),
-      rgba(74, 0, 224, 0.1)
-    );
+    to right,
+    rgba(74, 0, 224, 0.1),
+    rgba(142, 45, 226, 0.1),
+    rgba(74, 0, 224, 0.1)
+  );
   background-image: url("img/brick-wall.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  background-color: rgb(175 164 164 / 30%);
 }
 
 body.light-mode .projects-headline {
-  color: #9576ef;
+  color: #599964;
   border-radius: 30px;
   width: auto;
 }
 
 body.light-mode .project-card {
   background-color: white;
-    border: 1px solid #e1e1e1;
+  border: 1px solid #e1e1e1;
 }
 
 body.light-mode .portfolio-section-band {
@@ -115,13 +120,32 @@ body.light-mode header {
 
 body.light-mode .terms-privacy {
   background-image: url("img/frosty.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+body.light-mode 
+.terms-headline,
+.privacy-headline {
+  color: #778bd1!important;
 }
 
 body.light-mode footer {
   background-color: rgba(99, 26, 110, 0.3);
+  background: linear-gradient(
+    to right,
+    rgba(74, 0, 224, 0.369),
+    rgba(142, 45, 226, 0.369),
+    rgba(74, 0, 224, 0.369)
+  ),
+  radial-gradient(
+    circle at top right,
+    rgba(255, 51, 102, 0.369),
+    rgba(0, 204, 255, 0.369),
+    rgba(255, 153, 0, 0.369)
+  )
 }
-
-
 
 header {
   background-color: #333;
@@ -861,7 +885,7 @@ h2 {
 .services-headline {
   display: block;
   text-align: center;
-  font-size: 3.69vh;
+  font-size: 4.17vh;
   font-weight: bold;
   color: #516199;
   margin: 2vh 0;
@@ -901,7 +925,7 @@ h2 {
   color: #516199;
   margin-top: 15px;
   max-width: 100%;
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .service-desc {
@@ -912,7 +936,6 @@ h2 {
 
 .services-section-band {
   background-color: rgba(74, 96, 241, 0.5);
-
 }
 
 /* PORTFOLIO SECTION */
@@ -936,7 +959,7 @@ h2 {
 .projects-headline {
   display: block;
   text-align: center;
-  font-size: 3.69vh;
+  font-size: 4.17vh;
   font-weight: bold;
   color: #516199;
   margin: 2vh 0;
@@ -1012,7 +1035,6 @@ h2 {
 .circle.active {
   background-color: #555; /* Active circle color */
 }
-
 
 .portfolio-section-band {
   background-color: rgb(49 7 4 / 85%);
