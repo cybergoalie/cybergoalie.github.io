@@ -100,7 +100,7 @@ body.light-mode .portfolio {
 }
 
 body.light-mode .projects-headline {
-  color: #599964;
+  color: #61c960;
   border-radius: 30px;
   width: auto;
 }
@@ -125,10 +125,12 @@ body.light-mode .terms-privacy {
   background-position: center center;
 }
 
-body.light-mode 
-.terms-headline,
-.privacy-headline {
-  color: #778bd1!important;
+body.light-mode .terms-headline {
+  color: #778bd1;
+} 
+
+body.light-mode .privacy-headline {
+  color: #778bd1;
 }
 
 body.light-mode footer {
@@ -890,6 +892,7 @@ h2 {
   color: #516199;
   margin: 2vh 0;
   padding-bottom: 4vh;
+  
 }
 
 .service-wrapper {
@@ -964,6 +967,7 @@ h2 {
   color: #516199;
   margin: 2vh 0;
   padding-top: 2vh;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .projects-wrapper {
