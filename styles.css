@@ -892,6 +892,7 @@ h2 {
   color: #516199;
   margin: 2vh 0;
   padding-bottom: 4vh;
+  font-family: Rock Salt;
   
 }
 
@@ -952,7 +953,7 @@ h2 {
   min-width: 100%;
   color: #fff;
   padding: 1vh 0;
-  height: 81vh;
+  height: 96vh;
 }
 
 .portfolio-container {
@@ -961,6 +962,7 @@ h2 {
 }
 
 .projects-headline {
+ font-family: Rock Salt;
   display: block;
   text-align: center;
   font-size: 4.17vh;
@@ -989,9 +991,9 @@ h2 {
   padding: 20px;
   text-align: center;
   transition: transform 0.3s ease-in-out;
-  width: auto;
+  width: 100%;
   margin-bottom: 20px;
-  height: 33vh;
+  height: 43vh;
 }
 
 .project-card.active {
@@ -1034,13 +1036,13 @@ h2 {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #bdb2b2;
+  background-color: #e1dada;
   margin: 0 5px;
   cursor: pointer;
 }
 
 .circle.active {
-  background-color: #555; /* Active circle color */
+  background-color: #555; 
 }
 
 .portfolio-section-band {
@@ -1228,7 +1230,6 @@ footer {
   }
   .portfolio {
     background-size: cover;
-    background-position: left center;
   }
   .service-wrapper {
     align-items: center;
