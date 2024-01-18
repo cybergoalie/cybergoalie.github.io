@@ -1237,6 +1237,10 @@ footer {
   .service-card {
     width: 81%;
   }
+
+  .arrow-image {
+    width: 58%;
+  }
 }
 
 @media screen and ((max-width: 611px)) {
