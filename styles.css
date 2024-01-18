@@ -100,7 +100,7 @@ body.light-mode .portfolio {
 }
 
 body.light-mode .projects-headline {
-  color: #61c960;
+  color: #72cf71;
   border-radius: 30px;
   width: auto;
 }
@@ -952,6 +952,7 @@ h2 {
   min-width: 100%;
   color: #fff;
   padding: 1vh 0;
+  height: 69vh;
 }
 
 .portfolio-container {
@@ -989,6 +990,7 @@ h2 {
   transition: transform 0.3s ease-in-out;
   width: auto;
   margin-bottom: 20px;
+  height: 28%;
 }
 
 .project-card.active {
@@ -1031,7 +1033,7 @@ h2 {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #999; /* Inactive circle color */
+  background-color: #bdb2b2;
   margin: 0 5px;
   cursor: pointer;
 }
@@ -1222,6 +1224,16 @@ footer {
   .certs-caption {
     margin-right: 1.3vw;
     width: 49%;
+  }
+  .portfolio {
+    background-size: cover;
+  }
+  .service-wrapper {
+    align-items: center;
+    flex-direction: column;
+  }
+  .service-card {
+    width: 81%;
   }
 }
 
