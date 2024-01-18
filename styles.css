@@ -85,7 +85,12 @@ body.light-mode .service-headline {
 }
 
 body.light-mode .portfolio {
-  background-color: rgb(175 164 164 / 40%);
+  background: linear-gradient(
+      to right,
+      rgba(74, 0, 224, 0.1),
+      rgba(142, 45, 226, 0.1),
+      rgba(74, 0, 224, 0.1)
+    );
   background-image: url("img/brick-wall.png");
 }
 
@@ -116,9 +121,7 @@ body.light-mode footer {
   background-color: rgba(99, 26, 110, 0.3);
 }
 
-body.light-mode .arrow-image {
-    width: 53%;
-}
+
 
 header {
   background-color: #333;
@@ -894,14 +897,17 @@ h2 {
 }
 
 .service-headline {
-  font-size: 1.5rem;
+  font-size: 3.169vh;
   color: #516199;
   margin-top: 15px;
+  max-width: 100%;
+    overflow: hidden;
 }
 
 .service-desc {
   color: #e3cc9b;
   margin-top: 10px;
+  font-size: 2.3vh;
 }
 
 .services-section-band {
@@ -1105,7 +1111,7 @@ footer {
 }
 
 .arrow-image {
-  width: 69%;
+  width: 81%;
   height: auto;
   max-height: 21px;
   margin-top: 3px;
