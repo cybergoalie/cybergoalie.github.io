@@ -1231,6 +1231,7 @@ footer {
   }
   .portfolio {
     background-size: cover;
+    height: 101vh;
   }
 
   .project-card {
