@@ -1232,6 +1232,10 @@ footer {
   .portfolio {
     background-size: cover;
   }
+
+  .project-card {
+    width: 100%;
+  }
   .service-wrapper {
     align-items: center;
     flex-direction: column;
