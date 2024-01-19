@@ -980,7 +980,7 @@ h2 {
   align-items: center;
   flex-wrap: wrap;
   margin: 3vh 0;
-  height: 53%;
+  height: auto;
   width: 100%;
 }
 
@@ -993,7 +993,7 @@ h2 {
   text-align: center;
   transition: transform 0.3s ease-in-out;
   width: 69%;
-  /* margin-bottom: 20px; */
+  margin-bottom: 20px;
   height: auto;
 }
 
@@ -1024,8 +1024,6 @@ h2 {
   margin-top: 10px;
   overflow: hidden;
 }
-
-/* Add these styles to your existing stylesheet */
 
 .project-circles {
   display: flex;
@@ -1231,11 +1229,15 @@ footer {
   }
   .portfolio {
     background-size: cover;
-    height: 101vh;
+    height: 100vh;
+  }
+
+  .portfolio-container {
+    max-width: 100%;
   }
 
   .project-card {
-    width: 100%;
+    border-radius: 15px;
   }
   .service-wrapper {
     align-items: center;
