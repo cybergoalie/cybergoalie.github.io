@@ -90,3 +90,10 @@ document.addEventListener('DOMContentLoaded', function () {
        });
     });
  });
+
+ function scrollToTop() {
+    window.scrollTo({
+       top: 0,
+       behavior: 'smooth'
+    });
+ }
