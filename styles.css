@@ -1007,6 +1007,7 @@ h2 {
 
 .portfolio-container {
   max-width: 53%;
+  height: 100%;
   margin: 0 auto;
 }
 
@@ -1029,25 +1030,25 @@ h2 {
   align-items: center;
   flex-wrap: wrap;
   margin: 3vh 0;
-  height: auto;
+  height: 33vh;
   width: 100%;
 }
 
 .project-wrapper {
-  width: 69%;
-  height: 50vh;
+  width: 53%;
+  height: 100%;
 }
 
 .project-card {
   background-color: black;
   border: 1px solid #a77c7c;
-  border-radius: 8px;
+  border-radius: 15px;
   padding: 20px;
   text-align: center;
   transition: transform 0.3s ease-in-out;
   width: 100%;
+  height: 100%;
   margin-bottom: 20px;
-  
   cursor: pointer;
 }
 
@@ -1224,7 +1225,7 @@ footer {
   body.light-mode .portfolio {
     background-size: cover;
   }
-  
+
   logo {
     margin-right: 1vw;
   }
@@ -1298,14 +1299,15 @@ footer {
   }
 
   .project-card {
-    border-radius: 15px;
+  
   }
   .service-wrapper {
     align-items: center;
     flex-direction: column;
   }
   .service-card {
-    width: 81%;
+    width: 53%;
+    height: auto;
   }
 
   .arrow-image {
@@ -1322,6 +1324,11 @@ footer {
   .toc-content-wrapper {
     height: 63.33px !important;
   }
+
+  .service-card {
+    width: 69%;
+    height: auto;
+  }
 }
 
 @media screen and ((max-width: 480px)) {
@@ -1332,6 +1339,10 @@ footer {
 
   .toc-content-wrapper {
     height: 49.48px !important;
+  }
+  .service-card {
+    width: 81%;
+    height: auto;
   }
 }
 
