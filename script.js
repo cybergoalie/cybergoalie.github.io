@@ -2,10 +2,11 @@
 
 // DISPLAY LOADING WRAPPER UNTIL THE PAGE IS FULLY LOADED
 
-document.addEventListener("DOMContentLoaded", function () {
+window.onload = function () {
     // Hide the loading wrapper
     document.getElementById("loading-wrapper").style.display = "none";
- });
+};
+
 
 // TOGGLE NAVBAR MENU FOR SMALLER SCREENS
 
