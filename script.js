@@ -1,5 +1,12 @@
 // script.js
 
+// DISPLAY LOADING WRAPPER UNTIL THE PAGE IS FULLY LOADED
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Hide the loading wrapper
+    document.getElementById("loading-wrapper").style.display = "none";
+ });
+
 // TOGGLE NAVBAR MENU FOR SMALLER SCREENS
 
 function toggleMenu() {
@@ -59,41 +66,45 @@ document.addEventListener('DOMContentLoaded', function () {
     showProject(1);
 
     circles.forEach((circle, index) => {
-      circle.addEventListener('click', () => {
-        showProject(index);
-      });
+        circle.addEventListener('click', () => {
+            showProject(index);
+        });
     });
 
     function showProject(index) {
-      projectCards.forEach((card, i) => {
-        if (i === index) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-        circles[i].classList.remove('active');
-      });
+        projectCards.forEach((card, i) => {
+            if (i === index) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+            circles[i].classList.remove('active');
+        });
 
-      circles[index].classList.add('active');
+        circles[index].classList.add('active');
     }
-  });
+});
 
-  document.addEventListener("DOMContentLoaded", function () {
+// SMOOTH-SCROLLING TO SECTIONS
+
+document.addEventListener("DOMContentLoaded", function () {
     // Add smooth scrolling to all links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-       anchor.addEventListener('click', function (e) {
-          e.preventDefault();
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
 
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-             behavior: 'smooth'
-          });
-       });
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
     });
- });
+});
 
- function scrollToTop() {
+// SMOOTH-SCROLLING TO TOP
+
+function scrollToTop() {
     window.scrollTo({
-       top: 0,
-       behavior: 'smooth'
+        top: 0,
+        behavior: 'smooth'
     });
- }
+}

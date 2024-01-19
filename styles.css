@@ -2,6 +2,42 @@
   box-sizing: border-box;
 }
 
+#loading-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+.loader {
+  border: 8px solid #f3f3f3; /* Light gray border */
+  border-top: 8px solid #3498db; /* Blue border for animation */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite; /* Animation name, duration, timing function, iteration count */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#loading-wrapper p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+
+
 body {
   margin: 0;
   padding: 0;
@@ -123,26 +159,29 @@ body.light-mode .terms-privacy {
 
 body.light-mode .terms-headline {
   color: #778bd1;
-} 
+}
 
 body.light-mode .privacy-headline {
   color: #778bd1;
+}
+body.light-mode .return-to-top {
+  color: #4c5bc5;
 }
 
 body.light-mode footer {
   background-color: rgba(99, 26, 110, 0.3);
   background: linear-gradient(
-    to right,
-    rgba(74, 0, 224, 0.369),
-    rgba(142, 45, 226, 0.369),
-    rgba(74, 0, 224, 0.369)
-  ),
-  radial-gradient(
-    circle at top right,
-    rgba(255, 51, 102, 0.369),
-    rgba(0, 204, 255, 0.369),
-    rgba(255, 153, 0, 0.369)
-  )
+      to right,
+      rgba(74, 0, 224, 0.369),
+      rgba(142, 45, 226, 0.369),
+      rgba(74, 0, 224, 0.369)
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(255, 51, 102, 0.369),
+      rgba(0, 204, 255, 0.369),
+      rgba(255, 153, 0, 0.369)
+    );
 }
 
 header {
@@ -680,7 +719,7 @@ h2 {
 
 .meetme-section-band {
   background-color: rgb(104 30 30 / 50%);
-  height: 3.3vh!important;
+  height: 3.3vh !important;
   margin-top: 5vh;
 }
 
@@ -900,7 +939,6 @@ h2 {
   margin: 2vh 0;
   padding-bottom: 4vh;
   font-family: Rock Salt;
-  
 }
 
 .service-wrapper {
@@ -973,7 +1011,7 @@ h2 {
 }
 
 .projects-headline {
- font-family: Rock Salt;
+  font-family: Rock Salt;
   display: block;
   text-align: center;
   font-size: 4.17vh;
@@ -1052,12 +1090,12 @@ h2 {
 }
 
 .circle.active {
-  background-color: #555; 
+  background-color: #555;
 }
 
 .portfolio-section-band {
   background-color: rgb(49 7 4 / 85%);
-  height: 3vh!important;
+  height: 3vh !important;
 }
 
 /* CALL TO ACTION */
