@@ -243,7 +243,8 @@ nav button i {
 }
 
 .welcome-banner {
-  width: auto;
+  min-height: 400px; 
+
   height: 81vh;
   overflow: hidden;
   display: flex;
