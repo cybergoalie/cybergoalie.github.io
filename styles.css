@@ -980,7 +980,7 @@ h2 {
   align-items: center;
   flex-wrap: wrap;
   margin: 3vh 0;
-  height: 53vh;
+  height: 53%;
   width: 100%;
 }
 
@@ -993,8 +993,8 @@ h2 {
   text-align: center;
   transition: transform 0.3s ease-in-out;
   width: 69%;
-  margin-bottom: 20px;
-  height: 43vh;
+  /* margin-bottom: 20px; */
+  height: auto;
 }
 
 .project-card.active {
