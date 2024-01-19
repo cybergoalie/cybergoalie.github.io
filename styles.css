@@ -94,7 +94,7 @@ body.light-mode .portfolio {
   );
   background-image: url("img/brick-wall.png");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center center;
   background-color: rgb(175 164 164 / 30%);
 }
@@ -905,7 +905,7 @@ h2 {
 .service-card {
   background-color: black;
   border: 1px solid #e1e1e1;
-  border-radius: 8px;
+  border-radius: 15px;
   padding: 20px;
   text-align: center;
   transition: transform 0.3s ease-in-out;
