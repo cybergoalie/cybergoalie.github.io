@@ -243,8 +243,7 @@ nav button i {
 }
 
 .welcome-banner {
-  min-height: 400px; 
-
+  width: auto;
   height: 81vh;
   overflow: hidden;
   display: flex;
@@ -272,11 +271,11 @@ nav button i {
   line-height: 1.369;
   padding: 20px;
   color: #fff;
-  font-size: 3vh;
+  font-size: 20px;
 }
 .content h1 {
   font-weight: 500;
-  font-size: 4.7vh;
+  font-size: 24px;
   line-height: 1.81;
 }
 
