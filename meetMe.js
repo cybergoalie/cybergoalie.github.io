@@ -141,9 +141,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                 navigateToSection(section.targetIndex);
                             });
 
-
-
-
                             sectionsDiv.appendChild(textDiv);
 
                         });

@@ -143,7 +143,7 @@ body.light-mode .project-card {
 }
 
 body.light-mode .circle {
-  background-color: white;
+  background-color: #978e8e;
 }
 
 body.light-mode .portfolio-section-band {
@@ -718,7 +718,7 @@ h2 {
   cursor: pointer;
   margin-right: 1%;
   padding: 10px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .meetme-section-band {
@@ -1037,17 +1037,22 @@ h2 {
   width: 100%;
 }
 
+.project-wrapper {
+  width: 69%;
+  height: 50vh;
+}
+
 .project-card {
-  display: none;
   background-color: black;
   border: 1px solid #a77c7c;
   border-radius: 8px;
   padding: 20px;
   text-align: center;
   transition: transform 0.3s ease-in-out;
-  width: 69%;
+  width: 100%;
   margin-bottom: 20px;
-  height: 50vh;
+  
+  cursor: pointer;
 }
 
 .project-card.active {
@@ -1094,7 +1099,7 @@ h2 {
 }
 
 .circle.active {
-  background-color: #555;
+  background-color: #555!important;
 }
 
 .portfolio-section-band {

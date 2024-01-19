@@ -59,31 +59,68 @@ function toggleVideo() {
 
 // SHOWCASE ONE PROJECT IN PORTFOLIO SECTION AT A TIME
 document.addEventListener('DOMContentLoaded', function () {
-    const projectCards = document.querySelectorAll('.project-card');
+    const projectWrappers = document.querySelectorAll('.project-wrapper');
     const circles = document.querySelectorAll('.circle');
+    let startX;
 
-    // Show the second project card by default
+    // Show the second project wrapper by default
     showProject(1);
 
-    circles.forEach((circle, index) => {
-        circle.addEventListener('click', () => {
-            showProject(index);
+    projectWrappers.forEach((projectWrapper, index) => {
+        projectWrapper.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            projectWrapper.addEventListener('mousemove', handleDrag);
         });
+
+        projectWrapper.addEventListener('mouseup', () => {
+            projectWrapper.removeEventListener('mousemove', handleDrag);
+        });
+
+        projectWrapper.addEventListener('mouseleave', () => {
+            projectWrapper.removeEventListener('mousemove', handleDrag);
+        });
+
+        circles.forEach((circle, index) => {
+            circle.addEventListener('click', () => {
+                showProject(index);
+            });
+        });
+
+        function handleDrag(e) {
+            const deltaX = e.clientX - startX;
+
+            if (Math.abs(deltaX) >= 10) {
+                const newIndex = deltaX > 0 ? Math.max(0, index - 1) : Math.min(projectWrappers.length - 1, index + 1);
+                showProject(newIndex);
+                startX = e.clientX;
+            }
+        }
     });
 
     function showProject(index) {
-        projectCards.forEach((card, i) => {
+        projectWrappers.forEach((projectWrapper, i) => {
+            const projectCard = projectWrapper.querySelector('.project-card');
+            const circle = circles[i];
+
             if (i === index) {
-                card.style.display = 'block';
+                projectCard.style.display = 'block';
+                projectWrapper.style.display = 'block';
             } else {
-                card.style.display = 'none';
+                projectCard.style.display = 'none';
+                projectWrapper.style.display = 'none';
             }
-            circles[i].classList.remove('active');
+            circle.classList.remove('active');
         });
 
         circles[index].classList.add('active');
+
+        console.log('Show Project:', index);
     }
 });
+
+
+
+
 
 // SMOOTH-SCROLLING TO SECTIONS
 
