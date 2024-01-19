@@ -237,9 +237,7 @@ nav button {
 }
 
 nav button i {
-  font-size: 18px; /* Adjust the font size as needed */
-  /* color: yellow; 
-    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)); */
+  font-size: 18px;
 }
 
 .menu-toggle {
@@ -992,7 +990,7 @@ h2 {
 }
 
 .services-section-band i {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 /* PORTFOLIO SECTION */
