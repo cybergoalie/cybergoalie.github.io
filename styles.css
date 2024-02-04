@@ -597,6 +597,15 @@ h2 {
   /* Set the color of the scrollbar track and thumb in Firefox */
 }
 
+.toc-sections::-webkit-scrollbar {
+  width: 12px;
+}
+
+.toc-sections::-webkit-scrollbar-thumb {
+  background-color: #b6cdfc;
+  border-radius: 6px;
+}
+
 .toc-sections div {
   margin: 1.69px 0.5px;
   padding: 8px;
@@ -771,16 +780,6 @@ h2 {
   padding: 10px 5px;
   border-radius: 10px;
   max-height: 96%;
-
-}
-
-.toc-modal-content-wrapper::-webkit-scrollbar {
-  width: 12px;
-}
-
-.toc-modal-content-wrapper::-webkit-scrollbar-thumb {
-  background-color: #b6cdfc;
-  border-radius: 6px;
 }
 
 .toc-modal-headline {
@@ -796,6 +795,15 @@ h2 {
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: #c9fcff white;
+}
+
+.toc-modal-sections::-webkit-scrollbar {
+  width: 12px;
+}
+
+.toc-modal-sections::-webkit-scrollbar-thumb {
+  background-color: #b6cdfc;
+  border-radius: 6px;
 }
 
 .toc-modal-sections div {
