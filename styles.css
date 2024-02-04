@@ -537,23 +537,36 @@ h2 {
   width: 100%;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9);
   overflow: hidden;
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: #adc2ec white;
-  /* Set the color of the scrollbar track and thumb in Firefox */
+
 }
 
 /* Style the scrollbar track */
 .toc-content-wrapper::-webkit-scrollbar {
   width: 12px;
+  margin-top: 10px; /* Adjust top margin */
+  margin-bottom: 10px; /* Adjust bottom margin */
+}
+
+/* Style the scrollbar thumb (the draggable part) */
+.toc-content-wrapper::-webkit-scrollbar-thumb {
+  background-color: #b9d1ff;
+  border-radius: 6px;
 }
 
 /* Style the scrollbar thumb (the draggable part) */
 .toc-content-wrapper::-webkit-scrollbar-thumb {
   background-color: #b9d1ff;
   /* Set the color of the scrollbar thumb */
-  border-radius: 6px;
+  border-radius: 10px;
   /* Adjust the border-radius to make it round */
+}
+
+/* Add padding to the top and bottom of the scrollbar */
+.toc-content-wrapper::-webkit-scrollbar-track {
+  background-color: white; /* Set the color of the scrollbar track */
+  border-radius: 10px;
+  padding-top: 5px; /* Adjust as needed */
+  padding-bottom: 5px; /* Adjust as needed */
 }
 
 .toc-content-wrapper:hover {
@@ -577,6 +590,11 @@ h2 {
   flex-flow: column nowrap;
   margin-top: 3%;
   padding: 2px;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #adc2ec white;
+  /* Set the color of the scrollbar track and thumb in Firefox */
 }
 
 .toc-sections div {
@@ -753,10 +771,7 @@ h2 {
   padding: 10px 5px;
   border-radius: 10px;
   max-height: 96%;
-  overflow: hidden;
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: #c9fcff white;
+
 }
 
 .toc-modal-content-wrapper::-webkit-scrollbar {
@@ -777,6 +792,10 @@ h2 {
   display: flex;
   flex-flow: column nowrap;
   margin-top: 3px;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #c9fcff white;
 }
 
 .toc-modal-sections div {
@@ -1191,6 +1210,7 @@ footer {
 
 .social-icons i:hover {
   background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 .social-icons i:active {
